@@ -1,4 +1,4 @@
-package com.example.citizenexpress;
+package com.example.ce;
 
 import org.junit.Test;
 

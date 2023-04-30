@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "655449167440",
-    "project_id": "fit5046-andorid-project",
-    "storage_bucket": "fit5046-andorid-project.appspot.com"
+    "project_number": "596987757070",
+    "project_id": "fit5046-2d098",
+    "storage_bucket": "fit5046-2d098.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:655449167440:android:b92c53ec55d08a49f16355",
+        "mobilesdk_app_id": "1:596987757070:android:a3d48aefa2dc24c153725f",
         "android_client_info": {
-          "package_name": "com.example.citizenexpress"
+          "package_name": "com.example.ce"
         }
       },
       "oauth_client": [
         {
-          "client_id": "655449167440-q3v15sg9csefcti266a5v3hikd6mpg4b.apps.googleusercontent.com",
+          "client_id": "596987757070-8o5nar0hv7cc4479ct2e2d65rd49rfma.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAx0mV2cf8cpaz42zmryUb_rs6yFsYu5O0"
+          "current_key": "AIzaSyDJN_MJE2YNP11p6Q8BVbbvdAuXgYjAQOE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "655449167440-q3v15sg9csefcti266a5v3hikd6mpg4b.apps.googleusercontent.com",
+              "client_id": "596987757070-8o5nar0hv7cc4479ct2e2d65rd49rfma.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
