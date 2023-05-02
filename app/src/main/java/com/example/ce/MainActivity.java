@@ -40,36 +40,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user = auth.getCurrentUser();
     private ActivityMainBinding binding;
 
-    public class Class {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        public Class() {
-            user.put("name", "Ada");
-            user.put("email", "Lovelace");
-            user.put("credit", 1815);
-            user.put("sex", false);
-            user.put("phone", "13055702376");
-            // Add a new document with a generated ID
-            db.collection("users")
-                    .add(user)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(Exception e) {
-                            Log.w(TAG, "Error adding document", e);
-                        }
-                    });
-        }
-    }
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +62,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SignupActivity.class);
             startActivity(intent);
             finish();
-
         }
-
+        //rest of information should be added in Fragments.
     }
 
 }
