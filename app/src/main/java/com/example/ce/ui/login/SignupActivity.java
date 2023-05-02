@@ -1,6 +1,4 @@
 package com.example.ce.ui.login;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,19 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.ce.MainActivity;
 import com.example.ce.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
 public class SignupActivity  extends AppCompatActivity {
     private FirebaseAuth auth;
-
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -37,13 +31,20 @@ public class SignupActivity  extends AppCompatActivity {
                 if (TextUtils.isEmpty(email_txt) ||
                         TextUtils.isEmpty(password_txt)) {
                     String msg = "Empty Username or Password";
+                    toastMsg(msg);
                 } else if (password_txt.length() < 6) {
                     String msg = "Password is too short";
-                } else
+                    toastMsg(msg);
+                } else if (!email_txt.contains("@")){
+                    String msg = "Not a proper format of an E-mail.";
+                    toastMsg(msg);
+                } else {
                     registerUser(email_txt, password_txt);
-                finish();
-                Intent i = new Intent(SignupActivity.this, MainActivity.class);
-                startActivity(i);
+                    finish();
+                    Intent i = new Intent(SignupActivity.this, MainActivity.class);
+                    //Should jump into Start enter information page, then jump into MainActivity
+                    startActivity(i);
+                }
             }
         });
     }
@@ -55,6 +56,7 @@ public class SignupActivity  extends AppCompatActivity {
             public void onComplete(Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     String msg = "Registration Successful";
+                    toastMsg(msg);
                 } else {
                     String msg = "Registration Unsuccessful";
                     toastMsg(msg);
