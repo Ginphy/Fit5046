@@ -29,6 +29,17 @@ public class SignupActivity  extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         Button btnLogin = findViewById(R.id.Log);
 
+        Button btnBack = findViewById(R.id.Back);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent i = new Intent(SignupActivity.this,StartActivity.class  );
+                startActivity(i);
+
+            }
+        });
 
         EditText emailEditText = findViewById(R.id.Email);
         EditText passwordEditText = findViewById(R.id.password);
