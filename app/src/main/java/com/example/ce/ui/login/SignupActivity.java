@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignupActivity  extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -28,12 +29,14 @@ public class SignupActivity  extends AppCompatActivity {
         EditText emailEditText = findViewById(R.id.Email);
         EditText passwordEditText = findViewById(R.id.password);
         EditText confirmEditText = findViewById(R.id.password2);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email_txt = emailEditText.getText().toString();
                 String password_txt = passwordEditText.getText().toString();
                 String confirm_txt = confirmEditText.getText().toString();
+
                 if (TextUtils.isEmpty(email_txt) ||
                         TextUtils.isEmpty(password_txt) ||
                         TextUtils.isEmpty((confirm_txt))) {
