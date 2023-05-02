@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.ce.MainActivity;
@@ -23,13 +24,16 @@ public class SignupActivity  extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.Log);
         EditText emailEditText = findViewById(R.id.Email);
         EditText passwordEditText = findViewById(R.id.password);
+        EditText confirmEditText = findViewById(R.id.password2);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email_txt = emailEditText.getText().toString();
                 String password_txt = passwordEditText.getText().toString();
+                String confirm_txt = confirmEditText.getText().toString();
                 if (TextUtils.isEmpty(email_txt) ||
-                        TextUtils.isEmpty(password_txt)) {
+                        TextUtils.isEmpty(password_txt) ||
+                        TextUtils.isEmpty((confirm_txt))) {
                     String msg = "Empty Username or Password";
                     toastMsg(msg);
                 } else if (password_txt.length() < 6) {
@@ -38,12 +42,15 @@ public class SignupActivity  extends AppCompatActivity {
                 } else if (!email_txt.contains("@")){
                     String msg = "Not a proper format of an E-mail.";
                     toastMsg(msg);
+                } else if (password_txt != confirm_txt) {
+                    String msg = "Password isn't the same.";
+                    toastMsg(msg);
                 } else {
                     registerUser(email_txt, password_txt);
                     finish();
-                    Intent i = new Intent(SignupActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                     //Should jump into Start enter information page, then jump into MainActivity
-                    startActivity(i);
+                    startActivity(intent);
                 }
             }
         });
