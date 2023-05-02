@@ -1,5 +1,6 @@
 package com.example.ce.ui.login;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,22 +11,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ce.MainActivity;
 import com.example.ce.R;
 
-public class LoginActivity extends AppCompatActivity {
-
+public class SignupActivity  extends AppCompatActivity {
     @Override
-    protected void onCreate(Bundle saveInstanceState){
+    protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.signup);
+        setContentView(R.layout.login);
 
-        Button btnLogin = findViewById(R.id.Sign);
-        btnLogin.setOnClickListener(new View.OnClickListener(){
+        Button btnLogin = findViewById(R.id.Log);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
-                Intent i = new Intent(LoginActivity.this, SignupActivity.class);
+                Intent i = new Intent(SignupActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
-    }
 
+
+
+
+    }
 }
