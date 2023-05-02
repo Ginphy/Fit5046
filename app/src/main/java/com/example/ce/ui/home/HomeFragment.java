@@ -14,9 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ce.R;
 import com.example.ce.databinding.FragmentHomeBinding;
+import com.example.ce.ui.login.StartActivity;
 import com.example.ce.ui.login.LoginActivity;
-
-import org.checkerframework.common.subtyping.qual.Bottom;
 
 public class HomeFragment extends Fragment {
 
@@ -37,7 +36,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
-                Intent i = new Intent(getActivity(), LoginActivity.class);
+                Intent i = new Intent(getActivity(), StartActivity.class);
                 startActivity(i);
 
             }
