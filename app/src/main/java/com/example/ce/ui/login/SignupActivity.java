@@ -2,6 +2,7 @@ package com.example.ce.ui.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+
 public class SignupActivity  extends AppCompatActivity {
     private FirebaseAuth auth;
     @Override
@@ -42,15 +45,11 @@ public class SignupActivity  extends AppCompatActivity {
                 } else if (!email_txt.contains("@")){
                     String msg = "Not a proper format of an E-mail.";
                     toastMsg(msg);
-                } else if (password_txt != confirm_txt) {
+                } else if (!password_txt.equals(confirm_txt)) {
                     String msg = "Password isn't the same.";
                     toastMsg(msg);
                 } else {
                     registerUser(email_txt, password_txt);
-                    finish();
-                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                    //Should jump into Start enter information page, then jump into MainActivity
-                    startActivity(intent);
                 }
             }
         });
@@ -61,12 +60,23 @@ public class SignupActivity  extends AppCompatActivity {
         auth.createUserWithEmailAndPassword(email_txt, password_txt).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(Task<AuthResult> task) {
+                Exception exception = task.getException();
+                if (exception instanceof FirebaseAuthException) {
+                    String errorCode = ((FirebaseAuthException) exception).getErrorCode();
+                    if (errorCode.equals("ERROR_EMAIL_ALREADY_IN_USE")) {
+                        String msg = "Registration failed: email already registered.";
+                        toastMsg(msg);
+                        Log.d("Firebase", "Registration failed: email already in use.");
+                        recreate();
+                    }
+                }
                 if (task.isSuccessful()) {
                     String msg = "Registration Successful";
                     toastMsg(msg);
-                } else {
-                    String msg = "Registration Unsuccessful";
-                    toastMsg(msg);
+                    finish();
+                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                    //Should jump into Start enter information page, then jump into MainActivity
+                    startActivity(intent);
                 }
             }
         });
