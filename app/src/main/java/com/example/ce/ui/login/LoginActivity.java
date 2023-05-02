@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ce.MainActivity;
 import com.example.ce.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -15,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.signup);
+        setContentView(R.layout.start);
 
         Button btnLogin = findViewById(R.id.Sign);
         btnLogin.setOnClickListener(new View.OnClickListener(){

@@ -94,14 +94,13 @@ public class MainActivity extends AppCompatActivity {
         //   if(mAuth.getUid()){
 
 
-        if (user == null) {
-            Intent intent = new Intent(this, SignupActivity.class);
-            startActivity(intent);
-            finish();
+//        if (user == null) {
+//            Intent intent = new Intent(this, SignupActivity.class);
+//            startActivity(intent);
+//            finish();
 
 
         }
 
     }
 
-}
