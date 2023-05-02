@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.ce.MainActivity;
@@ -14,7 +15,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class SignupActivity  extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -24,9 +28,22 @@ public class SignupActivity  extends AppCompatActivity {
         setContentView(R.layout.signup);
         auth = FirebaseAuth.getInstance();
         Button btnLogin = findViewById(R.id.Log);
-        EditText emailEditText = findViewById(R.id.NameText);
-        EditText passwordEditText = findViewById(R.id.PhoneText);
-        EditText confirmEditText = findViewById(R.id.identityText);
+
+        Button btnBack = findViewById(R.id.Back);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent i = new Intent(SignupActivity.this,StartActivity.class  );
+                startActivity(i);
+
+            }
+        });
+
+        EditText emailEditText = findViewById(R.id.Email);
+        EditText passwordEditText = findViewById(R.id.password);
+        EditText confirmEditText = findViewById(R.id.password2);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +72,7 @@ public class SignupActivity  extends AppCompatActivity {
             }
         });
     }
+
 
     private void registerUser(String email_txt, String password_txt) {
         // To create username and password

@@ -19,7 +19,7 @@
 
 
         <activity android:name="com.example.ce.ui.login.SignupActivity" />
-        <activity android:name="com.example.ce.ui.login.LoginActivity"
+        <activity android:name="com.example.ce.ui.login.StartActivity"
             android:exported="true"
             android:label="Log In/Sign Up">
 
@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.ce.ui.login.LoginActivity" />
     </application>
 
 </manifest>
