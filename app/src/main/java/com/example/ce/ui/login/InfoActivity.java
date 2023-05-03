@@ -75,7 +75,9 @@ public class InfoActivity extends AppCompatActivity {
                 user.put("email", User.getEmail());
                 user.put("identity", IdentityEditText.getText().toString());
                 user.put("uid", User.getUid());
-                user.put("sex", sex[0]);
+                if (sex[0] == "Male")
+                    user.put("sex", "Male");
+                else user.put("sex", "Female");
                 user.put("role", role);
                 user.put("credit", 100);
 
