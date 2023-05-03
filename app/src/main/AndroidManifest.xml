@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.ce.ui.login.LoginActivity" />
+        <activity android:name="com.example.ce.ui.login.InfoActivity" />
 
     </application>
 

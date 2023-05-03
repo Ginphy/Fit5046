@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
+     //   final TextView textView = binding.textHome;
 
         Button btnLogin = root.findViewById(R.id.BtnLogout);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+   //     homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         //A data listener is added to bind the page.
         // Once the text of the model changes, the observer will be notified, and the textview can be refreshed.
         return root;

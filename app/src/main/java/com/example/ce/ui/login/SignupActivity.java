@@ -24,15 +24,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignupActivity  extends AppCompatActivity {
     private FirebaseAuth auth;
-    RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);;
-    RadioButton rb_User = (RadioButton) findViewById(R.id.user);;
-    RadioButton rb_Courier = (RadioButton) findViewById(R.id.courier);
+
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.signup);
         auth = FirebaseAuth.getInstance();
         //RadioGroup Operation
+    RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);;
 
         rg.setOnCheckedChangeListener(new RadioButtonListener());
 
@@ -116,11 +115,11 @@ public class SignupActivity  extends AppCompatActivity {
             switch (i){
                 case R.id.user:
                     //user choose user option
-                    Log.i("Role","Current user select" + rb_User.getText().toString());
+                    Log.i("Role","Current user select " + "user");
                     break;
                 case R.id.courier:
                     //user choose courier option
-                    Log.i("Role", "Current user select"+ rb_Courier.getText().toString());
+                    Log.i("Role", "Current user select"+ "courier");
                     break;
             }
 

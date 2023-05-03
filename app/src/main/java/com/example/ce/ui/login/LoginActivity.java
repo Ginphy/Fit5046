@@ -29,9 +29,7 @@ import org.checkerframework.common.subtyping.qual.Bottom;
 
 
 public class LoginActivity extends AppCompatActivity {
-    RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);;
-    RadioButton rb_User = (RadioButton) findViewById(R.id.user);;
-    RadioButton rb_Courier = (RadioButton) findViewById(R.id.courier);
+
 
     // Connect to firebase
     private FirebaseAuth mAuth;
@@ -39,12 +37,16 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle saveInstanceState) {
 
+
+
+
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
         // Set view
         super.onCreate(saveInstanceState);
         setContentView(R.layout.userlogin);
+        RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);
 
         // Get input information
         EditText emailEditText = findViewById(R.id.Email);
@@ -108,14 +110,16 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            RadioButton rb_User = (RadioButton) findViewById(R.id.user);;
+            RadioButton rb_Courier = (RadioButton) findViewById(R.id.courier);
             switch (i){
                 case R.id.user:
                     //user choose user option
-                    Log.i("Role","Current user select" + rb_User.getText().toString());
+                    Log.i("Role","Current user select " + "user");
                     break;
                 case R.id.courier:
                     //user choose courier option
-                    Log.i("Role", "Current user select"+ rb_Courier.getText().toString());
+                   Log.i("Role", "Current user select"+ "courier");
                     break;
             }
 
