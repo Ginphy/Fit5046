@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.baidu.mapapi.map.MapView;
+import com.example.ce.R;
 
 public class Map extends Activity {
     private MapView mMapView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_home);
         //获取地图控件引用
         mMapView = (MapView) findViewById(R.id.bmapView);
     }

@@ -18,7 +18,6 @@ import com.example.ce.R;
 import com.example.ce.databinding.FragmentHomeBinding;
 import com.example.ce.ui.login.StartActivity;
 import com.example.ce.ui.login.LoginActivity;
-import com.tencent.tencentmap.mapsdk.maps.MapView;
 
 import java.security.KeyPairGenerator;
 
@@ -33,10 +32,6 @@ public class HomeFragment extends Fragment {
         //Initialize a ViewModel
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        //Initialize Map API
-        SDKInitializer.setAgreePrivacy(this.getApplicationContext(),true);
-        SDKInitializer.initialize(root);
 
 
         //final TextView textView = binding.textHome;
