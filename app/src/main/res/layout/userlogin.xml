@@ -114,8 +114,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/background" />
 
+    <RadioGroup
+
+        android:id="@+id/rg_UserOrCourier"
+
+        android:layout_width="170dp"
+
+        android:layout_height="75dp"
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/Log"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0">
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User"
@@ -127,7 +142,7 @@
         app:layout_constraintVertical_bias="0.25" />
 
     <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/courier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Courier"
@@ -137,6 +152,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Phone"
         app:layout_constraintVertical_bias="0.24000001" />
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/Back"
