@@ -16,16 +16,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ce.MainActivity;
 import com.example.ce.R;
+import com.example.ce.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import android.widget.RadioButton;
 
+import android.widget.RadioGroup;
 import org.checkerframework.common.subtyping.qual.Bottom;
 
 
 public class LoginActivity extends AppCompatActivity {
+    RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);;
+    RadioButton rb_User = (RadioButton) findViewById(R.id.user);;
+    RadioButton rb_Courier = (RadioButton) findViewById(R.id.courier);
 
     // Connect to firebase
     private FirebaseAuth mAuth;
@@ -44,8 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         EditText emailEditText = findViewById(R.id.Email);
         EditText passwordEditText = findViewById(R.id.password);
         Button btnLogin = findViewById(R.id.Log);
-
+        rg.setOnCheckedChangeListener(new RadioButtonListener());
         btnLogin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 String emailInfo = emailEditText.getText().toString();
@@ -56,14 +63,16 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             // Sign in success, update UI with the signed-in user's information
-                                            Log.d(TAG, "Login success!");
+                                            Log.d(TAG, "signInWithEmail:success");
                                             FirebaseUser user = mAuth.getCurrentUser();
                                             updateUI(user);
                                             finish();
+                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                            startActivity(i);
                                         } else {
                                             // If sign in fails, display a message to the user.
                                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                            Toast.makeText(LoginActivity.this, "Login failed, invalid account or wrong password.",
+                                            Toast.makeText(LoginActivity.this, "Authentication failed.",
                                                     Toast.LENGTH_SHORT).show();
                                             updateUI(null);
                                             recreate();
@@ -95,14 +104,32 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
+    public class RadioButtonListener implements RadioGroup.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            switch (i){
+                case R.id.user:
+                    //user choose user option
+                    Log.i("Role","Current user select" + rb_User.getText().toString());
+                    break;
+                case R.id.courier:
+                    //user choose courier option
+                    Log.i("Role", "Current user select"+ rb_Courier.getText().toString());
+                    break;
+            }
+
+        }
+    }
 
     private void updateUI(FirebaseUser user) {
         // hideProgressBar();
         if (user != null) {
-            Intent i = new Intent(LoginActivity.this, SignupActivity.class);
-            startActivity(i);
+            Toast.makeText(LoginActivity.this, "Su.",
+                    Toast.LENGTH_SHORT).show();
         } else {
-            ;
+            Toast.makeText(LoginActivity.this, "Fa.",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

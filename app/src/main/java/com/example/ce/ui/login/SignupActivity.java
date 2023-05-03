@@ -15,18 +15,27 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import android.widget.RadioButton;
 
+import android.widget.RadioGroup;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class SignupActivity  extends AppCompatActivity {
     private FirebaseAuth auth;
+    RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);;
+    RadioButton rb_User = (RadioButton) findViewById(R.id.user);;
+    RadioButton rb_Courier = (RadioButton) findViewById(R.id.courier);
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.signup);
         auth = FirebaseAuth.getInstance();
+        //RadioGroup Operation
+
+        rg.setOnCheckedChangeListener(new RadioButtonListener());
+
         Button btnLogin = findViewById(R.id.Log);
 
         Button btnBack = findViewById(R.id.Back);
@@ -43,7 +52,7 @@ public class SignupActivity  extends AppCompatActivity {
 
         EditText emailEditText = findViewById(R.id.Email);
         EditText passwordEditText = findViewById(R.id.password);
-        EditText confirmEditText = findViewById(R.id.password2);
+        EditText confirmEditText = findViewById(R.id.identityText);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +108,23 @@ public class SignupActivity  extends AppCompatActivity {
                 }
             }
         });
+    }
+    public class RadioButtonListener implements RadioGroup.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            switch (i){
+                case R.id.user:
+                    //user choose user option
+                    Log.i("Role","Current user select" + rb_User.getText().toString());
+                    break;
+                case R.id.courier:
+                    //user choose courier option
+                    Log.i("Role", "Current user select"+ rb_Courier.getText().toString());
+                    break;
+            }
+
+        }
     }
 
     public void toastMsg(String message) {
