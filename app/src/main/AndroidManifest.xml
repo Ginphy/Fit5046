@@ -34,6 +34,7 @@
         </activity>
         <activity android:name="com.example.ce.ui.login.LoginActivity" />
         <activity android:name="com.example.ce.ui.login.InfoActivity" />
+        <activity android:name="com.example.ce.ui.home.Map" />
 
     </application>
     <!-- 访问网络，进行地图相关业务数据请求，包括地图数据，路线规划，POI检索等 -->
