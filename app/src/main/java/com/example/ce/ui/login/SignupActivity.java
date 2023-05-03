@@ -52,7 +52,7 @@ public class SignupActivity  extends AppCompatActivity {
 
         EditText emailEditText = findViewById(R.id.Email);
         EditText passwordEditText = findViewById(R.id.password);
-        EditText confirmEditText = findViewById(R.id.password2);
+        EditText confirmEditText = findViewById(R.id.identityText);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

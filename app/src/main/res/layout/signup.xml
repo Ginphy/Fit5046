@@ -90,7 +90,7 @@
 
     <RadioGroup
 
-        android:id="@+id/rg_UserOrCourier"
+        android:id="@+id/rg_sex"
 
         android:layout_width="170dp"
 
@@ -106,7 +106,7 @@
 
 
         <RadioButton
-            android:id="@+id/user"
+            android:id="@+id/male"
             android:layout_width="86dp"
             android:layout_height="48dp"
             android:text="User"
@@ -118,7 +118,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <RadioButton
-            android:id="@+id/courier"
+            android:id="@+id/female"
             android:layout_width="86dp"
             android:layout_height="48dp"
             android:text="Courier"
