@@ -44,14 +44,14 @@ public class SignupActivity  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent i = new Intent(SignupActivity.this,StartActivity.class  );
+                Intent i = new Intent(SignupActivity.this,StartActivity.class );
                 startActivity(i);
 
             }
         });
 
-        EditText emailEditText = findViewById(R.id.Email);
-        EditText passwordEditText = findViewById(R.id.password);
+        EditText emailEditText = findViewById(R.id.NameText);
+        EditText passwordEditText = findViewById(R.id.PhoneText);
         EditText confirmEditText = findViewById(R.id.identityText);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
