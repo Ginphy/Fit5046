@@ -24,15 +24,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignupActivity  extends AppCompatActivity {
     private FirebaseAuth auth;
-
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.signup);
+        final String[] role = new String[1];
         auth = FirebaseAuth.getInstance();
         //RadioGroup Operation
-        RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);;
-        RadioButton rb_User = (RadioButton) findViewById(R.id.user);;
+        RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);
+        RadioButton rb_User = (RadioButton) findViewById(R.id.user);
         RadioButton rb_Courier = (RadioButton) findViewById(R.id.courier);
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -41,10 +41,12 @@ public class SignupActivity  extends AppCompatActivity {
                     case R.id.user:
                         //user choose user option
                         Log.i("Role","Current user select " + rb_User.getText().toString());
+                        role[0] = "User";
                         break;
                     case R.id.courier:
                         //user choose courier option
                         Log.i("Role", "Current user select"+ rb_Courier.getText().toString());
+                        role[0] = "Courier";
                         break;
                 }
             }
@@ -92,14 +94,14 @@ public class SignupActivity  extends AppCompatActivity {
                     String msg = "Password isn't the same.";
                     toastMsg(msg);
                 } else {
-                    registerUser(email_txt, password_txt);
+                    registerUser(email_txt, password_txt, role[0]);
                 }
             }
         });
     }
 
 
-    private void registerUser(String email_txt, String password_txt) {
+    private void registerUser(String email_txt, String password_txt, String role) {
         // To create username and password
         auth.createUserWithEmailAndPassword(email_txt, password_txt).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -118,9 +120,15 @@ public class SignupActivity  extends AppCompatActivity {
                     String msg = "Registration Successful";
                     toastMsg(msg);
                     finish();
-                    Intent intent = new Intent(SignupActivity.this, InfoActivity.class);
-                    //Should jump into Start enter information page, then jump into MainActivity
-                    startActivity(intent);
+                    if (role == "User"){
+                        Intent intent = new Intent(SignupActivity.this, InfoActivity.class);
+                        intent.putExtra("role", "User");
+                        startActivity(intent);
+                    }else {
+                        Intent intent = new Intent(SignupActivity.this, InfoActivity.class);
+                        intent.putExtra("role","Courier");
+                        startActivity(intent);
+                    }
                 }
             }
         });
