@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -12,25 +13,28 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.example.ce.R;
 import com.example.ce.databinding.FragmentHomeBinding;
 import com.example.ce.ui.login.StartActivity;
 import com.example.ce.ui.login.LoginActivity;
 
+import java.security.KeyPairGenerator;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-
+    private WebView mWebView;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
-       //Initialize a ViewModel
+        //Initialize a ViewModel
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-     //   final TextView textView = binding.textHome;
 
+        //final TextView textView = binding.textHome;
         Button btnLogin = root.findViewById(R.id.BtnLogout);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
