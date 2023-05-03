@@ -24,7 +24,7 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent i = new Intent(StartActivity.this, LoginActivity.class);
+                Intent i = new Intent(InfoActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });
@@ -33,7 +33,7 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 finish();
-                Intent i = new Intent(StartActivity.this, SignupActivity.class);
+                Intent i = new Intent(InfoActivity.this, SignupActivity.class);
                 startActivity(i);
             }
         });
