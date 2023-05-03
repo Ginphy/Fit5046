@@ -31,9 +31,24 @@ public class SignupActivity  extends AppCompatActivity {
         setContentView(R.layout.signup);
         auth = FirebaseAuth.getInstance();
         //RadioGroup Operation
-    RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);;
-
-        rg.setOnCheckedChangeListener(new RadioButtonListener());
+        RadioGroup rg = (RadioGroup) findViewById(R.id.rg_UserOrCourier);;
+        RadioButton rb_User = (RadioButton) findViewById(R.id.user);;
+        RadioButton rb_Courier = (RadioButton) findViewById(R.id.courier);
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.user:
+                        //user choose user option
+                        Log.i("Role","Current user select " + rb_User.getText().toString());
+                        break;
+                    case R.id.courier:
+                        //user choose courier option
+                        Log.i("Role", "Current user select"+ rb_Courier.getText().toString());
+                        break;
+                }
+            }
+        });
 
         Button btnLogin = findViewById(R.id.Log);
 
@@ -48,6 +63,8 @@ public class SignupActivity  extends AppCompatActivity {
 
             }
         });
+
+
 
         EditText emailEditText = findViewById(R.id.NameText);
         EditText passwordEditText = findViewById(R.id.PhoneText);
@@ -108,23 +125,7 @@ public class SignupActivity  extends AppCompatActivity {
             }
         });
     }
-    public class RadioButtonListener implements RadioGroup.OnCheckedChangeListener {
 
-        @Override
-        public void onCheckedChanged(RadioGroup radioGroup, int i) {
-            switch (i){
-                case R.id.user:
-                    //user choose user option
-                    Log.i("Role","Current user select " + "user");
-                    break;
-                case R.id.courier:
-                    //user choose courier option
-                    Log.i("Role", "Current user select"+ "courier");
-                    break;
-            }
-
-        }
-    }
 
     public void toastMsg(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
