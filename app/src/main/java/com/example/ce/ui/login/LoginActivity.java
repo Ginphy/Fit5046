@@ -115,11 +115,11 @@ public class LoginActivity extends AppCompatActivity {
             switch (i){
                 case R.id.user:
                     //user choose user option
-                    Log.i("Role","Current user select " + "user");
+                    Log.i("Role","Current user select " + rb_User.getText().toString());
                     break;
                 case R.id.courier:
                     //user choose courier option
-                   Log.i("Role", "Current user select"+ "courier");
+                   Log.i("Role", "Current user select "+ rb_Courier.getText().toString());
                     break;
             }
 
