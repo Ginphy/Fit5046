@@ -8,6 +8,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.baidu.location.LocationClient;
 import com.baidu.mapapi.SDKInitializer;
 import com.example.ce.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,7 +24,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // Initail Map Information
-        SDKInitializer.initialize(this);
+        SDKInitializer.setAgreePrivacy(this.getApplicationContext(),true);
+        LocationClient.setAgreePrivacy(true);
+        SDKInitializer.initialize(this.getApplicationContext());
+
+
+
+
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         //initialized, based on layout file activity_main.xml
