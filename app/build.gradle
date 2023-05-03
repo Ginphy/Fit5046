@@ -33,6 +33,9 @@ android {
 }
 
 dependencies {
+    // Import TencentMap API
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.tencent.map:tencent-map-vector-sdk:4.3.4'
 
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:31.4.0')

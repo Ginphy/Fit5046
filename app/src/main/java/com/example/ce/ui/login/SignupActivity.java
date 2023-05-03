@@ -118,7 +118,7 @@ public class SignupActivity  extends AppCompatActivity {
                     String msg = "Registration Successful";
                     toastMsg(msg);
                     finish();
-                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SignupActivity.this, InfoActivity.class);
                     //Should jump into Start enter information page, then jump into MainActivity
                     startActivity(intent);
                 }

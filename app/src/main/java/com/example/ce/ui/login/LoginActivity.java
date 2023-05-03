@@ -53,6 +53,15 @@ public class LoginActivity extends AppCompatActivity {
         EditText passwordEditText = findViewById(R.id.password);
         Button btnLogin = findViewById(R.id.Log);
         rg.setOnCheckedChangeListener(new RadioButtonListener());
+        Button btnBack = findViewById(R.id.Back);
+        btnBack.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                finish();
+                Intent i = new Intent(LoginActivity.this, StartActivity.class);
+                startActivity(i);
+            }
+        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -84,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private boolean validateForm() {
         boolean valid = true;
