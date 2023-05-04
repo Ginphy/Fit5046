@@ -65,13 +65,13 @@ public class NotificationsViewModel extends ViewModel {
     }
     public NotificationsViewModel() {
         mOldData = new PersonalInfo();
-        mOldData.Profile = "Profile";
+        mOldData.Profile = "Should be your UserID";
         mOldData.Email = "E-mail";
-        mOldData.Gender = "TBD";
-        mOldData.Identity = "110";
-        mOldData.Name = "ZJJSB";
-        mOldData.Nickname = "I am Pig";
-        mOldData.Phone = "110";
+        mOldData.Gender = "LGBT";
+        mOldData.Identity = "Your Identity Number";
+        mOldData.Name = "Username";
+        mOldData.Nickname = "ThaiCoolLa";
+        mOldData.Phone = "Your Phone Number";
         mOldData.Credit = 100;
 
 
