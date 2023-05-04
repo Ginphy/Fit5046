@@ -140,10 +140,10 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         // hideProgressBar();
         if (user != null) {
-            Toast.makeText(LoginActivity.this, "Su.",
+            Toast.makeText(LoginActivity.this, "Login Successful!",
                     Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(LoginActivity.this, "Fa.",
+            Toast.makeText(LoginActivity.this, "Login Failed.",
                     Toast.LENGTH_SHORT).show();
         }
     }

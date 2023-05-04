@@ -64,7 +64,7 @@ public class Map extends Activity implements View.OnClickListener {
         SDKInitializer.initialize(this.getApplicationContext());
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.home) ;
         setInit();
         // initMap();
     }
