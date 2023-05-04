@@ -10,6 +10,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.SDKInitializer;
+import com.baidu.mapapi.search.sug.SuggestionSearch;
 import com.example.ce.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         SDKInitializer.setAgreePrivacy(this.getApplicationContext(),true);
         LocationClient.setAgreePrivacy(true);
         SDKInitializer.initialize(this.getApplicationContext());
+
+
 
 
 

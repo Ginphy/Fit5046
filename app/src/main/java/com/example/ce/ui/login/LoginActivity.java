@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ce.MainActivity;
 import com.example.ce.R;
 import com.example.ce.ui.home.HomeFragment;
+import com.example.ce.ui.home.Map;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -78,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                                             FirebaseUser user = mAuth.getCurrentUser();
                                             updateUI(user);
                                             finish();
-                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                            Intent i = new Intent(LoginActivity.this, Map.class);
                                             startActivity(i);
                                         } else {
                                             // If sign in fails, display a message to the user.
