@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <AutoCompleteTextView
+        android:id="@+id/editaddress"
+        android:layout_width="match_parent"
+        android:background="@null"
+        android:completionThreshold="2"
+        android:hint="请输入地址: "
+        android:padding="15dp"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.baidu.mapapi.map.MapView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:paddingBottom="20dp"
+            android:src="@drawable/back_icon" />
+
+        <ImageView
+            android:id="@+id/sa_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/back_icon" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/jieguo"
+        android:layout_width="match_parent"
+        android:text="输入位置附近的位置"
+        android:padding="15dp"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
