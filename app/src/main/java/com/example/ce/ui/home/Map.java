@@ -2,12 +2,14 @@ package com.example.ce.ui.home;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +21,9 @@ import com.amap.api.services.core.ServiceSettings;
 import com.amap.api.maps.MapView;
 import com.amap.api.services.core.ServiceSettings;
 import com.example.ce.R;
+import com.example.ce.ui.login.InfoActivity;
 import com.example.ce.ui.login.LoginActivity;
+import com.example.ce.ui.login.StartActivity;
 
 
 import java.util.ArrayList;
@@ -53,6 +57,7 @@ public class Map extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.fragment_home) ;
+        Button SearchStart = findViewById(R.id.SearchStart);
         try {
             ServiceSettings.updatePrivacyShow(this, true, true);
             ServiceSettings.updatePrivacyAgree(this,true);
@@ -66,6 +71,15 @@ public class Map extends Activity {
         } catch (Exception e) {
             System.out.print("e=" + e);
         }
+
+        SearchStart.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(Map.this, SearchActivity.class);
+                // startActivity(i);
+            }
+        });
+
 
 
 
