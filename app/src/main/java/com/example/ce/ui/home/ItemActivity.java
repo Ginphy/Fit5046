@@ -44,8 +44,8 @@ public class ItemActivity extends AppCompatActivity {
 
 
     }
-    public NotificationsViewModel extends ViewModel() {
-
-    }
+//    public NotificationsViewModel extends ViewModel() {
+//
+//    }
 
 }

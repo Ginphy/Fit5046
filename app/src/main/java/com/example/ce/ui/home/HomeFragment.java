@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.baidu.mapapi.SDKInitializer;
 import com.example.ce.R;
 import com.example.ce.databinding.FragmentHomeBinding;
 import com.example.ce.ui.login.StartActivity;
