@@ -36,15 +36,15 @@
 
     <com.amap.api.maps.MapView
         android:id="@+id/map"
-        android:clickable="true"
         android:layout_width="400dp"
         android:layout_height="310dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintVertical_bias="0.143" />
 
     <ImageButton
         android:id="@+id/BackButton"
@@ -90,9 +90,10 @@
         android:layout_height="294dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.81"
+        app:layout_constraintVertical_bias="0.854"
         app:srcCompat="@drawable/shape" />
 
     <Button
@@ -158,7 +159,7 @@
         app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintVertical_bias="0.733"
         app:srcCompat="@drawable/radio_button_img" />
 
     <View
@@ -187,24 +188,11 @@
         app:layout_constraintTop_toTopOf="@+id/Background2"
         app:layout_constraintVertical_bias="0.6" />
 
-    <View
-
-        android:id="@+id/line4"
-        android:layout_width="320dp"
-        android:layout_height="1dp"
-        android:background="#D1D1D1"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.8" />
-
     <Button
         android:id="@+id/SearchStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#36509E"
+        android:background="#5E75B7"
         android:text="SearchStart"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/Background2"
@@ -218,7 +206,7 @@
         android:id="@+id/SearchEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#36509E"
+        android:background="#5E75B6"
         android:text="SearchEnd"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/Background2"
@@ -237,10 +225,10 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/Background2"
         app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.268" />
 
     <EditText
         android:id="@+id/Consignee"
@@ -251,38 +239,38 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/Background2"
         app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.516" />
 
     <Button
         android:id="@+id/Item"
         android:layout_width="230dp"
         android:layout_height="48dp"
         android:background="@color/white"
-        android:text="Item"
+        android:text="Item Info"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/Background2"
         app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.76" />
+        app:layout_constraintVertical_bias="0.747" />
 
     <Button
         android:id="@+id/BtnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#36509D"
+        android:background="#5E75B7"
         android:text="backToWelcome"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintHorizontal_bias="0.913"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintVertical_bias="0.02" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
