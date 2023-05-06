@@ -1,35 +1,28 @@
 package com.example.ce.ui.home;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Poi;
-//import com.amap.api.navi.AMapNavi;
-//import com.amap.api.navi.AmapNaviPage;
-//import com.amap.api.navi.AmapNaviParams;
-//import com.amap.api.navi.AmapNaviType;
-//import com.amap.api.navi.AmapPageType;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.help.Inputtips;
 import com.amap.api.services.help.InputtipsQuery;
 import com.amap.api.services.help.Tip;
 import com.example.ce.R;
-import com.example.ce.ui.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity implements Inputtips.InputtipsListener, TextWatcher, RvAdapter.OnItemClickListener {
+public class SearchStartpointActivity extends AppCompatActivity implements Inputtips.InputtipsListener, TextWatcher, RvAdapter.OnItemClickListener {
     private RvAdapter rvAdapter;
     private Inputtips inputTips;
 //    private AMapNavi mAMapNavi;
@@ -89,7 +82,7 @@ public class SearchActivity extends AppCompatActivity implements Inputtips.Input
         //得到经纬度
         Poi poi = new Poi(data.getName(), new LatLng(point.getLatitude(), point.getLongitude()), data.getPoiID());
         // Set Intent Class with Position data
-        Intent intent = new Intent(SearchActivity.this, Map.class);
+        Intent intent = new Intent(SearchStartpointActivity.this, Map.class);
         Bundle bundle = new Bundle();
         // Use 0 stand for Start Info, 1 for End Info
         bundle.putInt("Tag",0);

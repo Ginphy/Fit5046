@@ -35,6 +35,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.MyViewHolder> impl
         void onItemClick(RecyclerView parent, View view, int position, Tip data);
     }
 
+
     public RvAdapter(Context context, RecyclerView rv, List<Tip> list) {
         this.context = context;
         this.rv = rv;

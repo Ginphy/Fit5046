@@ -32,7 +32,8 @@
         <activity android:name="com.example.ce.ui.login.LoginActivity" />
         <activity android:name="com.example.ce.ui.login.InfoActivity" />
         <activity android:name="com.example.ce.ui.home.Map" />
-        <activity android:name="com.example.ce.ui.home.SearchActivity" />
+        <activity android:name="com.example.ce.ui.home.SearchStartpointActivity" />
+        <activity android:name="com.example.ce.ui.home.SearchDestinationActivity" />
     </application>
     <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />

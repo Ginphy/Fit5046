@@ -3,6 +3,7 @@ package com.example.ce.ui.home;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +20,10 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
 
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.ServiceSettings;
@@ -40,12 +45,20 @@ public class Map extends Activity {
 
     private boolean isFirstLoc = true;//是否是首次定位
 
-    private double mLatitude;
-    private double mLongitude;
     private TextView mJieguo;
+    private EditText mStartAddress;
+    private EditText mDestinationAddress;
     private AutoCompleteTextView mEditAddress;
     private List<String> stringlist = new ArrayList<>();
     private List<String> stringlist2 = new ArrayList<>();
+
+    // Var about StartPosition info & EndPosition info
+    public static  double StartLatitude;
+    public static  double StartLongitude;
+    public static  String StartName;
+    public static  double EndLatitude;
+    public static  double EndLongitude;
+    public static  String EndName;
 
 
     @Override
@@ -60,12 +73,17 @@ public class Map extends Activity {
 
         setContentView(R.layout.fragment_home) ;
         Button SearchStart = findViewById(R.id.SearchStart);
+        Button SearchEnd = findViewById(R.id.SearchEnd);
         try {
             ServiceSettings.updatePrivacyShow(this, true, true);
             ServiceSettings.updatePrivacyAgree(this,true);
             //定义了一个地图view
             mMapView = (MapView) findViewById(R.id.map);
             mMapView.onCreate(savedInstanceState);// 此方法须覆写，虚拟机需要在很多情况下保存地图绘制的当前状态。
+            // Define the Address String Fragment
+            mStartAddress = findViewById(R.id.startAddr);
+            mDestinationAddress = findViewById(R.id.destinationAddr);
+
             //初始化地图控制器对象
             if (aMap == null) {
                 aMap = mMapView.getMap();
@@ -81,10 +99,55 @@ public class Map extends Activity {
             System.out.print("e=" + e);
         }
 
+        // After SearchPosition, Here will get the feedback postion info
+        Intent intent = getIntent();
+        if (intent != null) {
+            // Unbox bundle
+            int tag = intent.getIntExtra("Tag",-1);
+            if (tag == 0) {
+                StartLatitude = intent.getDoubleExtra("Latitude",0);
+                StartLongitude = intent.getDoubleExtra("Longitude",0);
+                StartName = intent.getStringExtra("Name");
+                //根据获取的经纬度，将地图移动到定位位置
+                aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(StartLatitude,StartLongitude)));
+                // aMap.addMarker(new MarkerOptions().position(new LatLng(StartLatitude,StartLongitude)).icon(pos_icon));
+                mStartAddress.setText(StartName);
+                if(EndName != null) {
+                    mDestinationAddress.setText(EndName);
+                }
+            }
+            else if (tag == 1) {
+                EndLatitude = intent.getDoubleExtra("Latitude",0);
+                EndLongitude = intent.getDoubleExtra("Longitude",0);
+                EndName = intent.getStringExtra("Name");
+                //根据获取的经纬度，将地图移动到定位位置
+                aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(EndLatitude,EndLongitude)));
+                mDestinationAddress.setText(EndName);
+                if(StartName != null) {
+                    mStartAddress.setText(StartName);
+                }
+            } else {
+                System.out.print("No valid bundle now");
+            }
+            if(StartName != null && EndName != null) {
+                // Show Path
+                ;
+            }
+
+        } else {
+            System.out.print("Intent Error.");
+        }
+
         SearchStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Map.this, SearchActivity.class));
+                startActivity(new Intent(Map.this, SearchStartpointActivity.class));
+            }
+        });
+        SearchEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Map.this, SearchDestinationActivity.class));
             }
         });
         // setInit();
