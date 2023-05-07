@@ -20,6 +20,7 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.LatLng;
@@ -110,7 +111,7 @@ public class Map extends Activity {
                 StartName = intent.getStringExtra("Name");
                 //根据获取的经纬度，将地图移动到定位位置
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(StartLatitude,StartLongitude)));
-                // aMap.addMarker(new MarkerOptions().position(new LatLng(StartLatitude,StartLongitude)).icon(pos_icon));
+                aMap.addMarker(new MarkerOptions().position(new LatLng(StartLatitude,StartLongitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_start)));
                 mStartAddress.setText(StartName);
                 if(EndName != null) {
                     mDestinationAddress.setText(EndName);
@@ -122,6 +123,7 @@ public class Map extends Activity {
                 EndName = intent.getStringExtra("Name");
                 //根据获取的经纬度，将地图移动到定位位置
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(EndLatitude,EndLongitude)));
+                aMap.addMarker(new MarkerOptions().position(new LatLng(StartLatitude,StartLongitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_end)));
                 mDestinationAddress.setText(EndName);
                 if(StartName != null) {
                     mStartAddress.setText(StartName);
