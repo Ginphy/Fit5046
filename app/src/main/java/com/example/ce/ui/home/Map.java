@@ -1,6 +1,8 @@
 package com.example.ce.ui.home;
 
 
+import static android.content.ContentValues.TAG;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Address;
@@ -15,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdate;
@@ -31,14 +35,28 @@ import com.example.ce.R;
 import com.example.ce.ui.login.InfoActivity;
 import com.example.ce.ui.login.LoginActivity;
 import com.example.ce.ui.login.StartActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 
 public class Map extends Activity {
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth auth;
     private MapView mMapView;
     private AMap aMap = null;
     private ImageView mSaLocation;
@@ -60,7 +78,6 @@ public class Map extends Activity {
     public static  double EndLongitude;
     public static  String EndName;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -70,10 +87,16 @@ public class Map extends Activity {
 //        SDKInitializer.initialize(this.getApplicationContext());
 
         super.onCreate(savedInstanceState);
-
+        Intent intent = getIntent();
+        FirebaseUser User = auth.getInstance().getCurrentUser();
+        String itemid = intent.getStringExtra("itemid"); //iteminfo
+        String starttime = intent.getStringExtra("starttime"); //iteminfo
+        String deadline = intent.getStringExtra("deadline"); //iteminfo
         setContentView(R.layout.fragment_home) ;
         Button SearchStart = findViewById(R.id.SearchStart);
+        Button Send = findViewById(R.id.Send);
         Button SearchEnd = findViewById(R.id.SearchEnd);
+        Button itembutton = findViewById(R.id.Item);
         try {
             ServiceSettings.updatePrivacyShow(this, true, true);
             ServiceSettings.updatePrivacyAgree(this,true);
@@ -100,7 +123,7 @@ public class Map extends Activity {
         }
 
         // After SearchPosition, Here will get the feedback postion info
-        Intent intent = getIntent();
+
         if (intent != null) {
             // Unbox bundle
             int tag = intent.getIntExtra("Tag",-1);
@@ -137,7 +160,43 @@ public class Map extends Activity {
         } else {
             System.out.print("Intent Error.");
         }
-
+        Random random = new Random();
+        Send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                java.util.Map<String, Object> order = new HashMap<>();
+                order.put("uid", User.getUid());
+                order.put("RecAddress", mDestinationAddress.getText().toString());
+                order.put("SntAddress", mStartAddress.getText().toString());
+                order.put("Price", random.nextInt(202));
+                order.put("RevUser", "zjj");
+                order.put("itemid", itemid);
+                order.put("StartTime", FieldValue.serverTimestamp());
+                order.put("Deadline",deadline);
+                order.put("status", 0);
+                db.collection("Orders")
+                        .add(order)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                            }
+                        });
+            }
+        });
+        itembutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Map.this, ItemActivity.class));
+                finish();
+            }
+        });
         SearchStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,7 +212,20 @@ public class Map extends Activity {
         // setInit();
         // initMap();
     }
+    public Timestamp timestampchange(String string){
 
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Timestamp timestamp = null;
+        try {
+            Date date = format.parse(string);
+            timestamp = new Timestamp(date);
+            Log.d(TAG, "Timestamp: " + timestamp);
+            return timestamp;
+        } catch (ParseException e) {
+            Log.e(TAG, "Error parsing date", e);
+        }
+        return timestamp;
+    }
 
     @Override
     protected void onResume() {

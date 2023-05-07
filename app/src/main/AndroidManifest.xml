@@ -32,6 +32,7 @@
         <activity android:name="com.example.ce.ui.login.LoginActivity" />
         <activity android:name="com.example.ce.ui.login.InfoActivity" />
         <activity android:name="com.example.ce.ui.home.Map" />
+        <activity android:name=".ui.home.ItemActivity"/>
         <activity android:name="com.example.ce.ui.home.SearchStartpointActivity" />
         <activity android:name="com.example.ce.ui.home.SearchDestinationActivity" />
     </application>
