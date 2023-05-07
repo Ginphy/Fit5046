@@ -245,11 +245,11 @@
         app:layout_constraintVertical_bias="0.516" />
 
     <Button
-        android:id="@+id/Item"
+        android:id="@+id/Submit"
         android:layout_width="230dp"
         android:layout_height="48dp"
         android:background="@color/white"
-        android:text="Item Info"
+        android:text="Submit"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/Background2"
         app:layout_constraintEnd_toEndOf="@+id/Background2"

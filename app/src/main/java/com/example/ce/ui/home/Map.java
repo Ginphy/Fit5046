@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 
@@ -31,11 +32,20 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.services.core.AMapException;
+import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.ServiceSettings;
+import com.amap.api.services.route.BusRouteResultV2;
+import com.amap.api.services.route.DrivePathV2;
+import com.amap.api.services.route.DriveRouteResultV2;
+import com.amap.api.services.route.RideRouteResultV2;
+import com.amap.api.services.route.RouteSearchV2;
+import com.amap.api.services.route.WalkRouteResultV2;
 import com.example.ce.R;
 import com.example.ce.ui.login.InfoActivity;
 import com.example.ce.ui.login.LoginActivity;
 import com.example.ce.ui.login.StartActivity;
+import com.example.ce.ui.overlay.DrivingRouteOverlay;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
@@ -55,6 +65,7 @@ import java.util.List;
 import java.util.Random;
 
 
+
 public class Map extends Activity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth;
@@ -67,9 +78,11 @@ public class Map extends Activity {
     private TextView mJieguo;
     private EditText mStartAddress;
     private EditText mDestinationAddress;
+    private RouteSearchV2 mRouteSearch;
     private AutoCompleteTextView mEditAddress;
     private List<String> stringlist = new ArrayList<>();
     private List<String> stringlist2 = new ArrayList<>();
+    private Context mContext;
 
     // Var about StartPosition info & EndPosition info
     public static  double StartLatitude;
@@ -78,6 +91,8 @@ public class Map extends Activity {
     public static  double EndLatitude;
     public static  double EndLongitude;
     public static  String EndName;
+    // Distance value (per Meters)
+    public static int distance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +112,9 @@ public class Map extends Activity {
         Button SearchStart = findViewById(R.id.SearchStart);
         Button Send = findViewById(R.id.Send);
         Button SearchEnd = findViewById(R.id.SearchEnd);
-        Button itembutton = findViewById(R.id.Item);
+        // Button itembutton = findViewById(R.id.Item);
+        Button Submit = findViewById(R.id.Submit);
+        mContext = this.getApplicationContext();
         try {
             ServiceSettings.updatePrivacyShow(this, true, true);
             ServiceSettings.updatePrivacyAgree(this,true);
@@ -107,6 +124,79 @@ public class Map extends Activity {
             // Define the Address String Fragment
             mStartAddress = findViewById(R.id.startAddr);
             mDestinationAddress = findViewById(R.id.destinationAddr);
+
+            mRouteSearch = new RouteSearchV2(this);
+            mRouteSearch.setRouteSearchListener(new RouteSearchV2.OnRouteSearchListener() {
+                @Override
+                public void onBusRouteSearched(BusRouteResultV2 busRouteResult, int i) {
+
+                }
+                @Override
+                public void onDriveRouteSearched(DriveRouteResultV2 result, int errorCode) {
+                    aMap.clear();// 清理地图上的所有覆盖物
+                    if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
+                        if (result != null && result.getPaths() != null) {
+                            if (result.getPaths().size() > 0) {
+                                final DrivePathV2 drivePath = result.getPaths()
+                                        .get(0);
+                                if (drivePath == null) {
+                                    return;
+                                }
+                                DrivingRouteOverlay drivingRouteOverlay = new DrivingRouteOverlay(
+                                        mContext, aMap, drivePath,
+                                        result.getStartPos(),
+                                        result.getTargetPos(), null);
+                                drivingRouteOverlay.setNodeIconVisibility(false);//设置节点marker是否显示
+                                drivingRouteOverlay.setIsColorfulline(true);//是否用颜色展示交通拥堵情况，默认true
+                                drivingRouteOverlay.removeFromMap();
+                                drivingRouteOverlay.addToMap();
+                                drivingRouteOverlay.zoomToSpan();
+//                    mBottomLayout.setVisibility(View.VISIBLE);
+                                distance = (int) drivePath.getDistance();
+//                    int dur = (int) drivePath.getDuration();
+//                    String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
+//                    mRotueTimeDes.setText(des);
+//                    mRouteDetailDes.setVisibility(View.VISIBLE);
+//                    int taxiCost = (int) mDriveRouteResult.getTaxiCost();
+//                    mRouteDetailDes.setText("打车约"+taxiCost+"元");
+//                    mBottomLayout.setOnClickListener(new OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            Intent intent = new Intent(mContext,
+//                                    DriveRouteDetailActivity.class);
+//                            intent.putExtra("drive_path", drivePath);
+//                            intent.putExtra("drive_result",
+//                                    mDriveRouteResult);
+//                            startActivity(intent);
+//                        }
+//                    });
+
+                            } else if (result != null && result.getPaths() == null) {
+                                Toast.makeText(mContext, "No result!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
+                        } else {
+                            Toast.makeText(mContext, "No result!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(mContext, "Unkonw error!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onWalkRouteSearched(WalkRouteResultV2 walkRouteResult, int i) {
+
+                }
+
+                @Override
+                public void onRideRouteSearched(RideRouteResultV2 rideRouteResult, int i) {
+
+                }
+            });
 
             //初始化地图控制器对象
             if (aMap == null) {
@@ -146,7 +236,7 @@ public class Map extends Activity {
                 EndName = intent.getStringExtra("Name");
                 //根据获取的经纬度，将地图移动到定位位置
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(EndLatitude,EndLongitude)));
-                aMap.addMarker(new MarkerOptions().position(new LatLng(StartLatitude,StartLongitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_end)));
+                aMap.addMarker(new MarkerOptions().position(new LatLng(EndLatitude,EndLongitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_end)));
                 mDestinationAddress.setText(EndName);
                 if(StartName != null) {
                     mStartAddress.setText(StartName);
@@ -162,6 +252,7 @@ public class Map extends Activity {
         } else {
             System.out.print("Intent Error.");
         }
+
         Random random = new Random();
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,13 +283,14 @@ public class Map extends Activity {
                         });
             }
         });
-        itembutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Map.this, ItemActivity.class));
-                finish();
-            }
-        });
+//        itembutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Map.this, ItemActivity.class));
+//                finish();
+//            }
+//        });
+
         SearchStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,6 +305,30 @@ public class Map extends Activity {
         });
         // setInit();
         // initMap();
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (StartName == null || EndName == null) {
+                    Toast.makeText(Map.this, "Please choose position first!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    LatLonPoint mStartPoint = new LatLonPoint(StartLatitude, StartLongitude);
+                    LatLonPoint mEndPoint = new LatLonPoint(EndLatitude, EndLongitude);
+
+
+                    RouteSearchV2.FromAndTo fromAndTo = new RouteSearchV2.FromAndTo(mStartPoint, mEndPoint);
+
+                    RouteSearchV2.DriveRouteQuery query = new RouteSearchV2.DriveRouteQuery(fromAndTo, RouteSearchV2.DrivingStrategy.DEFAULT, null,
+                            null, "");
+                    //不加此行代码，一些数据不会返回
+                    query.setShowFields(RouteSearchV2.ShowFields.POLINE | RouteSearchV2.ShowFields.CITIES |
+                            RouteSearchV2.ShowFields.COST | RouteSearchV2.ShowFields.NAVI | RouteSearchV2.ShowFields.TMCS);
+
+                    mRouteSearch.calculateDriveRouteAsyn(query);
+                }
+            }
+        });
     }
     public Timestamp timestampchange(String string){
 
