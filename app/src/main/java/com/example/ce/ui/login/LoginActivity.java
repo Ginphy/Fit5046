@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ce.MainActivity;
 import com.example.ce.R;
+import com.example.ce.ui.home.CourierHomeActivity;
 import com.example.ce.ui.home.HomeFragment;
 import com.example.ce.ui.home.Map;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -78,9 +79,21 @@ public class LoginActivity extends AppCompatActivity {
                                             Log.d(TAG, "signInWithEmail:success");
                                             FirebaseUser user = mAuth.getCurrentUser();
                                             updateUI(user);
-                                            finish();
-                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                                            startActivity(i);
+                                            //if is user
+                                            if(rg.getCheckedRadioButtonId() == R.id.user)
+                                            {
+                                                finish();
+                                                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                                startActivity(i);
+                                            }
+                                            if(rg.getCheckedRadioButtonId() == R.id.courier)
+                                            {
+                                                finish();
+                                                Intent i = new Intent(LoginActivity.this, CourierHomeActivity.class);
+                                                startActivity(i);
+
+                                            }
+
                                         } else {
                                             // If sign in fails, display a message to the user.
                                             Log.w(TAG, "signInWithEmail:failure", task.getException());
