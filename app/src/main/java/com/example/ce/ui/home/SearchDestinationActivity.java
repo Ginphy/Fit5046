@@ -17,6 +17,7 @@ import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.help.Inputtips;
 import com.amap.api.services.help.InputtipsQuery;
 import com.amap.api.services.help.Tip;
+import com.example.ce.MainActivity;
 import com.example.ce.R;
 
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ public class SearchDestinationActivity extends AppCompatActivity implements Inpu
         //得到经纬度
         Poi poi = new Poi(data.getName(), new LatLng(point.getLatitude(), point.getLongitude()), data.getPoiID());
         // Set Intent Class with Position data
-        Intent intent = new Intent(SearchDestinationActivity.this, Map.class);
+        Intent intent = new Intent(SearchDestinationActivity.this, MainActivity.class);
         Bundle bundle = new Bundle();
         // Use 0 stand for Start Info, 1 for End Info
         bundle.putInt("Tag",1);
