@@ -20,6 +20,7 @@ import android.widget.Toast;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdate;
@@ -66,7 +67,7 @@ import java.util.Random;
 
 
 
-public class Map extends Activity {
+public class Map extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth;
     private MapView mMapView;

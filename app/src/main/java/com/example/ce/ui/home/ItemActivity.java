@@ -1,5 +1,6 @@
 package com.example.ce.ui.home;
 
+import static android.app.PendingIntent.getActivity;
 import static android.content.ContentValues.TAG;
 
 import android.content.DialogInterface;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ import com.example.ce.MainActivity;
 import com.example.ce.R;
 import com.example.ce.ui.login.LoginActivity;
 import com.example.ce.ui.login.SignupActivity;
+import com.example.ce.ui.login.StartActivity;
 import com.example.ce.ui.notifications.NotificationsViewModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,8 +53,16 @@ public class ItemActivity extends AppCompatActivity {
         EditText editDescription = findViewById(R.id.editDescrip);
 
         Button btnConfirm = findViewById(R.id.Confirm);
-     //   Button btnLogin = findViewById(R.id.Log);
+        ImageButton btnBack = findViewById(R.id.btnBack);
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent i = new Intent(ItemActivity.this, MainActivity.class );
+                startActivity(i);
+            }
+        });
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +97,7 @@ public class ItemActivity extends AppCompatActivity {
                                                 Log.w(TAG, "Error adding document", e);
                                             }
                                         });
-                                Intent intent = new Intent(ItemActivity.this, Map.class);
+                                Intent intent = new Intent(ItemActivity.this, paySuccess.class);
                                 intent.putExtra("itemid", id[0]);
                                 intent.putExtra("starttime",editStarting.getText().toString());
                                 intent.putExtra("deadline",editDeadline.getText().toString());

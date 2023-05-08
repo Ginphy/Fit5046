@@ -32,7 +32,15 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
+        Button btnSubmit = root.findViewById(R.id.Submit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+                Intent i = new Intent(getActivity(), ItemActivity.class);
+                startActivity(i);
+            }
+        });
         //final TextView textView = binding.textHome;
         Button btnLogin = root.findViewById(R.id.BtnLogout);
         btnLogin.setOnClickListener(new View.OnClickListener() {
