@@ -55,7 +55,14 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.firebaseui:firebase-ui-auth:8.0.1'
+    def nav_version = "2.4.2"
 
+    // 使用java作为开发语言添加下面两行：
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+//Compose版本：
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+    implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
