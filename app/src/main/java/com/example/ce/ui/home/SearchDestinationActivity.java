@@ -90,8 +90,6 @@ public class SearchDestinationActivity extends AppCompatActivity implements Inpu
         bundle.putString("Name",poi.getName());
         bundle.putDouble("Latitude",point.getLatitude());
         bundle.putDouble("Longitude",point.getLongitude());
-//        Toast.makeText(SearchActivity.this, poi.toString(),
-//                Toast.LENGTH_SHORT).show();
         intent.putExtras(bundle);
         startActivity(intent);
 //        //导航参数对象（起点，途径，终点，导航方式）DRIVER是导航方式（驾驶，步行...当前为驾驶）ROUTE会计算路程选择
