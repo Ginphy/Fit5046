@@ -41,10 +41,41 @@ import java.util.List;
 public class ItemActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth;
+
+    // Postion Info from HomeFragment
+    public double StartLatitude;
+    public double StartLongitude;
+    public String StartName;
+    public double EndLatitude;
+    public double EndLongitude;
+    public String EndName;
+    public int distance;
+    public double price;
+
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.iteminfo);
+
+        // Get Position Info from HomeFragment
+        Intent intent = this.getIntent();
+        StartLatitude = intent.getDoubleExtra("StartLatitude",0);
+        StartLongitude = intent.getDoubleExtra("StartLongitude",0);
+        EndLatitude = intent.getDoubleExtra("EndLatitude",0);
+        EndLongitude = intent.getDoubleExtra("EndLongitude",0);
+        StartName = intent.getStringExtra("StartName"); //iteminfo
+        EndName = intent.getStringExtra("EndName"); //iteminfo
+        price = intent.getDoubleExtra("price",0); //iteminfo
+        distance = intent.getIntExtra("distance",0);
+
+        // Set Position Info from HomeFragment
+        TextView priceTextView = findViewById(R.id.price);
+        priceTextView.setText(String.format("%.2f",price));
+        TextView startNameTextView = findViewById(R.id.startName);
+        TextView endNameTextView = findViewById(R.id.endName);
+        startNameTextView.setText(StartName);
+        endNameTextView.setText(EndName);
+
         auth = FirebaseAuth.getInstance();
         FirebaseUser User = auth.getCurrentUser();
         EditText editName = findViewById(R.id.editName);

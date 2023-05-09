@@ -342,10 +342,10 @@ public class HomeFragment extends Fragment {
                         price = 10;
                     }
                     else {
-                        price = (distance - 3000)*3 + 10;
+                        price = ((distance - 3000)/1000)*3 + 10;
                     }
                     Bundle bundle = new Bundle();
-                    bundle.putString("StatName",StartName);
+                    bundle.putString("StartName",StartName);
                     bundle.putString("EndName",EndName);
                     bundle.putDouble("StartLatitude",StartLatitude);
                     bundle.putDouble("StartLongitude",StartLongitude);
