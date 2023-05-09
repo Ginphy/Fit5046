@@ -5,8 +5,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import org.checkerframework.checker.units.qual.C;
-
 @Entity
 public class Order {
     @PrimaryKey(autoGenerate = true)
@@ -32,10 +30,6 @@ public class Order {
     @NonNull
     public String start_date;
 
-    @ColumnInfo(name = "end_date")
-    @NonNull
-    public String end_date;
-
     @ColumnInfo(name = "start_jd")
     @NonNull
     public double start_jd;
@@ -56,7 +50,7 @@ public class Order {
     @NonNull
     public boolean status;
 
-    public int price;
+    public double price;
     @ColumnInfo(name = "user_id")
     @NonNull
     public String user_id;
@@ -65,18 +59,19 @@ public class Order {
     public String courier_id;
 
     @ColumnInfo(name = "condition")
-    public int conditon;
+    public int condition;
 
-    public Order( @NonNull int orderid, @NonNull String itemName, @NonNull String start_mame, @NonNull String terminal_mame, @NonNull String type
-            ,@NonNull String start_date, @NonNull String end_date, @NonNull double start_jd, @NonNull double start_wd, @NonNull double end_jd,
-                  @NonNull double end_wd, @NonNull int price, @NonNull boolean status, @NonNull String user_id, @NonNull String courier_id,
-                  int conditon) {
-        this.orderid = orderid;
+    @ColumnInfo(name = "Description")
+    public String description;
+
+    public Order(@NonNull String itemName, @NonNull String start_name, @NonNull String terminal_name, @NonNull String type
+            ,@NonNull String start_date, double start_jd, double start_wd, double end_jd,
+                  double end_wd, double price, String description, boolean status, @NonNull String user_id, @NonNull String courier_id,
+                  int condition) {
         this.itemName = itemName;
         this.start_date = start_date;
-        this.end_date = end_date;
-        this.start_mame = start_mame;
-        this.terminal_mame = terminal_mame;
+        this.start_mame = start_name;
+        this.terminal_mame = terminal_name;
         this.type = type;
         this.start_jd = start_jd;
         this.start_wd = start_wd;
@@ -86,5 +81,7 @@ public class Order {
         this.status = status;
         this.user_id = user_id;
         this.courier_id = courier_id;
+        this.condition = condition;
+        this.description = description;
     }
 }

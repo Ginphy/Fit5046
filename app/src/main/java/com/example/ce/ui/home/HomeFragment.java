@@ -284,35 +284,35 @@ public class HomeFragment extends Fragment {
         });
         Random random = new Random();
         Button Send = (Button) root.findViewById(R.id.Send);
-        Send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                java.util.Map<String, Object> order = new HashMap<>();
-                order.put("uid", User.getUid());
-                order.put("RecAddress", mDestinationAddress.getText().toString());
-                order.put("SntAddress", mStartAddress.getText().toString());
-                order.put("Price", random.nextInt(202));
-                order.put("RevUser", "zjj");
-                order.put("itemid", itemid);
-                order.put("StartTime", FieldValue.serverTimestamp());
-                order.put("Deadline",deadline);
-                order.put("status", 0);
-                db.collection("Orders")
-                        .add(order)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
-            }
-        });
+//        Send.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                java.util.Map<String, Object> order = new HashMap<>();
+//                order.put("uid", User.getUid());
+//                order.put("RecAddress", mDestinationAddress.getText().toString());
+//                order.put("SntAddress", mStartAddress.getText().toString());
+//                order.put("Price", random.nextInt(202));
+//                order.put("RevUser", "zjj");
+//                order.put("itemid", itemid);
+//                order.put("StartTime", FieldValue.serverTimestamp());
+//                order.put("Deadline",deadline);
+//                order.put("status", 0);
+//                db.collection("Orders")
+//                        .add(order)
+//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                            @Override
+//                            public void onSuccess(DocumentReference documentReference) {
+//                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+//                            }
+//                        })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.w(TAG, "Error adding document", e);
+//                            }
+//                        });
+//            }
+//        });
 
         SearchStart.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,12 +15,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ce.MainActivity;
 import com.example.ce.R;
+import com.example.ce.ui.Database.entity.Order;
+import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 import com.example.ce.ui.login.LoginActivity;
 import com.example.ce.ui.login.SignupActivity;
 import com.example.ce.ui.login.StartActivity;
@@ -41,7 +46,7 @@ import java.util.List;
 public class ItemActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth;
-
+    private OrderViewModel orderViewModel;
     // Postion Info from HomeFragment
     public double StartLatitude;
     public double StartLongitude;
@@ -78,15 +83,19 @@ public class ItemActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser User = auth.getCurrentUser();
+        String UserID = User.getUid();
         EditText editName = findViewById(R.id.editName);
       //  EditText editWeight = findViewById(R.id.editWeight);
         Spinner Type = findViewById(R.id.Type_select);
+        String type = Type.getSelectedItem().toString();
         EditText editStarting = findViewById(R.id.editStarting);
         EditText editDeadline = findViewById(R.id.editDeadline);
         EditText editDescription = findViewById(R.id.editDescrip);
 
         Button btnConfirm = findViewById(R.id.Confirm);
         ImageButton btnBack = findViewById(R.id.btnBack);
+        orderViewModel =
+                ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(OrderViewModel.class);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,38 +111,20 @@ public class ItemActivity extends AppCompatActivity {
                 final String[] id = new String[1];
                 new AlertDialog.Builder(ItemActivity.this)
                         .setTitle("Confirm Item")
-                        .setMessage("Item name: "+ editName.getText().toString() +"\nItem weight: "
-                                + Type.getSelectedItem().toString() + "\nStarting and deadline: "
-                                + editStarting.getText().toString() + "\n"
-                        + editDeadline.getText().toString())
+                        .setMessage("Item name: "+ editName.getText().toString() +"\nItem type: "
+                                + Type.getSelectedItem().toString())
                         .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 // Next operation
-                                java.util.Map<String, Object> item = new HashMap<>();
-                                item.put("uid", User.getUid());
-                                item.put("name", editName.getText().toString());
-                                item.put("weight", Type.getSelectedItem().toString());
-                                item.put("Description", editDescription.getText().toString());
-                                db.collection("Items")
-                                        .add(item)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                                id[0] = documentReference.get().toString();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.w(TAG, "Error adding document", e);
-                                            }
-                                        });
+                                if(editName.getText().toString() != null && type != null && editStarting.getText().toString() != null){
+                                    Order order = new Order(editName.getText().toString(), editStarting.getText().toString(), StartName, EndName
+                                    , type, StartLongitude, StartLatitude, EndLongitude, EndLatitude, price, editDescription.getText().toString(), false, UserID,"Processing",0);
+                                    orderViewModel.insert(order);
+
+                                }
+
                                 Intent intent = new Intent(ItemActivity.this, paySuccess.class);
-                                intent.putExtra("itemid", id[0]);
-                                intent.putExtra("starttime",editStarting.getText().toString());
-                                intent.putExtra("deadline",editDeadline.getText().toString());
                                 startActivity(intent);
                             }
                         })
