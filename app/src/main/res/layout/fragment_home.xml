@@ -25,7 +25,7 @@
         android:id="@+id/background_gray"
         android:layout_width="424dp"
         android:layout_height="770dp"
-        android:background="#D1D1D1"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.401"
@@ -37,7 +37,7 @@
     <com.amap.api.maps.MapView
         android:id="@+id/map"
         android:layout_width="400dp"
-        android:layout_height="310dp"
+        android:layout_height="340dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,21 +48,22 @@
 
     <ImageButton
         android:id="@+id/BackButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        tools:ignore="SpeakableTextPresentCheck"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="19dp"
+        android:layout_height="23dp"
+        android:background="#E7E7E7"
+        app:layout_constraintBottom_toBottomOf="@+id/Logo1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/back_icon" />
+        app:layout_constraintVertical_bias="0.51"
+        app:srcCompat="@drawable/back_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/Logo1"
-        android:layout_width="57dp"
-        android:layout_height="51dp"
+        android:layout_width="46dp"
+        android:layout_height="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
@@ -87,19 +88,19 @@
     <ImageView
         android:id="@+id/Background2"
         android:layout_width="400dp"
-        android:layout_height="294dp"
+        android:layout_height="310dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.854"
+        app:layout_constraintVertical_bias="0.87"
         app:srcCompat="@drawable/shape" />
 
     <Button
         android:id="@+id/Send"
         android:layout_width="75dp"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:background="@drawable/shape"
         android:backgroundTint="#5E75B9"
         android:text="Send"
@@ -109,12 +110,12 @@
         app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <Button
         android:id="@+id/Get"
         android:layout_width="75dp"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:background="@drawable/shape"
         android:backgroundTint="#5E75B8"
         android:text="Get"
@@ -124,7 +125,7 @@
         app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <ImageView
         android:id="@+id/radioImg1"
@@ -257,20 +258,6 @@
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
         app:layout_constraintVertical_bias="0.747" />
-
-    <Button
-        android:id="@+id/BtnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#5E75B7"
-        android:text="backToWelcome"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.02" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.292"
-        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+        android:src="@android:drawable/screen_background_light_transparent" />
+
 
     <ImageView
         android:id="@+id/Background"
@@ -33,15 +34,15 @@
 
     <ImageView
         android:id="@+id/Background2"
-        android:layout_width="415dp"
-        android:layout_height="101dp"
+        android:layout_width="414dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/shape" />
+        android:src="@drawable/shape" />
 
     <ImageButton
         android:id="@+id/BackButton"
@@ -55,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/setting_icon"
+        android:src="@drawable/setting_icon"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
@@ -69,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/BackButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <ImageView
         android:id="@+id/Background3"
@@ -81,7 +82,7 @@
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
         app:layout_constraintVertical_bias="0.179"
-        app:srcCompat="@drawable/shape" />
+        android:src="@drawable/shape" />
 
     <ImageView
         android:id="@+id/background4"
@@ -92,8 +93,8 @@
         app:layout_constraintHorizontal_bias="0.83"
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.29000002"
-        app:srcCompat="@drawable/shape" />
+        app:layout_constraintVertical_bias="0.285"
+        android:src="@drawable/shape" />
 
     <TextView
         android:id="@+id/Profile"
@@ -131,7 +132,7 @@
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
         app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/shape" />
+        android:src="@drawable/shape" />
 
     <ImageView
         android:id="@+id/background6"
@@ -143,7 +144,7 @@
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toBottomOf="@+id/Background5"
         app:layout_constraintVertical_bias="0.041"
-        app:srcCompat="@drawable/shape" />
+        android:src="@drawable/shape" />
 
     <ImageView
         android:id="@+id/background7"
@@ -154,8 +155,8 @@
         app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toBottomOf="@+id/Background5"
-        app:layout_constraintVertical_bias="0.23"
-        app:srcCompat="@drawable/shape" />
+        app:layout_constraintVertical_bias="0.228"
+        android:src="@drawable/shape" />
 
     <ImageView
         android:id="@+id/background8"
@@ -167,7 +168,7 @@
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toBottomOf="@+id/background7"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/shape" />
+        android:src="@drawable/shape" />
 
     <ImageView
         android:id="@+id/background9"
@@ -178,8 +179,8 @@
         app:layout_constraintHorizontal_bias="0.838"
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toBottomOf="@+id/background7"
-        app:layout_constraintVertical_bias="0.433"
-        app:srcCompat="@drawable/shape" />
+        app:layout_constraintVertical_bias="0.42"
+        android:src="@drawable/shape" />
 
     <TextView
         android:id="@+id/Name"
@@ -257,5 +258,6 @@
         app:layout_constraintHorizontal_bias="0.83"
         app:layout_constraintStart_toEndOf="@+id/Nickname"
         app:layout_constraintTop_toBottomOf="@+id/Background3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
