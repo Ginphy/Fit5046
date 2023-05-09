@@ -14,6 +14,30 @@ import com.example.ce.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
 
+    public String content;
+    public int img;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
+    }
+
+
+
+
+
+
     private FragmentDashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
