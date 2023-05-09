@@ -2,7 +2,9 @@ package com.example.ce.ui.home;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -36,6 +40,7 @@ import com.amap.api.services.route.DriveRouteResultV2;
 import com.amap.api.services.route.RideRouteResultV2;
 import com.amap.api.services.route.RouteSearchV2;
 import com.amap.api.services.route.WalkRouteResultV2;
+import com.example.ce.MainActivity;
 import com.example.ce.R;
 import com.example.ce.databinding.FragmentHomeBinding;
 import com.example.ce.ui.login.StartActivity;
@@ -59,6 +64,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+
+
 public class HomeFragment extends Fragment {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -68,6 +75,7 @@ public class HomeFragment extends Fragment {
 
     private MapView mMapView;
     private AMap aMap;
+
 
 
     private EditText mStartAddress;
@@ -87,6 +95,7 @@ public class HomeFragment extends Fragment {
     public static  String EndName;
     // Distance value (per Meters)
     public static int distance;
+    public static double price;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -96,6 +105,10 @@ public class HomeFragment extends Fragment {
         //Initialize a ViewModel
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+
+
+
         mMapView = (MapView) root.findViewById(R.id.map);
         mMapView.onCreate(savedInstanceState);
         if (aMap == null) {
@@ -110,7 +123,7 @@ public class HomeFragment extends Fragment {
         String deadline = intent.getStringExtra("deadline"); //iteminfo
 
         Button SearchStart = root.findViewById(R.id.SearchStart);
-        Button Send = root.findViewById(R.id.Send);
+
         Button SearchEnd = root.findViewById(R.id.SearchEnd);
         // Button itembutton = root.findViewById(R.id.Item);
         Button Submit = root.findViewById(R.id.Submit);
@@ -246,15 +259,31 @@ public class HomeFragment extends Fragment {
                 System.out.print("No valid bundle now");
             }
             if(StartName != null && EndName != null) {
-                // Show Path
-                ;
+                    LatLonPoint mStartPoint = new LatLonPoint(StartLatitude, StartLongitude);
+                    LatLonPoint mEndPoint = new LatLonPoint(EndLatitude, EndLongitude);
+                    RouteSearchV2.FromAndTo fromAndTo = new RouteSearchV2.FromAndTo(mStartPoint, mEndPoint);
+                    RouteSearchV2.DriveRouteQuery query = new RouteSearchV2.DriveRouteQuery(fromAndTo, RouteSearchV2.DrivingStrategy.DEFAULT, null,
+                            null, "");
+                    //不加此行代码，一些数据不会返回
+                    query.setShowFields(RouteSearchV2.ShowFields.POLINE | RouteSearchV2.ShowFields.CITIES |
+                            RouteSearchV2.ShowFields.COST | RouteSearchV2.ShowFields.NAVI | RouteSearchV2.ShowFields.TMCS);
+                    mRouteSearch.calculateDriveRouteAsyn(query);
             }
 
         } else {
             System.out.print("Intent Error.");
         }
-
+        Button Get = (Button) root.findViewById(R.id.Get);
+        Get.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //  finish();
+                Intent i = new Intent(getActivity(), ItemActivity.class);
+                startActivity(i);
+            }
+        });
         Random random = new Random();
+        Button Send = (Button) root.findViewById(R.id.Send);
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -307,38 +336,30 @@ public class HomeFragment extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    LatLonPoint mStartPoint = new LatLonPoint(StartLatitude, StartLongitude);
-                    LatLonPoint mEndPoint = new LatLonPoint(EndLatitude, EndLongitude);
-
-
-                    RouteSearchV2.FromAndTo fromAndTo = new RouteSearchV2.FromAndTo(mStartPoint, mEndPoint);
-
-                    RouteSearchV2.DriveRouteQuery query = new RouteSearchV2.DriveRouteQuery(fromAndTo, RouteSearchV2.DrivingStrategy.DEFAULT, null,
-                            null, "");
-                    //不加此行代码，一些数据不会返回
-                    query.setShowFields(RouteSearchV2.ShowFields.POLINE | RouteSearchV2.ShowFields.CITIES |
-                            RouteSearchV2.ShowFields.COST | RouteSearchV2.ShowFields.NAVI | RouteSearchV2.ShowFields.TMCS);
-
-                    mRouteSearch.calculateDriveRouteAsyn(query);
+                    // Get price
+                    if (distance <= 3000) {
+                        price = 10;
+                    }
+                    else {
+                        price = (distance - 3000)*3 + 10;
+                    }
+                    Bundle bundle = new Bundle();
+                    bundle.putString("StatName",StartName);
+                    bundle.putString("EndName",EndName);
+                    bundle.putDouble("StartLatitude",StartLatitude);
+                    bundle.putDouble("StartLongitude",StartLongitude);
+                    bundle.putDouble("EndLatitude",StartLatitude);
+                    bundle.putDouble("EndLongitude",EndLongitude);
+                    bundle.putInt("distance",distance);
+                    bundle.putDouble("price",price);
+                    Intent SubmitIntent = new Intent(mContext, ItemActivity.class);
+                    SubmitIntent.putExtras(bundle);
+                    StartName = null;
+                    EndName = null;
+                    startActivity(SubmitIntent);
                 }
             }
         });
-
-        //final TextView textView = binding.textHome;
-//        Button btnLogin = root.findViewById(R.id.BtnLogout);
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getActivity().onBackPressed();
-//                Intent i = new Intent(getActivity(), StartActivity.class);
-//                startActivity(i);
-//
-//            }
-//        });
-
-   //     homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        //A data listener is added to bind the page.
-        // Once the text of the model changes, the observer will be notified, and the textview can be refreshed.
         return root;
     }
 

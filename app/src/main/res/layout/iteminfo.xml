@@ -18,16 +18,17 @@
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="SpeakableTextPresentCheck"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="42dp"
+        android:layout_height="35dp"
+        android:background="#FEFEFE"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/back_icon" />
+        app:layout_constraintVertical_bias="0.06999999"
+        app:srcCompat="@drawable/back_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/ItemText"
@@ -60,7 +61,7 @@
         android:id="@+id/Weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Weight:"
+        android:text="Type:"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -124,17 +125,19 @@
         app:layout_constraintTop_toBottomOf="@+id/Background2"
         app:layout_constraintVertical_bias="0.05" />
 
-    <EditText
-        android:id="@+id/editWeight"
+
+    <Spinner
+        android:id="@+id/Type_select"
         android:layout_width="235dp"
         android:layout_height="48dp"
-        android:hint="Item weight"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:entries="@array/spinner_data"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/editStarting"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintTop_toBottomOf="@+id/editName"
+        app:layout_constraintVertical_bias="0.65" />
 
     <EditText
         android:id="@+id/editStarting"
@@ -189,5 +192,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDescrip" />
+
+    <TextView
+        android:id="@+id/startName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.151" />
+
+    <TextView
+        android:id="@+id/endName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.651"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.147" />
+
+    <TextView
+        android:id="@+id/to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/endName"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toEndOf="@+id/startName"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.147" />
+
+    <TextView
+        android:id="@+id/priceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price:"
+        android:textColor="#CA5959"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editDescrip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Description"
+        app:layout_constraintTop_toBottomOf="@+id/editDeadline" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#B82B2B"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editDescrip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/priceText"
+        app:layout_constraintTop_toBottomOf="@+id/editDeadline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
