@@ -59,6 +59,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+
+
 public class HomeFragment extends Fragment {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -69,6 +71,7 @@ public class HomeFragment extends Fragment {
 
     private MapView mMapView;
     private AMap aMap;
+
 
 
     private EditText mStartAddress;
@@ -97,6 +100,10 @@ public class HomeFragment extends Fragment {
         //Initialize a ViewModel
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+
+
+
         mMapView = (MapView) root.findViewById(R.id.map);
         mMapView.onCreate(savedInstanceState);
         if (aMap == null) {
@@ -111,7 +118,7 @@ public class HomeFragment extends Fragment {
         String deadline = intent.getStringExtra("deadline"); //iteminfo
 
         Button SearchStart = root.findViewById(R.id.SearchStart);
-        Button Send = root.findViewById(R.id.Send);
+
         Button SearchEnd = root.findViewById(R.id.SearchEnd);
         // Button itembutton = root.findViewById(R.id.Item);
         Button Submit = root.findViewById(R.id.Submit);
@@ -254,8 +261,17 @@ public class HomeFragment extends Fragment {
         } else {
             System.out.print("Intent Error.");
         }
-
+        Button Get = (Button) root.findViewById(R.id.Get);
+        Get.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //  finish();
+                Intent i = new Intent(getActivity(), ItemActivity.class);
+                startActivity(i);
+            }
+        });
         Random random = new Random();
+        Button Send = (Button) root.findViewById(R.id.Send);
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
