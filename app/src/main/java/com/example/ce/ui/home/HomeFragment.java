@@ -62,8 +62,7 @@ import java.util.Random;
 public class HomeFragment extends Fragment {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseAuth auth;
-
+    FirebaseAuth auth = FirebaseAuth.getInstance() ;
     private FragmentHomeBinding binding;
     private WebView mWebView;
 
