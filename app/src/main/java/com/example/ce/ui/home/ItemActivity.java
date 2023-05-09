@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,7 +48,8 @@ public class ItemActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         FirebaseUser User = auth.getCurrentUser();
         EditText editName = findViewById(R.id.editName);
-        EditText editWeight = findViewById(R.id.editWeight);
+      //  EditText editWeight = findViewById(R.id.editWeight);
+        Spinner Type = findViewById(R.id.Type_select);
         EditText editStarting = findViewById(R.id.editStarting);
         EditText editDeadline = findViewById(R.id.editDeadline);
         EditText editDescription = findViewById(R.id.editDescrip);
@@ -70,7 +72,7 @@ public class ItemActivity extends AppCompatActivity {
                 new AlertDialog.Builder(ItemActivity.this)
                         .setTitle("Confirm Item")
                         .setMessage("Item name: "+ editName.getText().toString() +"\nItem weight: "
-                                + editWeight.getText().toString() + "\nStarting and deadline: "
+                                + Type.getSelectedItem().toString() + "\nStarting and deadline: "
                                 + editStarting.getText().toString() + "\n"
                         + editDeadline.getText().toString())
                         .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
@@ -80,7 +82,7 @@ public class ItemActivity extends AppCompatActivity {
                                 java.util.Map<String, Object> item = new HashMap<>();
                                 item.put("uid", User.getUid());
                                 item.put("name", editName.getText().toString());
-                                item.put("weight", editWeight.getText().toString());
+                                item.put("weight", Type.getSelectedItem().toString());
                                 item.put("Description", editDescription.getText().toString());
                                 db.collection("Items")
                                         .add(item)

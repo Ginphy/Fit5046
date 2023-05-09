@@ -94,7 +94,7 @@
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.87"
+        app:layout_constraintVertical_bias="0.83"
         app:srcCompat="@drawable/shape" />
 
     <Button
@@ -151,18 +151,6 @@
         app:layout_constraintVertical_bias="0.29000002"
         app:srcCompat="@drawable/radio_button_img" />
 
-    <ImageView
-        android:id="@+id/radioImg2"
-        android:layout_width="37dp"
-        android:layout_height="31dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.027"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.733"
-        app:srcCompat="@drawable/radio_button_img" />
-
     <View
 
         android:id="@+id/line"
@@ -189,33 +177,7 @@
         app:layout_constraintTop_toTopOf="@+id/Background2"
         app:layout_constraintVertical_bias="0.6" />
 
-    <Button
-        android:id="@+id/SearchStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#5E75B7"
-        android:text="SearchStart"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/SearchEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#5E75B6"
-        android:text="SearchEnd"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.708"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/startAddr"
@@ -224,12 +186,13 @@
         android:background="@color/white"
         android:hint="Please choose startpoint"
         android:textColor="#000000"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/Background2"
         app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.274" />
 
     <EditText
         android:id="@+id/destinationAddr"
@@ -246,18 +209,51 @@
         app:layout_constraintVertical_bias="0.516" />
 
     <Button
+        android:id="@+id/SearchStart"
+        android:layout_width="216dp"
+        android:layout_height="45dp"
+        android:background="#5E75B7"
+        android:text="SearchStart"
+        android:textColor="#FFFFFF"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.275"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/SearchEnd"
+        android:layout_width="228dp"
+        android:layout_height="49dp"
+        android:background="#5E75B6"
+        android:text="SearchEnd"
+        android:textColor="#FFFFFF"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.524"
+        tools:visibility="invisible" />
+
+    <Button
         android:id="@+id/Submit"
-        android:layout_width="230dp"
-        android:layout_height="48dp"
-        android:background="@color/white"
+        android:layout_width="139dp"
+        android:layout_height="40dp"
+        android:background="@drawable/shape"
+        android:backgroundTint="#5E75B8"
         android:text="Submit"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/Background2"
         app:layout_constraintEnd_toEndOf="@+id/Background2"
         app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="@+id/Background2"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.747" />
+        app:layout_constraintVertical_bias="0.88" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
