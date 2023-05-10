@@ -50,54 +50,39 @@
         android:text="Name:"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/editName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toBottomOf="@+id/endName"
+        app:layout_constraintVertical_bias="0.79" />
 
     <TextView
-        android:id="@+id/Weight"
+        android:id="@+id/Type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Type:"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/Type_select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintTop_toTopOf="@+id/Type_select"
+        app:layout_constraintVertical_bias="0.51" />
 
     <TextView
-        android:id="@+id/Starting"
+        android:id="@+id/Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Starting:"
+        android:text="Date:"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/calendar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <TextView
-        android:id="@+id/Deadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deadline:"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintTop_toTopOf="@+id/calendar" />
 
     <TextView
         android:id="@+id/Description"
@@ -113,6 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Background2"
         app:layout_constraintVertical_bias="0.45" />
 
+
     <EditText
         android:id="@+id/editName"
         android:layout_width="235dp"
@@ -120,11 +106,10 @@
         android:hint="Item name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.05" />
-
+        app:layout_constraintVertical_bias="0.08" />
 
     <Spinner
         android:id="@+id/Type_select"
@@ -132,36 +117,12 @@
         android:layout_height="48dp"
         android:entries="@array/spinner_data"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/editStarting"
+        app:layout_constraintBottom_toTopOf="@+id/editDescrip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.789"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editName"
-        app:layout_constraintVertical_bias="0.65" />
-
-    <EditText
-        android:id="@+id/editStarting"
-        android:layout_width="235dp"
-        android:layout_height="48dp"
-        android:hint="yyyy-MM-dd HH:mm:ss"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <EditText
-        android:id="@+id/editDeadline"
-        android:layout_width="235dp"
-        android:layout_height="48dp"
-        android:hint="yyyy-MM-dd HH:mm:ss"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.115" />
 
     <EditText
         android:id="@+id/editDescrip"
@@ -222,6 +183,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="To"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/endName"
         app:layout_constraintHorizontal_bias="0.54"
@@ -239,7 +201,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editDescrip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Description"
-        app:layout_constraintTop_toBottomOf="@+id/editDeadline" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar" />
 
     <TextView
         android:id="@+id/price"
@@ -251,6 +213,19 @@
         app:layout_constraintBottom_toTopOf="@+id/editDescrip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/priceText"
-        app:layout_constraintTop_toBottomOf="@+id/editDeadline" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+
+    <DatePicker
+        android:id="@+id/calendar"
+        android:layout_width="249dp"
+        android:layout_height="108dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintBottom_toBottomOf="@+id/Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toEndOf="@+id/Starting"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
