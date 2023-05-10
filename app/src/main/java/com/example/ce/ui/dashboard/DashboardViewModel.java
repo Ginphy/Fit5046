@@ -15,10 +15,10 @@ public class DashboardViewModel extends ViewModel {
     private String articleId;
     private String StartPoint;
     private String EndPoint;
-    private Date datetime;
+    private String datetime;
     private String articleType;
     private String CourierId;
-    private int order_price;
+    private double order_price;
 
 
 
@@ -26,14 +26,14 @@ public class DashboardViewModel extends ViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("This is dashboard fragment");
     }
-     public DashboardViewModel(String orderId, String articleId ,String StartPoint,String EndPoint,
-                               Date datetime,String articleType,String CourierId,int order_price){
+     public DashboardViewModel(String orderId, String itemname ,String StartName, String EndName,
+                               String datetime,String articleType,String CourierId,double order_price){
          mText = new MutableLiveData<>();
          mText.setValue("This is dashboard fragment");
          this.orderId = orderId;
-         this.articleId = articleId;
-         this.StartPoint = StartPoint;
-         this.EndPoint = EndPoint;
+         this.articleId = itemname;
+         this.StartPoint = StartName;
+         this.EndPoint = EndName;
          this.datetime = datetime;
          this.articleType = articleType;
          this.CourierId = CourierId;
@@ -78,7 +78,7 @@ public class DashboardViewModel extends ViewModel {
         return datetime.toString();
     }
 
-    public void setDatetime(Date datetime) {
+    public void setDatetime(String datetime) {
         this.datetime = datetime;
     }
 
@@ -98,7 +98,7 @@ public class DashboardViewModel extends ViewModel {
         this.CourierId = CourierId;
     }
 
-    public int getOrder_price() {
+    public double getOrder_price() {
         return order_price;
     }
 

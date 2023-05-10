@@ -16,16 +16,19 @@ import java.util.function.Supplier;
 public class OrderRepository {
     private OrderDAO orderDao;
     private LiveData<List<Order>> allorders;
-    public OrderRepository(Application application){
+
+    public OrderRepository(Application application) {
         OrderDatabase db = OrderDatabase.getInstance(application);
-        orderDao =db.orderDao();
-        allorders= orderDao.getAll();
+        orderDao = db.orderDao();
+        allorders = orderDao.getAll();
     }
+
     // Room executes this query on a separate thread
     public LiveData<List<Order>> getAllorders() {
         return allorders;
     }
-    public void insert(final Order order){
+
+    public void insert(final Order order) {
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -34,7 +37,7 @@ public class OrderRepository {
         });
     }
 
-    public void delete(final Order order){
+    public void delete(final Order order) {
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -42,7 +45,8 @@ public class OrderRepository {
             }
         });
     }
-    public void updateCustomer(final Order order){
+
+    public void updateCustomer(final Order order) {
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -50,11 +54,13 @@ public class OrderRepository {
             }
         });
     }
-    public CompletableFuture<Order> findByIDFuture(final int orderid) {
+
+
+    public CompletableFuture<Order> findByIDFuture(final boolean status) {
         return CompletableFuture.supplyAsync(new Supplier<Order>() {
             @Override
             public Order get() {
-                return orderDao.findByID(orderid);
+                return orderDao.findByID(status);
             }
         }, OrderDatabase.databaseWriteExecutor);
     }

@@ -200,8 +200,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editDescrip"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.388"
         app:layout_constraintStart_toEndOf="@+id/Description"
-        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/price"
@@ -212,19 +214,21 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/editDescrip"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/priceText"
-        app:layout_constraintTop_toBottomOf="@+id/calendar" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar"
+        app:layout_constraintVertical_bias="0.454" />
 
     <DatePicker
         android:id="@+id/calendar"
         android:layout_width="249dp"
         android:layout_height="108dp"
+        android:layout_marginEnd="36dp"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
         app:layout_constraintBottom_toBottomOf="@+id/Confirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/Starting"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43" />
 

@@ -15,22 +15,21 @@ import java.util.concurrent.CompletableFuture;
 
 public class OrderViewModel extends AndroidViewModel {
     private OrderRepository oRepository;
-    private LiveData<List<Order>> allorders;
+    private static LiveData<List<Order>> allorders;
     public OrderViewModel (Application application) {
         super(application);
         oRepository = new OrderRepository(application);
         allorders = oRepository.getAllorders();
     }
-    public CompletableFuture<Order> findByIDFuture(final int orderid){
-        return oRepository.findByIDFuture(orderid);
+    public CompletableFuture<Order> findByIDFuture(final boolean status){
+        return oRepository.findByIDFuture(status);
     }
-    public LiveData<List<Order>> getAllCustomers() {
+    public static LiveData<List<Order>> getAllorders() {
         return allorders;
     }
     public void insert(Order order) {
         oRepository.insert(order);
     }
-
     public void update(Order order) {
         oRepository.updateCustomer(order);
     }

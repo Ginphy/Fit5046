@@ -6,9 +6,11 @@ import static android.content.ContentValues.TAG;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -38,7 +40,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,7 +61,7 @@ public class ItemActivity extends AppCompatActivity {
     public String EndName;
     public int distance;
     public double price;
-
+    public String timestamp;
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -72,7 +77,6 @@ public class ItemActivity extends AppCompatActivity {
         EndName = intent.getStringExtra("EndName"); //iteminfo
         price = intent.getDoubleExtra("price",0); //iteminfo
         distance = intent.getIntExtra("distance",0);
-
         // Set Position Info from HomeFragment
         TextView priceTextView = findViewById(R.id.price);
         priceTextView.setText(String.format("%.2f",price));
@@ -80,6 +84,7 @@ public class ItemActivity extends AppCompatActivity {
         TextView endNameTextView = findViewById(R.id.endName);
         startNameTextView.setText(StartName);
         endNameTextView.setText(EndName);
+        DatePicker datePicker = findViewById(R.id.calendar);
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser User = auth.getCurrentUser();
@@ -88,8 +93,6 @@ public class ItemActivity extends AppCompatActivity {
       //  EditText editWeight = findViewById(R.id.editWeight);
         Spinner Type = findViewById(R.id.Type_select);
         String type = Type.getSelectedItem().toString();
-        EditText editStarting = findViewById(R.id.editStarting);
-        EditText editDeadline = findViewById(R.id.editDeadline);
         EditText editDescription = findViewById(R.id.editDescrip);
 
         Button btnConfirm = findViewById(R.id.Confirm);
@@ -97,6 +100,17 @@ public class ItemActivity extends AppCompatActivity {
         orderViewModel =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(OrderViewModel.class);
 
+        datePicker.init(1999, 07, 23, new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, monthOfYear, dayOfMonth);
+                Date date = calendar.getTime();
+                // Do something with the date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                timestamp = sdf.format(date);
+            }
+        });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,9 +131,9 @@ public class ItemActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 // Next operation
-                                if(editName.getText().toString() != null && type != null && editStarting.getText().toString() != null){
-                                    Order order = new Order(editName.getText().toString(), editStarting.getText().toString(), StartName, EndName
-                                    , type, StartLongitude, StartLatitude, EndLongitude, EndLatitude, price, editDescription.getText().toString(), false, UserID,"Processing",0);
+                                if(editName.getText().toString() != null && type != null && timestamp != null){
+                                    Order order = new Order(editName.getText().toString(), StartName, EndName
+                                    , type, timestamp, StartLongitude, StartLatitude, EndLongitude, EndLatitude, price, editDescription.getText().toString(), false, UserID,"Processing",0);
                                     orderViewModel.insert(order);
 
                                 }

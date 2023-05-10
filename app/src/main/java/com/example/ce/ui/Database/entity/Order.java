@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity
 public class Order {
     @PrimaryKey(autoGenerate = true)
@@ -51,6 +53,7 @@ public class Order {
     public boolean status;
 
     public double price;
+
     @ColumnInfo(name = "user_id")
     @NonNull
     public String user_id;
@@ -65,7 +68,7 @@ public class Order {
     public String description;
 
     public Order(@NonNull String itemName, @NonNull String start_name, @NonNull String terminal_name, @NonNull String type
-            ,@NonNull String start_date, double start_jd, double start_wd, double end_jd,
+            , @NonNull String start_date, double start_jd, double start_wd, double end_jd,
                   double end_wd, double price, String description, boolean status, @NonNull String user_id, @NonNull String courier_id,
                   int condition) {
         this.itemName = itemName;
@@ -83,5 +86,9 @@ public class Order {
         this.courier_id = courier_id;
         this.condition = condition;
         this.description = description;
+    }
+
+    public Order() {
+
     }
 }
