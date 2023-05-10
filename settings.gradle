@@ -11,6 +11,14 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+
+        // add the following
+        maven { url "https://jitpack.io" }
+    }
 }
 rootProject.name = "CE"
 include ':app'

@@ -4,49 +4,48 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.example.ce.R;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ce.databinding.FragmentDashboardBinding;
 
-public class DashboardFragment extends Fragment {
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+import java.util.Date;
 
-    public String content;
-    public int img;
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
-    }
-
-
-
-
+public class DashboardFragment extends Fragment{
+//
+//   private final Context context;
+   private ArrayList<DashboardViewModel>  courseModelArrayList;
 
 
     private FragmentDashboardBinding binding;
 
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        Date date = new Date();
         DashboardViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(DashboardViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+     //   binding = FragmentDashboardBinding.inflate(inflater, container, false);
+    //    View root = binding.getRoot();
+        RecyclerView recyclerView = root.findViewById(R.id.recycler_view);
+        ArrayList<DashboardViewModel> orderModelArrayList = new ArrayList<DashboardViewModel>();
+        orderModelArrayList.add(new DashboardViewModel("Order 1", "Wine", "Suzhou Station", "Suzhou", date, "Order 1", "Order 1", 10));
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+
+
+        OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(courseAdapter);
 
     //    final TextView textView = binding.textDashboard;
  //       dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);

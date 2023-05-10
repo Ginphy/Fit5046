@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ce.MainActivity;
 import com.example.ce.R;
 
 public class StartActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class StartActivity extends AppCompatActivity {
 
         Button btnSignup = findViewById(R.id.Sign);
         Button btnLogin = findViewById(R.id.Log);
+        Button btnTest = findViewById(R.id.Test);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +36,15 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View v){
                 finish();
                 Intent i = new Intent(StartActivity.this, SignupActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnTest.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                finish();
+                Intent i = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });

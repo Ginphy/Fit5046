@@ -1,109 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context=".ui.dashboard.DashboardFragment">
 
-    <ImageView
-        android:id="@+id/background_gray"
-        android:layout_width="424dp"
-        android:layout_height="770dp"
-        android:background="#BCBCBC"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.401"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292"
-        app:srcCompat="@android:drawable/screen_background_light_transparent" />
-
-    <ImageView
-        android:id="@+id/Background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/Background2"
-        android:layout_width="434dp"
-        android:layout_height="146dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="@+id/background_gray"
-        app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/shape" />
-
-    <ImageButton
-        android:id="@+id/BackButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        tools:ignore="SpeakableTextPresentCheck"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/back_icon" />
-
-    <TextView
-        android:id="@+id/PersonInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Orders"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/BackButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01999998" />
-
-    <Button
-        android:id="@+id/Processing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:text="Processing"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Background"
-        app:layout_constraintVertical_bias="0.724" />
-
-    <Button
-        android:id="@+id/Done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:text="Done"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Background"
-        app:layout_constraintVertical_bias="0.724" />
-
-    <ImageView
-        android:id="@+id/Background3"
-        android:layout_width="380dp"
-        android:layout_height="157dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="@+id/background_gray"
-        app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.26999998"
-        app:srcCompat="@drawable/shape" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+<!--</RelativeLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>

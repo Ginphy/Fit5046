@@ -1,7 +1,6 @@
 package com.example.ce;
 
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -9,14 +8,15 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.ArrayList;
 
 import com.example.ce.databinding.ActivityMainBinding;
+import com.example.ce.ui.dashboard.DashboardViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 //        LocationClient.setAgreePrivacy(true);
 //        SDKInitializer.initialize(this.getApplicationContext());
 
-
+        ArrayList<DashboardViewModel> courseModelArrayList = new ArrayList<DashboardViewModel>();
 
 
 
@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
   //      NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+
 
         }
 
