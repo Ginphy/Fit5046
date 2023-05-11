@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +56,9 @@ public class InfoActivity extends AppCompatActivity {
                         Log.i("Sex", "Current sex select"+ rb_Female.getText().toString());
                         sex[0] = "Female";
                         break;
+                    default:
+                        String msg = "You need to choose your gender!";
+                        toastMsg(msg);
                 }
             }
         });
@@ -112,7 +116,9 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
     }
-
+    public void toastMsg(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }
 
 

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -135,7 +136,10 @@ public class ItemActivity extends AppCompatActivity {
                                     Order order = new Order(editName.getText().toString(), StartName, EndName
                                     , type, timestamp, StartLongitude, StartLatitude, EndLongitude, EndLatitude, price, editDescription.getText().toString(), false, UserID,"Processing",0);
                                     orderViewModel.insert(order);
-
+                                }
+                                else{
+                                    String msg = "The item information should not be null!";
+                                    toastMsg(msg);
                                 }
 
                                 Intent intent = new Intent(ItemActivity.this, paySuccess.class);
@@ -147,5 +151,7 @@ public class ItemActivity extends AppCompatActivity {
             }
         });
     }
-
+    public void toastMsg(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 }

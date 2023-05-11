@@ -16,17 +16,20 @@ import java.util.function.Supplier;
 public class OrderRepository {
     private OrderDAO orderDao;
     private LiveData<List<Order>> allorders;
+    private LiveData<List<Order>> allprocessingorder;
 
     public OrderRepository(Application application) {
         OrderDatabase db = OrderDatabase.getInstance(application);
         orderDao = db.orderDao();
         allorders = orderDao.getAll();
+        allprocessingorder = orderDao.getProcessingOrder(false);
     }
 
     // Room executes this query on a separate thread
     public LiveData<List<Order>> getAllorders() {
         return allorders;
     }
+    public LiveData<List<Order>> getAllprocessingorder() {return  allprocessingorder;}
 
     public void insert(final Order order) {
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
@@ -56,12 +59,12 @@ public class OrderRepository {
     }
 
 
-    public CompletableFuture<Order> findByIDFuture(final boolean status) {
-        return CompletableFuture.supplyAsync(new Supplier<Order>() {
-            @Override
-            public Order get() {
-                return orderDao.findByID(status);
-            }
-        }, OrderDatabase.databaseWriteExecutor);
-    }
+//    public CompletableFuture<Order> findByIDFuture(final boolean status) {
+//        return CompletableFuture.supplyAsync(new Supplier<Order>() {
+//            @Override
+//            public Order get() {
+//                return orderDao.findByID(status);
+//            }
+//        }, OrderDatabase.databaseWriteExecutor);
+//    }
 }

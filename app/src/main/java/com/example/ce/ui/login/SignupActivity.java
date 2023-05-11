@@ -82,10 +82,10 @@ public class SignupActivity  extends AppCompatActivity {
                 if (TextUtils.isEmpty(email_txt) ||
                         TextUtils.isEmpty(password_txt) ||
                         TextUtils.isEmpty((confirm_txt))) {
-                    String msg = "Empty Username or Password";
+                    String msg = "Empty Username or Password!";
                     toastMsg(msg);
                 } else if (password_txt.length() < 6) {
-                    String msg = "Password is too short";
+                    String msg = "Password is too short, at least 6 digits.";
                     toastMsg(msg);
                 } else if (!email_txt.contains("@")){
                     String msg = "Not a proper format of an E-mail.";

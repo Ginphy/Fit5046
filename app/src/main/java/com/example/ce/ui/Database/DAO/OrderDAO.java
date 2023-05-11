@@ -15,8 +15,11 @@ import java.util.List;
 public interface OrderDAO {
     @Query("SELECT * FROM `Order` ORDER BY user_id ASC")
     LiveData<List<Order>> getAll();
+
+
     @Query("SELECT * FROM `Order` WHERE status = :status")
-    Order findByID(boolean status);
+    LiveData<List<Order>> getProcessingOrder(boolean status);
+    //Order findByID(boolean status);
 
     @Insert
     void insert(Order order);
