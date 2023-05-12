@@ -14,6 +14,6 @@
         android:label="Orders" />
     <fragment
         android:id="@+id/nav_view_fragment"
-        android:name="com.example.ce.ui.home.fragment.Information"
+        android:name="com.example.ce.ui.home.fragment.ViewFragment"
         android:label="Information" />
 </navigation>

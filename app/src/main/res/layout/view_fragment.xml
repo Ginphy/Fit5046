@@ -37,68 +37,28 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/Background2"
-            android:layout_width="414dp"
-            android:layout_height="80dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.528"
-            app:layout_constraintStart_toStartOf="@+id/background_gray"
-            app:layout_constraintTop_toTopOf="@+id/background_gray"
-            app:layout_constraintVertical_bias="0.0"
-            android:src="@drawable/shape" />
-
-        <ImageButton
-            android:id="@+id/BackButton"
-            android:layout_width="43dp"
-            android:layout_height="40dp"
-            android:background="#FFFFFF"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:src="@drawable/setting_icon"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
-            android:id="@+id/PersonInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Personal information"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/Background2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/BackButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.52" />
-
-        <ImageView
             android:id="@+id/Background3"
             android:layout_width="380dp"
             android:layout_height="72dp"
+            android:src="@drawable/shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.84"
+            app:layout_constraintHorizontal_bias="0.861"
             app:layout_constraintStart_toStartOf="@+id/background_gray"
             app:layout_constraintTop_toTopOf="@+id/background_gray"
-            app:layout_constraintVertical_bias="0.179"
-            android:src="@drawable/shape" />
+            app:layout_constraintVertical_bias="0.04" />
 
         <ImageView
             android:id="@+id/background4"
             android:layout_width="380dp"
             android:layout_height="72dp"
+            android:src="@drawable/shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.83"
+            app:layout_constraintHorizontal_bias="0.833"
             app:layout_constraintStart_toStartOf="@+id/background_gray"
             app:layout_constraintTop_toTopOf="@+id/background_gray"
-            app:layout_constraintVertical_bias="0.285"
-            android:src="@drawable/shape" />
+            app:layout_constraintVertical_bias="0.146" />
 
         <TextView
             android:id="@+id/Profile"
@@ -127,64 +87,64 @@
             app:layout_constraintTop_toBottomOf="@+id/Background3" />
 
         <ImageView
-            android:id="@+id/Background5"
-            android:layout_width="380dp"
-            android:layout_height="72dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.85"
-            app:layout_constraintStart_toStartOf="@+id/background_gray"
-            app:layout_constraintTop_toTopOf="@+id/background_gray"
-            app:layout_constraintVertical_bias="0.43"
-            android:src="@drawable/shape" />
-
-        <ImageView
             android:id="@+id/background6"
             android:layout_width="380dp"
             android:layout_height="72dp"
+            android:src="@drawable/shape"
             app:layout_constraintBottom_toTopOf="@+id/background7"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintHorizontal_bias="0.833"
             app:layout_constraintStart_toStartOf="@+id/background_gray"
             app:layout_constraintTop_toBottomOf="@+id/Background5"
-            app:layout_constraintVertical_bias="0.041"
-            android:src="@drawable/shape" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/background7"
+            android:id="@+id/Background5"
             android:layout_width="380dp"
             android:layout_height="72dp"
+            android:src="@drawable/shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.87"
+            app:layout_constraintHorizontal_bias="0.805"
             app:layout_constraintStart_toStartOf="@+id/background_gray"
-            app:layout_constraintTop_toBottomOf="@+id/Background5"
-            app:layout_constraintVertical_bias="0.228"
-            android:src="@drawable/shape" />
+            app:layout_constraintTop_toTopOf="@+id/background_gray"
+            app:layout_constraintVertical_bias="0.322" />
 
         <ImageView
             android:id="@+id/background8"
             android:layout_width="380dp"
             android:layout_height="72dp"
+            android:src="@drawable/shape"
             app:layout_constraintBottom_toTopOf="@+id/background9"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.838"
+            app:layout_constraintHorizontal_bias="0.805"
             app:layout_constraintStart_toStartOf="@+id/background_gray"
             app:layout_constraintTop_toBottomOf="@+id/background7"
-            app:layout_constraintVertical_bias="0.0"
-            android:src="@drawable/shape" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/background9"
             android:layout_width="380dp"
             android:layout_height="72dp"
+            android:src="@drawable/shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.838"
+            app:layout_constraintHorizontal_bias="0.805"
             app:layout_constraintStart_toStartOf="@+id/background_gray"
             app:layout_constraintTop_toBottomOf="@+id/background7"
-            app:layout_constraintVertical_bias="0.42"
-            android:src="@drawable/shape" />
+            app:layout_constraintVertical_bias="0.292" />
+
+        <ImageView
+            android:id="@+id/background7"
+            android:layout_width="380dp"
+            android:layout_height="72dp"
+            android:src="@drawable/shape"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.833"
+            app:layout_constraintStart_toStartOf="@+id/background_gray"
+            app:layout_constraintTop_toBottomOf="@+id/Background5"
+            app:layout_constraintVertical_bias="0.185" />
 
         <TextView
             android:id="@+id/Name"
