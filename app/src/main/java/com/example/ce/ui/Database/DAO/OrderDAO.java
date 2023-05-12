@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.ce.ui.Database.entity.Order;
+import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface OrderDAO {
     @Query("SELECT * FROM `Order` ORDER BY user_id ASC")
     LiveData<List<Order>> getAll();
 
+    @Query("UPDATE `Order` SET status = :status WHERE orderid = :orderid")
+    void updateStatus(boolean status, int orderid);
 
     @Query("SELECT * FROM `Order` WHERE status = :status")
     LiveData<List<Order>> getProcessingOrder(boolean status);
@@ -23,8 +26,10 @@ public interface OrderDAO {
 
     @Insert
     void insert(Order order);
+
     @Delete
     void delete(Order order);
+
     @Update
-    void updateCustomer(Order order);
+    void updateOrder(Order order);
 }

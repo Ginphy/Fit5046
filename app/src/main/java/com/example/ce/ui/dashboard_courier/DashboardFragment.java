@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.ce.R;
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ import java.util.List;
 public class DashboardFragment extends Fragment{
     //
 //   private final Context context;
-    private ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>  courseModelArrayList;
+    private ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>  orderModelArrayList;
     private OrderViewModel orderViewModel;
 
 
@@ -50,18 +51,19 @@ public class DashboardFragment extends Fragment{
         ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList = new ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>();
         orderViewModel =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(OrderViewModel.class);
-//        OrderViewModel.getAllorders().observe(this, new
-//                Observer<List<Order>>() {
-//                    @Override
-//                    public void onChanged(@Nullable final List<Order> orders) {
-//                        for (Order temp : orders) {
-//                            orderModelArrayList.add(new DashboardViewModel("Order", temp.itemName, temp.start_mame, temp.terminal_mame,
-//                                    temp.start_date, temp.type, temp.courier_id, temp.price));
-//                        }
-//                    }
-//                });
+        OrderViewModel.getAllprocessingorder().observe(getViewLifecycleOwner(), new
+                Observer<List<Order>>() {
+                    @Override
+                    public void onChanged(@Nullable final List<Order> orders) {
+                        for (Order temp : orders) {
+                            orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
+                                    temp.start_date, temp.type, temp.user_id, temp.price));
+                            OrderViewModel.getAllprocessingorder();
+                        }
+                    }
+                });
 
-        orderModelArrayList.add(new DashboardViewModel("Order", "asdasd", "asdasd", "asdasd",
+        orderModelArrayList.add(new DashboardViewModel(1, "asdasd", "asdasd", "asdasd",
                                     date.toString(), "asdasd", "asdasd", 6));
 
         com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);

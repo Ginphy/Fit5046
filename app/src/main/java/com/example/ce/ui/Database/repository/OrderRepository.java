@@ -31,6 +31,13 @@ public class OrderRepository {
     }
     public LiveData<List<Order>> getAllprocessingorder() {return  allprocessingorder;}
 
+    public void updateStatus(boolean status, int orderid){
+        OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {orderDao.updateStatus(status, orderid);
+            }
+        });
+    }
     public void insert(final Order order) {
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
@@ -49,11 +56,11 @@ public class OrderRepository {
         });
     }
 
-    public void updateCustomer(final Order order) {
+    public void updateOrder(final Order order) {
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                orderDao.updateCustomer(order);
+                orderDao.updateOrder(order);
             }
         });
     }

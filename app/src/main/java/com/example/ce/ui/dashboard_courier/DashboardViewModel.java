@@ -11,13 +11,13 @@ public class DashboardViewModel extends ViewModel {
     private final MutableLiveData<String> mText;
     private String course_name;
     private int course_rating;
-    private String orderId;
+    private int orderId;
     private String articleId;
     private String StartPoint;
     private String EndPoint;
     private String datetime;
     private String articleType;
-    private String CourierId;
+    private String userId;
     private double order_price;
 
 
@@ -26,8 +26,8 @@ public class DashboardViewModel extends ViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("This is dashboard fragment");
     }
-    public DashboardViewModel(String orderId, String itemname ,String StartName, String EndName,
-                              String datetime,String articleType,String CourierId,double order_price){
+    public DashboardViewModel(int orderId, String itemname ,String StartName, String EndName,
+                              String datetime,String articleType,String userId,double order_price){
         mText = new MutableLiveData<>();
         mText.setValue("This is dashboard fragment");
         this.orderId = orderId;
@@ -36,15 +36,15 @@ public class DashboardViewModel extends ViewModel {
         this.EndPoint = EndName;
         this.datetime = datetime;
         this.articleType = articleType;
-        this.CourierId = CourierId;
+        this.userId = userId;
         this.order_price = order_price;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -90,12 +90,12 @@ public class DashboardViewModel extends ViewModel {
         this.articleType = articleType;
     }
 
-    public String getCourierId() {
-        return CourierId;
+    public String getuserId() {
+        return userId;
     }
 
-    public void setCourierId(String CourierId) {
-        this.CourierId = CourierId;
+    public void setuserId(String userId) {
+        this.userId = userId;
     }
 
     public double getOrder_price() {

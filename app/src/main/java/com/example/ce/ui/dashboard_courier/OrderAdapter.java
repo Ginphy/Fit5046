@@ -8,18 +8,23 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ce.R;
+import com.example.ce.ui.Database.entity.Order;
+import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 import com.example.ce.ui.dashboard_courier.DashboardViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboard_courier.OrderAdapter.Viewholder> {
-
     private final Context context;
     private final ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList;
-
+    private OrderViewModel orderViewModel;
     // Constructor
     public OrderAdapter(Context context, ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList) {
         this.context = context;
@@ -40,20 +45,22 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboa
         DashboardViewModel model = orderModelArrayList.get(position);
 
 
-        holder.OrderId.setText(model.getOrderId());
+        holder.OrderId.setText(""+model.getOrderId());
         holder.ArticleName.setText(model.getArticleId());
         holder.StartPoint.setText(model.getStartPoint());
         holder.EndPoint.setText(model.getEndPoint());
         holder.Date.setText(model.getDatetime());
         holder.ArticleType.setText(model.getArticleType());
-        holder.CourierID.setText(model.getCourierId());
+        holder.CourierID.setText(model.getuserId());
         holder.OrderPrice.setText(""+model.getOrder_price());
+
 
         holder.btnTakingOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                //RecycleView Button's function
-
+                    orderViewModel.updateStatus(true, model.getOrderId());
+                    orderViewModel.getAllprocessingorder();
             }
         });
 
