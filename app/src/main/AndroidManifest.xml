@@ -16,8 +16,15 @@
         <meta-data android:name="com.amap.api.v2.apikey" android:value="6fe185cd9b064e527fabbcc3bfd3bec8">
         </meta-data>
         <service android:name="com.amap.api.location.APSService"></service>
+
         <activity
-            android:name=".MainActivity"/>
+            android:name="com.example.ce.ui.home.CourierHomeActivity"
+            android:theme="@style/Theme.NavigationJava.NoActionBar"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".MainActivity"></activity>
 
         <activity android:name="com.example.ce.ui.login.SignupActivity" />
         <activity android:name="com.example.ce.ui.login.StartActivity"
@@ -29,13 +36,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name="com.example.ce.ui.login.LoginActivity" />
         <activity android:name="com.example.ce.ui.login.InfoActivity" />
         <activity android:name=".ui.home.ItemActivity"/>
         <activity android:name="com.example.ce.ui.home.SearchStartpointActivity" />
         <activity android:name="com.example.ce.ui.home.SearchDestinationActivity" />
         <activity android:name="com.example.ce.ui.home.paySuccess" />
-        <activity android:name="com.example.ce.ui.home.CourierHomeActivity" />
+
     </application>
     <!--允许程序打开网络套接字-->
     <uses-permission android:name="android.permission.INTERNET" />
