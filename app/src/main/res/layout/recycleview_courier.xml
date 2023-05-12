@@ -20,7 +20,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="336dp">
+        android:layout_height="394dp">
 
         <TextView
             android:id="@+id/order_price"
@@ -107,6 +107,20 @@
             android:drawablePadding="2dp"
             android:text="articleId"
             android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnTaking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/order_price"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="146dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="124dp"
+            android:layout_marginBottom="13dp"
+            android:text="Button" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
