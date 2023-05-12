@@ -26,6 +26,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ce.MainActivity;
+import android.Manifest;
 import com.example.ce.R;
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
@@ -41,6 +42,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.lang.reflect.Array;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -52,7 +54,18 @@ import java.util.List;
 public class ItemActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth;
+
+    // Set Permission Array
+    private static final String[] PERMISSIONS = new String[]{
+            // Clander Permission
+            Manifest.permission.READ_CALENDAR,
+            Manifest.permission.WRITE_CALENDAR
+    };
+    private static final int REQUEST_CODE=1;
+
     private OrderViewModel orderViewModel;
+    private CalendarReminderUtils calendarUtils;
+
     // Postion Info from HomeFragment
     public double StartLatitude;
     public double StartLongitude;
@@ -63,10 +76,13 @@ public class ItemActivity extends AppCompatActivity {
     public int distance;
     public double price;
     public String timestamp;
+    public Long timestampLong;
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.iteminfo);
+        // Get Calendar Permission
+        PermissionUtil.checkPermission(ItemActivity.this,PERMISSIONS,REQUEST_CODE);
 
         // Get Position Info from HomeFragment
         Intent intent = this.getIntent();
@@ -110,6 +126,14 @@ public class ItemActivity extends AppCompatActivity {
                 // Do something with the date
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 timestamp = sdf.format(date);
+                String StringDate = timestamp + " 12:00:00";
+                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                try {
+                    Date date2 = format.parse(StringDate);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                timestampLong =date.getTime();
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +160,10 @@ public class ItemActivity extends AppCompatActivity {
                                     Order order = new Order(editName.getText().toString(), StartName, EndName
                                     , type, timestamp, StartLongitude, StartLatitude, EndLongitude, EndLatitude, price, editDescription.getText().toString(), false, UserID,"Processing",0);
                                     orderViewModel.insert(order);
+                                    // Add Calendar Event
+                                    calendarUtils=new CalendarReminderUtils ();
+                                    String ClendarEvent = "You have an item should be sent to" + EndName + "in" + timestamp.toString();
+                                    calendarUtils.addCalendarEvent(ItemActivity.this,"Citizen Express Event",ClendarEvent,timestampLong);
                                 }
                                 else{
                                     String msg = "The item information should not be null!";
@@ -150,8 +178,12 @@ public class ItemActivity extends AppCompatActivity {
                         .show();
             }
         });
+
     }
     public void toastMsg(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
+
+
+
