@@ -34,6 +34,8 @@ public class OrderViewModel extends AndroidViewModel {
         oRepository.insert(order);
     }
     public void update(Order order) {
-        oRepository.updateCustomer(order);
+        oRepository.updateOrder(order);
     }
+    public void updateStatus(boolean status, int orderid){oRepository.updateStatus(status, orderid);}
+
 }
