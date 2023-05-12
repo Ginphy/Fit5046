@@ -4,11 +4,11 @@
     tools:showIn="navigation_view">
     <item
         android:id="@+id/nav_home_fragment"
-        android:title="Home Fragment" />
+        android:title="Home" />
     <item
         android:id="@+id/nav_add_fragment"
-        android:title="Add Fragment" />
+        android:title="Orders" />
     <item
         android:id="@+id/nav_view_fragment"
-        android:title="View Fragment" />
+        android:title="Information" />
 </menu>
