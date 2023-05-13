@@ -5,9 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-
+import android.widget.DatePicker;
 import com.example.ce.R;
 import com.example.ce.databinding.HomeFragmentBinding;
 import com.example.ce.ui.Database.DAO.OrderDAO;
@@ -22,7 +23,11 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class HomeFragment extends Fragment {
@@ -32,6 +37,13 @@ public class HomeFragment extends Fragment {
     private OrderDAO orderDAO;
     public HomeFragment(){}
 
+
+    public String timestampFrom;
+    public Long timestampLongFrom;
+
+    public String timestampTo;
+    public Long timestampLongTo;
+
     PieChart OrderTypeChart;
 
     @Override
@@ -40,10 +52,68 @@ public class HomeFragment extends Fragment {
         // Inflate the View for this fragment
         addBinding = HomeFragmentBinding.inflate(inflater, container, false);
         View view = addBinding.getRoot();
+        Button btnConfirm = view.findViewById(R.id.btnconfirm);
+        DatePicker fromPicker = view.findViewById(R.id.from);
+        DatePicker toPicker = view.findViewById(R.id.to);
         OrderTypeChart = addBinding.orderTypeChart;
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
+
+        fromPicker.init(2023, 05, 12, new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, monthOfYear, dayOfMonth);
+                Date date = calendar.getTime();
+                // Do something with the date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                timestampFrom = sdf.format(date);
+                String StringDate = timestampLongFrom + " 12:00:00";
+                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                try {
+                    Date date2 = format.parse(StringDate);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                timestampLongFrom =date.getTime();
+
+            }
+        });
+
+        toPicker.init(2023, 05, 12, new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, monthOfYear, dayOfMonth);
+                Date date = calendar.getTime();
+                // Do something with the date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                timestampTo = sdf.format(date);
+                String StringDate = timestampLongTo + " 12:00:00";
+                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                try {
+                    Date date2 = format.parse(StringDate);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                timestampLongTo=date.getTime();
+            }
+        });
+
+
+
+
         TypeChartBuild();
         return view;
     }
+
+
 
     @Override
     public void onDestroyView() {
