@@ -53,16 +53,9 @@ public class DashboardFragment extends Fragment{
                     @Override
                     public void onChanged(@Nullable final List<Order> orders) {
                         for (Order temp : orders) {
-                            if(temp.status == false)
-                            {
-                                String status = "Waiting";
-                                orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
-                                    temp.start_date, temp.type, temp.courier_id, temp.price, status));}
-                            else {
-                                String status = "Waiting";
-                                orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
-                                        temp.start_date, temp.type, temp.courier_id, temp.price, status));
-                            }
+                            String status = "Waiting";
+                            orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
+                                    temp.start_date, temp.type, temp.courier_id, temp.price));
                         }
                     }
                 });
