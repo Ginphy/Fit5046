@@ -63,6 +63,7 @@ public class UploadWorker extends Worker {
                 data.put("Status", order.status);
                 data.put("Description", order.description);
                 docRef.set(data);
+                Log.e(TAG, "Success upload order information!");
             }
             return Result.success();
         } catch (Throwable throwable) {
