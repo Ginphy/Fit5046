@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ce.MainActivity;
 import com.example.ce.R;
+import com.example.ce.ui.home.CourierHomeActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -102,10 +103,15 @@ public class InfoActivity extends AppCompatActivity {
                                 Log.w(TAG, "Error adding document", e);
                             }
                         });
-
-                finish();
-                Intent i = new Intent(InfoActivity.this, MainActivity.class);
-                startActivity(i);
+                if(role == "User"){
+                    finish();
+                    Intent i = new Intent(InfoActivity.this, MainActivity.class);
+                    startActivity(i);
+                }else{
+                    finish();
+                    Intent i = new Intent(InfoActivity.this, CourierHomeActivity.class);
+                    startActivity(i);
+                }
             }
         });
 

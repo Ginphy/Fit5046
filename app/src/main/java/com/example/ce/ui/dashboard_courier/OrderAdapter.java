@@ -57,7 +57,7 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboa
         DashboardViewModel model = orderModelArrayList.get(position);
 
 
-        holder.OrderId.setText("Orderid: "+model.getOrderId());
+        holder.OrderId.setText(""+model.getOrderId());
         holder.ArticleName.setText(model.getArticleId());
         holder.StartPoint.setText(model.getStartPoint());
         holder.EndPoint.setText(model.getEndPoint());
@@ -65,6 +65,7 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboa
         holder.ArticleType.setText(model.getArticleType());
         holder.CourierID.setText(model.getuserId());
         holder.OrderPrice.setText(""+model.getOrder_price());
+
 
         holder.btnTakingOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +87,8 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboa
                                 Log.w(TAG, "Error updating document", e);
                             }
                         });
-                orderModelArrayList.remove(holder.getAdapterPosition());
+                view.setBackgroundColor(Color.parseColor("#FF4081"));
+
             }
         });
 

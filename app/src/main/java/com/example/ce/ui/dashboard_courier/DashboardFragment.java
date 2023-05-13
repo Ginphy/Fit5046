@@ -57,10 +57,14 @@ public class DashboardFragment extends Fragment{
                     public void onChanged(@Nullable final List<Order> orders) {
                         for (Order temp : orders) {
                             orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
-                                    temp.start_date, temp.type, temp.user_id, temp.price));
+                                    temp.start_date, temp.type, temp.user_id, temp.price, "Waiting.."));
                         }
                     }
                 });
+
+        orderModelArrayList.add(new DashboardViewModel(1, "asdasd", "asdasd", "asdasd",
+                                    date.toString(), "asdasd", "asdasd", 6, "Waiting..."));
+
         com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
