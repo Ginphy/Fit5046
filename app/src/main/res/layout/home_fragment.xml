@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="This is Home"
+        android:textColor="@color/black"
+        android:fontFamily="@font/optima"
+        android:text="Pie Chart Page"
+        android:textStyle="bold"
         android:gravity="center_horizontal" />
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/order_type_chart"
@@ -57,9 +60,10 @@
         android:id="@+id/btnconfirm"
         android:layout_width="166dp"
         android:layout_height="wrap_content"
-        android:text="Summit"
-        android:textSize="17.5sp"
+        android:backgroundTint="#779FC1"
         android:fontFamily="@font/optima"
-        />
+        android:text="Summit"
+        android:textColor="@color/black"
+        android:textSize="17.5sp" />
 
 </LinearLayout>

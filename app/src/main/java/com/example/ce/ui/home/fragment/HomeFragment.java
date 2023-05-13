@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 
 public class HomeFragment extends Fragment {
@@ -47,7 +48,7 @@ public class HomeFragment extends Fragment {
     PieChart OrderTypeChart;
 
     Date date1,date2;
-
+    int Food=10, Digital=20, Liquid=15, Wearing=15, Book=20, File=10, Others=10;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,13 +62,19 @@ public class HomeFragment extends Fragment {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
+                Random random =  new Random();
+                Food = random.nextInt(14);
+                Digital = random.nextInt(14);
+                Liquid = random.nextInt(14);
+                Wearing = random.nextInt(14);
+                Book = random.nextInt(14);
+                File = random.nextInt(14);
+                Others = random.nextInt(14);
+                TypeChartBuild();
             }
         });
 
-        fromPicker.init(2023, 05, 12, new DatePicker.OnDateChangedListener() {
+        fromPicker.init(2023, 04, 02, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar calendar = Calendar.getInstance();
@@ -157,13 +164,13 @@ public class HomeFragment extends Fragment {
 
         //设置数据百分比和描述
         ArrayList<PieEntry> pieEntries = new ArrayList<PieEntry>();
-        pieEntries.add(new PieEntry(15, "Food"));
-        pieEntries.add(new PieEntry(20, "Digital"));
-        pieEntries.add(new PieEntry(15, "Liquid"));
-        pieEntries.add(new PieEntry(30, "Wearing"));
-        pieEntries.add(new PieEntry(10, "Book"));
-        pieEntries.add(new PieEntry(10, "File"));
-        pieEntries.add(new PieEntry(10, "Others"));
+        pieEntries.add(new PieEntry(Food, "Food"));
+        pieEntries.add(new PieEntry(Digital, "Digital"));
+        pieEntries.add(new PieEntry(Liquid, "Liquid"));
+        pieEntries.add(new PieEntry(Wearing, "Wearing"));
+        pieEntries.add(new PieEntry(Book, "Book"));
+        pieEntries.add(new PieEntry(File, "File"));
+        pieEntries.add(new PieEntry(Others, "Others"));
 
         String centerText = "Item Type Ratio";
         OrderTypeChart.setCenterText(centerText);//设置圆环中间的文字
