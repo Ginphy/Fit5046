@@ -27,7 +27,6 @@ public class OrderRepository {
         orderDao = db.orderDao();
         allorders = orderDao.getAll(auth.getCurrentUser().getUid());
         allprocessingorder = orderDao.getProcessingOrder(false);
-        uploadorders = orderDao.upload();
     }
 
     // Room executes this query on a separate thread
