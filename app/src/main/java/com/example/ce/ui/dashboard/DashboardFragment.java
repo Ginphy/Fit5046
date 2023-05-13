@@ -48,13 +48,21 @@ public class DashboardFragment extends Fragment{
         ArrayList<DashboardViewModel> orderModelArrayList = new ArrayList<DashboardViewModel>();
         orderViewModel =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(OrderViewModel.class);
-        OrderViewModel.getAllorders().observe(this, new
+        OrderViewModel.getAllorders().observe(getViewLifecycleOwner(), new
                 Observer<List<Order>>() {
                     @Override
                     public void onChanged(@Nullable final List<Order> orders) {
                         for (Order temp : orders) {
-                            orderModelArrayList.add(new DashboardViewModel("Order", temp.itemName, temp.start_mame, temp.terminal_mame,
-                                    temp.start_date, temp.type, temp.courier_id, temp.price));
+                            if(temp.status == false)
+                            {
+                                String status = "Waiting";
+                                orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
+                                    temp.start_date, temp.type, temp.courier_id, temp.price, status));}
+                            else {
+                                String status = "Waiting";
+                                orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
+                                        temp.start_date, temp.type, temp.courier_id, temp.price, status));
+                            }
                         }
                     }
                 });

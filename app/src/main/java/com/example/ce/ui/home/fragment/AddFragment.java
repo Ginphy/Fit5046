@@ -97,22 +97,22 @@ public class AddFragment extends Fragment{
         ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList = new ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>();
         orderViewModel =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(OrderViewModel.class);
-        OrderViewModel.getAllorders().observe(getViewLifecycleOwner(), new
+        OrderViewModel.getAllprocessingorder().observe(getViewLifecycleOwner(), new
                 Observer<List<Order>>() {
                     @Override
                     public void onChanged(@Nullable final List<Order> orders) {
                         for (Order temp : orders) {
                             orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
-                                    temp.start_date, temp.type, temp.courier_id, temp.price));
+                                    temp.start_date, temp.type, temp.courier_id, temp.price, "Waiting..."));
                         }
                     }
                 });
 
         orderModelArrayList.add(new DashboardViewModel(1, "asdasd", "asdasd", "asdasd",
-                date.toString(), "asdasd", "asdasd", 6));
+                date.toString(), "asdasd", "asdasd", 6,"Waiting"));
 
         orderModelArrayList.add(new DashboardViewModel(2, "黄宇航", "东南大学苏州", "文荟人才公寓",
-                date.toString(), "Pig", "110", -250));
+                date.toString(), "Pig", "110", -250,"Waiting"));
 
         com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);

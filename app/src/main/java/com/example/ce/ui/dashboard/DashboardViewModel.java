@@ -11,7 +11,7 @@ public class DashboardViewModel extends ViewModel {
     private final MutableLiveData<String> mText;
     private String course_name;
     private int course_rating;
-    private String orderId;
+    private int orderId;
     private String articleId;
     private String StartPoint;
     private String EndPoint;
@@ -19,6 +19,7 @@ public class DashboardViewModel extends ViewModel {
     private String articleType;
     private String CourierId;
     private double order_price;
+    private String status;
 
 
 
@@ -26,8 +27,8 @@ public class DashboardViewModel extends ViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("This is dashboard fragment");
     }
-     public DashboardViewModel(String orderId, String itemname ,String StartName, String EndName,
-                               String datetime,String articleType,String CourierId,double order_price){
+     public DashboardViewModel(int orderId, String itemname ,String StartName, String EndName,
+                               String datetime,String articleType,String CourierId,double order_price, String status){
          mText = new MutableLiveData<>();
          mText.setValue("This is dashboard fragment");
          this.orderId = orderId;
@@ -38,13 +39,14 @@ public class DashboardViewModel extends ViewModel {
          this.articleType = articleType;
          this.CourierId = CourierId;
          this.order_price = order_price;
+         this.status = status;
      }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -106,7 +108,7 @@ public class DashboardViewModel extends ViewModel {
         this.order_price = order_price;
     }
 
-
+    public void getStatus(){this.status = status;}
 
     public LiveData<String> getText() {
         return mText;

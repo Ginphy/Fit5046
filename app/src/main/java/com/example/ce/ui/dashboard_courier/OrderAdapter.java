@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ce.R;
+import com.example.ce.databinding.AddFragmentBinding;
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 import com.example.ce.ui.dashboard_courier.DashboardViewModel;
@@ -60,7 +61,7 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboa
             public void onClick(View view) {
                //RecycleView Button's function
                     orderViewModel.updateStatus(true, model.getOrderId());
-                    orderViewModel.getAllprocessingorder();
+                    notifyDataSetChanged();
             }
         });
 
