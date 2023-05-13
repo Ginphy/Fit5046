@@ -25,11 +25,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
+    <ImageView
+        android:id="@+id/Background"
+        android:layout_width="497dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loading"
+        app:srcCompat="@drawable/background_2"
+        tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/Sign"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/shape"
         android:text="Sign up"
+        android:textColor="#00305E"
+        android:alpha="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +53,10 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
+        android:background="@drawable/shape"
         android:text="Log in"
+        android:textColor="#002E5C"
+        android:alpha="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Sign" />
@@ -57,7 +73,6 @@
         app:layout_constraintTop_toBottomOf="@+id/Log" />
 
 
-
     <ImageView
         android:id="@+id/Logo"
         android:layout_width="wrap_content"
@@ -66,9 +81,12 @@
         android:layout_marginTop="154dp"
         android:layout_marginBottom="155dp"
         app:layout_constraintBottom_toBottomOf="@+id/Sign"
-        app:layout_constraintStart_toStartOf="@+id/ProductName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
 
     <TextView
         android:id="@+id/ProductName"
@@ -77,18 +95,14 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="8dp"
         android:text="Citizen Express"
-        app:layout_constraintStart_toStartOf="@+id/Sign"
-        app:layout_constraintTop_toBottomOf="@+id/Logo" />
-
-    <ImageView
-        android:id="@+id/Background"
-        android:layout_width="497dp"
-        android:layout_height="0dp"
+        android:textColor="#004E7F"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loading"
-        app:srcCompat="@drawable/background"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-53dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        app:layout_constraintVertical_bias="0.029" />
 
     <Button
         android:id="@+id/Test2"

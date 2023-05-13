@@ -25,18 +25,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="446dp"
+        android:layout_height="741dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/background_2" />
+
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginBottom="70dp"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/Log"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.327" />
 
     <Button
         android:id="@+id/Log"
@@ -44,10 +57,14 @@
         android:layout_height="wrap_content"
         android:text="Log in"
         app:iconTint="#FFFFFF"
+        android:background="@drawable/shape"
+        android:alpha="0.9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameText" />
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.851" />
 
     <EditText
         android:id="@+id/Email"
@@ -66,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Citizen Express"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,37 +100,32 @@
         app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:srcCompat="@drawable/logo" />
 
+
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="44dp"
         android:text="Email:"
         app:layout_constraintBottom_toBottomOf="@+id/Email"
-        app:layout_constraintEnd_toStartOf="@+id/NameText"
+        app:layout_constraintEnd_toStartOf="@+id/Email"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Email" />
+        app:layout_constraintTop_toTopOf="@+id/Email"
+        app:layout_constraintVertical_bias="0.586" />
 
     <TextView
         android:id="@+id/Phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="24dp"
         android:text="Password:"
         app:layout_constraintBottom_toBottomOf="@+id/password"
-        app:layout_constraintEnd_toStartOf="@+id/PhoneText"
+        app:layout_constraintEnd_toStartOf="@+id/password"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/password" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="446dp"
-        android:layout_height="741dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background" />
+        app:layout_constraintTop_toTopOf="@+id/password"
+        app:layout_constraintVertical_bias="0.551" />
 
     <RadioGroup
 
@@ -123,11 +136,11 @@
         android:layout_height="75dp"
 
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/Log"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:layout_constraintVertical_bias="0.69">
 
         <RadioButton
@@ -159,9 +172,11 @@
     <Button
         android:id="@+id/Back"
         android:layout_width="58dp"
-        android:layout_height="48dp"
+        android:layout_height="30dp"
+        android:alpha="0.8"
+        android:background="@drawable/shape"
         android:text="Back"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.069"
