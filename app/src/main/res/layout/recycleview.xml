@@ -20,7 +20,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="336dp">
+        android:layout_height="336dp"
+        android:background="#E2E8EF">
 
         <TextView
             android:id="@+id/textView11"

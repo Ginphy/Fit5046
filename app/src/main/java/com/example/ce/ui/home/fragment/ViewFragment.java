@@ -79,7 +79,7 @@ public class ViewFragment extends Fragment {
 
 
         TextView Profile = root.findViewById(R.id.Profile);
-        TextView NickName = root.findViewById(R.id.Nickname);
+//        TextView NickName = root.findViewById(R.id.Nickname);
         TextView Name = root.findViewById(R.id.Name);
         TextView Sex = root.findViewById(R.id.Gender);
         TextView Identity = root.findViewById(R.id.Identity);
@@ -88,8 +88,8 @@ public class ViewFragment extends Fragment {
         notificationsViewModel.getData().observe(getViewLifecycleOwner(), new Observer<NotificationsViewModel.PersonalInfo>() {
             @Override
             public void onChanged(NotificationsViewModel.PersonalInfo personalInfo) {
-                Profile.setText(String.format("Profile: %s", personalInfo.Profile));
-                NickName.setText(String.format("Nickname: %s", personalInfo.Nickname));
+                Profile.setText(String.format("UID: %s", personalInfo.Profile));
+//                NickName.setText(String.format("Nickname: %s", personalInfo.Nickname));
                 Name.setText(String.format("Name: %s", personalInfo.Name));
                 Identity.setText(String.format("IdentityNum: %s", personalInfo.Identity));
                 Sex.setText(String.format("Gender: %s", personalInfo.Gender));
