@@ -91,9 +91,6 @@ public class HomeFragment extends Fragment {
         pieEntries.add(new PieEntry(10, "File"));
         pieEntries.add(new PieEntry(10, "Others"));
 
-
-
-
         String centerText = "Item Type Ratio";
         OrderTypeChart.setCenterText(centerText);//设置圆环中间的文字
         PieDataSet pieDataSet = new PieDataSet(pieEntries, "");

@@ -14,8 +14,8 @@ import java.util.List;
 
 @Dao
 public interface OrderDAO {
-    @Query("SELECT * FROM `Order` ORDER BY user_id ASC")
-    LiveData<List<Order>> getAll();
+    @Query("SELECT * FROM `Order`WHERE user_id = :user_id")
+    LiveData<List<Order>> getAll(String user_id);
 
 //    @Query("SELECT * FROM `Order`")
 //    List<Order> getAllOrders();
