@@ -10,6 +10,7 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -102,6 +103,13 @@ public class ItemActivity extends AppCompatActivity {
         startNameTextView.setText(StartName);
         endNameTextView.setText(EndName);
         DatePicker datePicker = findViewById(R.id.calendar);
+        CheckBox ckSave = (CheckBox)  findViewById(R.id.saveToCalendar);
+        ckSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //calendar
+            }
+        });
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser User = auth.getCurrentUser();
