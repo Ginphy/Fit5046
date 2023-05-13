@@ -70,7 +70,7 @@ public class UploadWorker extends Worker {
                 data.put("Status", order.status);
                 data.put("Description", order.description);
                 docRef.set(data);
-                Log.e(TAG, "Error upload order information" + year +'-'+
+                Log.e(TAG, "Success upload order information" + year +'-'+
                         month + '-'+
                         day + '/'+
                         hour + '-'+
