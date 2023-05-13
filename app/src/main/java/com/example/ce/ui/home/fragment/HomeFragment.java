@@ -51,8 +51,8 @@ public class HomeFragment extends Fragment {
 
     private void TypeChartBuild() {
         OrderTypeChart.setUsePercentValues(true); //设置为显示百分比
-        OrderTypeChart.setDescription(" ");//设置描述
-        OrderTypeChart.setDescriptionTextSize(20f);
+        //OrderTypeChart.setDescription(" ");//设置描述
+        //OrderTypeChart.setDescriptionTextSize(20f);
         // pieChart1.setExtraOffsets(5, 5, 5, 5);//设置饼状图距离上下左右的偏移量
         OrderTypeChart.setDrawCenterText(true); //设置可以绘制中间的文字
         OrderTypeChart.setCenterTextColor(Color.BLACK); //中间的文本颜色
@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
         Legend l = OrderTypeChart.getLegend(); //设置比例图
         l.setMaxSizePercent(100);
         l.setTextSize(12);
-        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_CENTER);//设置每个tab的显示位置（这个位置是指下图右边小方框部分的位置 ）
+        //l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_CENTER);//设置每个tab的显示位置（这个位置是指下图右边小方框部分的位置 ）
         l.setXEntrySpace(10f);
         l.setYEntrySpace(5f);//设置tab之间Y轴方向上的空白间距值
         l.setYOffset(0f);
