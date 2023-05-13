@@ -92,7 +92,7 @@ public class NotificationsFragment extends Fragment {
                 Name.setText(String.format("Name: %s", personalInfo.Name));
                 Identity.setText(String.format("IdentityNum: %s", personalInfo.Identity));
                 Sex.setText(String.format("Gender: %s", personalInfo.Gender));
-                Phone.setText(String.format("Nickname: %s", personalInfo.Phone));
+                Phone.setText(String.format("Phone: %s", personalInfo.Phone));
                 Email.setText(String.format("E-mail: %s", personalInfo.Email));
 
             }
