@@ -162,8 +162,10 @@ public class ItemActivity extends AppCompatActivity {
                                     orderViewModel.insert(order);
                                     // Add Calendar Event
                                     calendarUtils=new CalendarReminderUtils ();
-                                    String ClendarEvent = "You have an item should be sent to" + EndName + "in" + timestamp.toString();
+                                    String ClendarEvent = "Your " + editName.getText().toString() +" should be sent to " + EndName + " today.";
                                     calendarUtils.addCalendarEvent(ItemActivity.this,"Citizen Express Event",ClendarEvent,timestampLong);
+                                    String msg = "This order has been add to your System Calendar.";
+                                    toastMsg(msg);
                                 }
                                 else{
                                     String msg = "The item information should not be null!";
