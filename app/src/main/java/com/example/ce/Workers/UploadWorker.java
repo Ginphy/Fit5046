@@ -47,7 +47,7 @@ public class UploadWorker extends Worker {
 
         try {
             auth = FirebaseAuth.getInstance();
-            List<Order> OrderList = (List<Order>) orderDAO.getAll(auth.getCurrentUser().getUid());
+            List<Order> OrderList = orderDAO.upload();
             for (Order order : OrderList) {
                 DocumentReference docRef = database.collection("Orders").document(String.valueOf(order.orderid));
                 Map<String, Object> data = new HashMap<>();
