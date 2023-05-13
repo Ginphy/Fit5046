@@ -119,7 +119,7 @@ public class ItemActivity extends AppCompatActivity {
         orderViewModel =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(OrderViewModel.class);
 
-        datePicker.init(1999, 07, 23, new DatePicker.OnDateChangedListener() {
+        datePicker.init(2023, 05, 14, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar calendar = Calendar.getInstance();
