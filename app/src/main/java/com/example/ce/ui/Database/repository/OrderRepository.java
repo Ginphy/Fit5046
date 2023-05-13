@@ -20,6 +20,7 @@ public class OrderRepository {
     private OrderDAO orderDao;
     private LiveData<List<Order>> allorders;
     private LiveData<List<Order>> allprocessingorder;
+    private List<Order> uploadorders;
     private List<Order> allOrders;
     public OrderRepository(Application application) {
         OrderDatabase db = OrderDatabase.getInstance(application);
@@ -27,6 +28,7 @@ public class OrderRepository {
         orderDao = db.orderDao();
         allorders = orderDao.getAll(auth.getCurrentUser().getUid());
         allprocessingorder = orderDao.getProcessingOrder(false);
+        uploadorders = orderDao.upload();
     }
 
     // Room executes this query on a separate thread
@@ -34,7 +36,7 @@ public class OrderRepository {
         return allorders;
     }
     public LiveData<List<Order>> getAllprocessingorder() {return  allprocessingorder;}
-    public List<Order> getAllOrders(){return allOrders;}
+    public List<Order> getAllOrders(){return uploadorders;}
     public void updateStatus(boolean status, int orderid){
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
