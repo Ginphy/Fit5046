@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.ce.R;
 import androidx.annotation.NonNull;
@@ -90,8 +91,11 @@ public class AddFragment extends Fragment{
 
     private FragmentDashboardBinding binding;
 
-
-
+    int Orderid;
+    double Price;
+    String Itemname,StartName,EndName,StartDate,Type,userid,Status;
+    ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> list = new ArrayList<>();
+    ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList = new ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -102,7 +106,6 @@ public class AddFragment extends Fragment{
         //   binding = FragmentDashboardBinding.inflate(inflater, container, false);
         //    View root = binding.getRoot();
         RecyclerView recyclerView = root.findViewById(R.id.recycler_view);
-        ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList = new ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>();
 //        orderViewModel =
 //                ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(OrderViewModel.class);
 //        OrderViewModel.getAllprocessingorder().observe(getViewLifecycleOwner(), new
@@ -129,32 +132,34 @@ public class AddFragment extends Fragment{
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                orderModelArrayList.add(new DashboardViewModel(document.getLong("Orderid").intValue(),
-                                        document.getString("Itemname"),
-                                        document.getString("StartName"),
-                                        document.getString("EndName"),
-                                        document.getString("StartDate"),
-                                        document.getString("Type"),
-                                        document.getString("userid").toString(),
-                                        document.getDouble("Price"),
-                                        document.getBoolean("Status").toString()));
-                                Log.d(TAG, "Successful getting documents!" + document.getData());
+
+                                Orderid = document.getLong("Orderid").intValue();
+                                Itemname = document.getString("Itemname");
+                                StartName = document.getString("StartName");
+                                EndName = document.getString("EndName");
+                                StartDate = document.getString("StartDate");
+                                Type = document.getString("Type");
+                                userid = document.getString("userid").toString();
+                                Price = document.getDouble("Price");
+                                //Status = document.getBoolean("Status").toString();
+                                orderModelArrayList.add(new DashboardViewModel(Orderid, Itemname, StartName, EndName, StartDate, Type, userid, Price));
+                                Log.d(TAG, "Successful getting documents!" +document.getData());
+                                com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
+                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+                                recyclerView.setLayoutManager(linearLayoutManager);
+                                recyclerView.setAdapter(courseAdapter);
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
-        com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(courseAdapter);
 
-        //    final TextView textView = binding.textDashboard;
-        //       dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
-
+    public void toastMsg(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void onDestroyView() {

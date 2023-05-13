@@ -66,8 +66,6 @@ public class DashboardFragment extends Fragment{
 
                     }
                 });
-        orderModelArrayList.add(new DashboardViewModel(210301293, "temp.itemName", "temp.start_mame", "temp.terminal_mame",
-                "temp.start_date", "temp.type", "temp.courier_id", 10));
         OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
