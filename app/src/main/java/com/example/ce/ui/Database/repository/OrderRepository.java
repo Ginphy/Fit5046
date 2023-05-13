@@ -21,14 +21,12 @@ public class OrderRepository {
     private LiveData<List<Order>> allorders;
     private LiveData<List<Order>> allprocessingorder;
     private List<Order> uploadorders;
-    private List<Order> allOrders;
     public OrderRepository(Application application) {
         OrderDatabase db = OrderDatabase.getInstance(application);
         auth = FirebaseAuth.getInstance();
         orderDao = db.orderDao();
         allorders = orderDao.getAll(auth.getCurrentUser().getUid());
         allprocessingorder = orderDao.getProcessingOrder(false);
-        uploadorders = orderDao.upload();
     }
 
     // Room executes this query on a separate thread
@@ -36,7 +34,7 @@ public class OrderRepository {
         return allorders;
     }
     public LiveData<List<Order>> getAllprocessingorder() {return  allprocessingorder;}
-    public List<Order> getAllOrders(){return uploadorders;}
+//    public List<Order> getAllOrders(){return uploadorders;}
     public void updateStatus(boolean status, int orderid){
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
@@ -71,6 +69,14 @@ public class OrderRepository {
         });
     }
 
+    public CompletableFuture<List<Order>> upload(){
+        return CompletableFuture.supplyAsync(new Supplier<List<Order>>() {
+            @Override
+            public List<Order> get() {
+                return orderDao.upload();
+            }
+        }, OrderDatabase.databaseWriteExecutor);
+    }
 
 //    public CompletableFuture<Order> findByIDFuture(final boolean status) {
 //        return CompletableFuture.supplyAsync(new Supplier<Order>() {
