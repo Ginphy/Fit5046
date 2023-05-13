@@ -174,7 +174,7 @@
         android:fontFamily="@font/optima"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:textColor="#4CC5AA"
+        android:textColor="#EDEDED"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/identityText"
         app:layout_constraintEnd_toEndOf="parent"
