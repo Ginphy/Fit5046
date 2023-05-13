@@ -126,21 +126,22 @@
 
     <EditText
         android:id="@+id/editDescrip"
-        android:layout_width="365dp"
-        android:layout_height="246dp"
+        android:layout_width="360dp"
+        android:layout_height="156dp"
         android:background="@android:drawable/edit_text"
         android:enabled="true"
         android:gravity="top"
+        android:hint="Description"
         android:inputType="textMultiLine"
         android:maxLines="10"
         android:minLines="8"
         android:scrollbars="vertical"
-        android:hint="Description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.84000003" />
+        app:layout_constraintVertical_bias="0.747" />
 
     <Button
         android:id="@+id/Confirm"
@@ -151,8 +152,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDescrip" />
+        app:layout_constraintTop_toBottomOf="@+id/editDescrip"
+        app:layout_constraintVertical_bias="0.835" />
 
     <TextView
         android:id="@+id/startName"
@@ -203,7 +206,7 @@
         app:layout_constraintHorizontal_bias="0.388"
         app:layout_constraintStart_toEndOf="@+id/Description"
         app:layout_constraintTop_toBottomOf="@+id/calendar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.348" />
 
     <TextView
         android:id="@+id/price"
@@ -217,7 +220,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/priceText"
         app:layout_constraintTop_toBottomOf="@+id/calendar"
-        app:layout_constraintVertical_bias="0.454" />
+        app:layout_constraintVertical_bias="0.441" />
 
     <DatePicker
         android:id="@+id/calendar"
@@ -231,5 +234,16 @@
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43" />
+
+    <CheckBox
+        android:id="@+id/saveToCalendar"
+        android:layout_width="259dp"
+        android:layout_height="51dp"
+        android:text="Save To Your Google Calendar"
+        app:layout_constraintBottom_toTopOf="@+id/Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.572"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editDescrip" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

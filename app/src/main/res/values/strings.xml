@@ -5,13 +5,13 @@
     <string name="title_notifications">Notifications</string>
 
     <string-array name="spinner_data">
-        <item>None</item>
-        <item>food</item>
-        <item>computer</item>
-        <item>phone</item>
-        <item>cloth</item>
-        <item>book</item>
-        <item>others</item>
+        <item>Others</item>
+        <item>Food</item>
+        <item>Digital</item>
+        <item>Liquid</item>
+        <item>Wearing</item>
+        <item>Book</item>
+        <item>File</item>
     </string-array>
 
 </resources>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -42,6 +43,7 @@ public class InfoActivity extends AppCompatActivity {
         RadioGroup rg = (RadioGroup) findViewById(R.id.rg_sex);
         RadioButton rb_Male = (RadioButton) findViewById(R.id.male);
         RadioButton rb_Female = (RadioButton) findViewById(R.id.female);
+
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
