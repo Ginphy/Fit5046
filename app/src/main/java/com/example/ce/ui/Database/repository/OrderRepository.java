@@ -17,11 +17,12 @@ public class OrderRepository {
     private OrderDAO orderDao;
     private LiveData<List<Order>> allorders;
     private LiveData<List<Order>> allprocessingorder;
-
+    private List<Order> allOrders;
     public OrderRepository(Application application) {
         OrderDatabase db = OrderDatabase.getInstance(application);
         orderDao = db.orderDao();
         allorders = orderDao.getAll();
+//        allOrders = orderDao.getAllOrders();
         allprocessingorder = orderDao.getProcessingOrder(false);
     }
 
@@ -30,7 +31,7 @@ public class OrderRepository {
         return allorders;
     }
     public LiveData<List<Order>> getAllprocessingorder() {return  allprocessingorder;}
-
+    public List<Order> getAllOrders(){return allOrders;}
     public void updateStatus(boolean status, int orderid){
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override

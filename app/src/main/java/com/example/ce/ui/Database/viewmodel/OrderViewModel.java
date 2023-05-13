@@ -17,10 +17,12 @@ public class OrderViewModel extends AndroidViewModel {
     private OrderRepository oRepository;
     private static LiveData<List<Order>> allorders;
     private static LiveData<List<Order>> allprocessingorder;
+    private static List<Order> allOrders;
     public OrderViewModel (Application application) {
         super(application);
         oRepository = new OrderRepository(application);
         allorders = oRepository.getAllorders();
+//        allOrders = oRepository.getAllOrders();
         allprocessingorder = oRepository.getAllprocessingorder();
     }
 //    public CompletableFuture<Order> findByIDFuture(final boolean status){
@@ -30,6 +32,7 @@ public class OrderViewModel extends AndroidViewModel {
         return allorders;
     }
     public static LiveData<List<Order>> getAllprocessingorder(){return allprocessingorder;}
+    public static List<Order> getAllOrders(){return allOrders;}
     public void insert(Order order) {
         oRepository.insert(order);
     }
