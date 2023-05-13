@@ -1,6 +1,10 @@
 package com.example.ce.ui.dashboard_courier;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +22,21 @@ import com.example.ce.databinding.AddFragmentBinding;
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 import com.example.ce.ui.dashboard_courier.DashboardViewModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboard_courier.OrderAdapter.Viewholder> {
     private final Context context;
     private final ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList;
     private OrderViewModel orderViewModel;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     // Constructor
     public OrderAdapter(Context context, ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList) {
         this.context = context;
@@ -60,8 +71,25 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboa
             @Override
             public void onClick(View view) {
                //RecycleView Button's function
-                    orderViewModel.updateStatus(true, model.getOrderId());
-                    notifyDataSetChanged();
+                DocumentReference docRef = db.collection("Orders").document(String.valueOf(model.getOrderId()));
+                Map<String, Object> updates = new HashMap<>();
+                updates.put("Status", true);
+                docRef.update(updates)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "DocumentSnapshot successfully updated!");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error updating document", e);
+                            }
+                        });
+                view.setBackgroundColor(Color.parseColor("#FF4081"));
+                orderViewModel.updateStatus(true, model.getOrderId());
+                notifyDataSetChanged();
             }
         });
 

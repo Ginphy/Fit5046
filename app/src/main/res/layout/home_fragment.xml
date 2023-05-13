@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center">
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
     <TextView
         android:id="@+id/text_message"
         android:layout_width="match_parent"
@@ -16,4 +23,49 @@
         android:layout_width="350dp"
         android:layout_height="400dp"
         />
+
+    <TextView
+        android:id="@+id/from"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/optima"
+        android:textSize="17.5sp"
+        android:layout_height="wrap_content"
+        android:text="FROM" />
+
+    <DatePicker
+        android:id="@+id/startdate"
+
+        android:layout_width="250dp"
+        android:layout_height="108dp"
+
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
+
+    <TextView
+        android:id="@+id/to"
+        android:layout_width="wrap_content"
+        android:textSize="17.5sp"
+        android:fontFamily="@font/optima"
+        android:layout_height="wrap_content"
+        android:text="TO" />
+
+    <DatePicker
+        android:id="@+id/enddate"
+        android:layout_width="250dp"
+        android:layout_height="108dp"
+
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+
+        />
+
+    <Button
+        android:id="@+id/btnconfirm"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:text="Summit"
+        android:textSize="17.5sp"
+        android:fontFamily="@font/optima"
+        />
+
 </LinearLayout>

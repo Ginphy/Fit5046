@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-
+import android.widget.DatePicker;
 import com.example.ce.R;
 import com.example.ce.databinding.HomeFragmentBinding;
+import com.example.ce.ui.Database.DAO.OrderDAO;
+import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 import com.example.ce.ui.home.viewmodel.SharedViewModel;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -20,15 +23,26 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class HomeFragment extends Fragment {
 
     private SharedViewModel model;
     private HomeFragmentBinding addBinding;
-
+    private OrderDAO orderDAO;
     public HomeFragment(){}
+
+
+    public String timestampFrom;
+    public Long timestampLongFrom;
+
+    public String timestampTo;
+    public Long timestampLongTo;
 
     PieChart OrderTypeChart;
 
@@ -38,10 +52,68 @@ public class HomeFragment extends Fragment {
         // Inflate the View for this fragment
         addBinding = HomeFragmentBinding.inflate(inflater, container, false);
         View view = addBinding.getRoot();
+        Button btnConfirm = view.findViewById(R.id.btnconfirm);
+        DatePicker fromPicker = view.findViewById(R.id.from);
+        DatePicker toPicker = view.findViewById(R.id.to);
         OrderTypeChart = addBinding.orderTypeChart;
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
+
+        fromPicker.init(2023, 05, 12, new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, monthOfYear, dayOfMonth);
+                Date date = calendar.getTime();
+                // Do something with the date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                timestampFrom = sdf.format(date);
+                String StringDate = timestampLongFrom + " 12:00:00";
+                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                try {
+                    Date date2 = format.parse(StringDate);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                timestampLongFrom =date.getTime();
+
+            }
+        });
+
+        toPicker.init(2023, 05, 12, new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, monthOfYear, dayOfMonth);
+                Date date = calendar.getTime();
+                // Do something with the date
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                timestampTo = sdf.format(date);
+                String StringDate = timestampLongTo + " 12:00:00";
+                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                try {
+                    Date date2 = format.parse(StringDate);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                timestampLongTo=date.getTime();
+            }
+        });
+
+
+
+
         TypeChartBuild();
         return view;
     }
+
+
 
     @Override
     public void onDestroyView() {
@@ -51,8 +123,8 @@ public class HomeFragment extends Fragment {
 
     private void TypeChartBuild() {
         OrderTypeChart.setUsePercentValues(true); //设置为显示百分比
-        //OrderTypeChart.setDescription(" ");//设置描述
-        //OrderTypeChart.setDescriptionTextSize(20f);
+        OrderTypeChart.setDescription(" ");//设置描述
+        OrderTypeChart.setDescriptionTextSize(20f);
         // pieChart1.setExtraOffsets(5, 5, 5, 5);//设置饼状图距离上下左右的偏移量
         OrderTypeChart.setDrawCenterText(true); //设置可以绘制中间的文字
         OrderTypeChart.setCenterTextColor(Color.BLACK); //中间的文本颜色
@@ -69,7 +141,7 @@ public class HomeFragment extends Fragment {
         Legend l = OrderTypeChart.getLegend(); //设置比例图
         l.setMaxSizePercent(100);
         l.setTextSize(12);
-        //l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_CENTER);//设置每个tab的显示位置（这个位置是指下图右边小方框部分的位置 ）
+        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART_CENTER);//设置每个tab的显示位置（这个位置是指下图右边小方框部分的位置 ）
         l.setXEntrySpace(10f);
         l.setYEntrySpace(5f);//设置tab之间Y轴方向上的空白间距值
         l.setYOffset(0f);
