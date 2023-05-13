@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.ce.R;
 import com.example.ce.databinding.HomeFragmentBinding;
+import com.example.ce.ui.Database.DAO.OrderDAO;
+import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 import com.example.ce.ui.home.viewmodel.SharedViewModel;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -27,7 +29,7 @@ public class HomeFragment extends Fragment {
 
     private SharedViewModel model;
     private HomeFragmentBinding addBinding;
-
+    private OrderDAO orderDAO;
     public HomeFragment(){}
 
     PieChart OrderTypeChart;

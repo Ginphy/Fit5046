@@ -19,7 +19,7 @@ public class OrderViewModel extends AndroidViewModel {
     private static LiveData<List<Order>> allorders;
     private static LiveData<List<Order>> allprocessingorder;
     private FirebaseAuth auth;
-    private static List<Order> uploadorders;
+    private static CompletableFuture<List<Order>> uploadorders;
 
     public OrderViewModel (Application application) {
         super(application);
@@ -27,11 +27,11 @@ public class OrderViewModel extends AndroidViewModel {
         allorders = oRepository.getAllorders();
 //        allOrders = oRepository.getAllOrders();
         allprocessingorder = oRepository.getAllprocessingorder();
-        uploadorders = oRepository.getAllOrders();
+        uploadorders = oRepository.upload();
     }
-//    public CompletableFuture<Order> findByIDFuture(final boolean status){
-//        return oRepository.findByIDFuture(status);
-//    }
+    public CompletableFuture<List<Order>> upload(){
+        return oRepository.upload();
+    }
     public static LiveData<List<Order>> getAllorders() {
         return allorders;
     }
