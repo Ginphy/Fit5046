@@ -36,6 +36,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+
+
         <ImageView
             android:id="@+id/Background3"
             android:layout_width="380dp"
