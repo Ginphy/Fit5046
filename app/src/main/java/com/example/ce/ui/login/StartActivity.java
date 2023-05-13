@@ -22,8 +22,7 @@ public class StartActivity extends AppCompatActivity {
 
         Button btnSignup = findViewById(R.id.Sign);
         Button btnLogin = findViewById(R.id.Log);
-        Button btnTest = findViewById(R.id.Test);
-        Button btnTest2 = findViewById(R.id.Test2);
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,23 +42,7 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        btnTest.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                finish();
-                Intent i = new Intent(StartActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
 
-        btnTest2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                finish();
-                Intent i = new Intent(StartActivity.this, CourierHomeActivity.class);
-                startActivity(i);
-            }
-        });
     }
 
 }
