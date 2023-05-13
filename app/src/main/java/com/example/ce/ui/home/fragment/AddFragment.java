@@ -137,8 +137,8 @@ public class AddFragment extends Fragment{
                                         document.getString("Type"),
                                         document.getString("userid").toString(),
                                         document.getDouble("Price"),
-                                        document.getString("Status")));
-                                Log.d(TAG, "Successful getting documents!" + document.getLong("orderid").intValue());
+                                        document.getBoolean("Status").toString()));
+                                Log.d(TAG, "Successful getting documents!" + document.getData());
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
