@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.repository.OrderRepository;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.checkerframework.checker.units.qual.C;
 
@@ -17,10 +18,13 @@ public class OrderViewModel extends AndroidViewModel {
     private OrderRepository oRepository;
     private static LiveData<List<Order>> allorders;
     private static LiveData<List<Order>> allprocessingorder;
+    private FirebaseAuth auth;
+
     public OrderViewModel (Application application) {
         super(application);
         oRepository = new OrderRepository(application);
         allorders = oRepository.getAllorders();
+//        allOrders = oRepository.getAllOrders();
         allprocessingorder = oRepository.getAllprocessingorder();
     }
 //    public CompletableFuture<Order> findByIDFuture(final boolean status){

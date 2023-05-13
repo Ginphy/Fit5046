@@ -14,12 +14,18 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.ce.Workers.UploadWorker;
 import com.example.ce.databinding.FragmentDashboardBinding;
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.Constraints;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,20 +59,12 @@ public class DashboardFragment extends Fragment{
                     @Override
                     public void onChanged(@Nullable final List<Order> orders) {
                         for (Order temp : orders) {
-                            if(temp.status == false)
-                            {
-                                String status = "Waiting";
-                                orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
-                                    temp.start_date, temp.type, temp.courier_id, temp.price, status));}
-                            else {
-                                String status = "Waiting";
-                                orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
-                                        temp.start_date, temp.type, temp.courier_id, temp.price, status));
-                            }
+                            String status = "Waiting";
+                            orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
+                                    temp.start_date, temp.type, temp.courier_id, temp.price));
                         }
                     }
                 });
-
 
         OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -84,4 +82,5 @@ public class DashboardFragment extends Fragment{
         super.onDestroyView();
         binding = null;
     }
+
 }

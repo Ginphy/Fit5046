@@ -6,9 +6,14 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Constraints;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.example.ce.MainActivity;
 import com.example.ce.R;
+import com.example.ce.Workers.UploadWorker;
 import com.example.ce.ui.login.LoginActivity;
 import com.example.ce.ui.login.StartActivity;
 
@@ -26,5 +31,15 @@ public class paySuccess extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        scheduleSync();
+    }
+    private void scheduleSync() {
+        Constraints constraints = new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .build();
+        OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(UploadWorker.class)
+                .setConstraints(constraints)
+                .build();
+        WorkManager.getInstance(this).enqueue(request);
     }
 }

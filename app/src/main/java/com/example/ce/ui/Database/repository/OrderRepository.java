@@ -8,20 +8,24 @@ import androidx.room.Database;
 import com.example.ce.ui.Database.DAO.OrderDAO;
 import com.example.ce.ui.Database.database.OrderDatabase;
 import com.example.ce.ui.Database.entity.Order;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
 public class OrderRepository {
+    private FirebaseAuth auth;
     private OrderDAO orderDao;
     private LiveData<List<Order>> allorders;
     private LiveData<List<Order>> allprocessingorder;
-
+    private List<Order> allOrders;
     public OrderRepository(Application application) {
         OrderDatabase db = OrderDatabase.getInstance(application);
+        auth = FirebaseAuth.getInstance();
         orderDao = db.orderDao();
-        allorders = orderDao.getAll();
+        allorders = orderDao.getAll(auth.getCurrentUser().getUid());
         allprocessingorder = orderDao.getProcessingOrder(false);
     }
 
@@ -30,7 +34,7 @@ public class OrderRepository {
         return allorders;
     }
     public LiveData<List<Order>> getAllprocessingorder() {return  allprocessingorder;}
-
+    public List<Order> getAllOrders(){return allOrders;}
     public void updateStatus(boolean status, int orderid){
         OrderDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
