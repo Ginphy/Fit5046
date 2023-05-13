@@ -24,17 +24,17 @@
 
         <TextView
             android:id="@+id/order_price"
-            android:layout_width="230dp"
-            android:layout_height="35dp"
+            android:layout_width="252dp"
+            android:layout_height="63dp"
             android:layout_below="@id/Orderid"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="267dp"
-            android:layout_marginEnd="89dp"
+            android:layout_marginTop="255dp"
+            android:layout_marginEnd="68dp"
             android:drawablePadding="2dp"
             android:fontFamily="@font/optima"
             android:gravity="center"
-            android:text="order_price"
+            android:text="Price"
             android:textSize="24sp" />
 
         <TextView
@@ -44,13 +44,13 @@
             android:layout_below="@+id/textView5"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="177dp"
-            android:layout_marginEnd="79dp"
-            android:layout_marginBottom="167dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="178dp"
+            android:layout_marginEnd="91dp"
+            android:layout_marginBottom="166dp"
             android:layout_toStartOf="@+id/articleId"
             android:fontFamily="@font/optima"
-            android:text="ArticleType"
+            android:text="Type"
             android:textColor="@color/black" />
 
         <TextView
@@ -82,7 +82,7 @@
             android:layout_marginBottom="324dp"
             android:layout_toStartOf="@+id/articleId"
             android:fontFamily="@font/optima"
-            android:text="ArticleID"
+            android:text="Item Name"
             android:textColor="@color/black" />
 
         <TextView
@@ -109,7 +109,7 @@
             android:layout_marginEnd="2dp"
             android:drawablePadding="2dp"
             android:fontFamily="@font/optima"
-            android:text="articleType"
+            android:text="Type"
             android:textSize="14sp" />
 
         <TextView
@@ -123,7 +123,7 @@
             android:layout_marginEnd="1dp"
             android:drawablePadding="2dp"
             android:fontFamily="@font/optima"
-            android:text="CourierId"
+            android:text="Courier Id"
             android:textSize="14sp" />
 
         <TextView
@@ -155,13 +155,13 @@
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="80dp"
-            android:layout_height="29dp"
+            android:layout_width="97dp"
+            android:layout_height="31dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="38dp"
-            android:layout_marginEnd="77dp"
-            android:layout_marginBottom="286dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="284dp"
             android:layout_toStartOf="@+id/articleId"
             android:fontFamily="@font/optima"
             android:text="StartPoint"
@@ -208,7 +208,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="4dp"
 
-            android:text="   Order_id"
+            android:text="  Order_id"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -236,7 +236,7 @@
             android:layout_marginEnd="-4dp"
             android:drawablePadding="2dp"
             android:fontFamily="@font/optima"
-            android:text="articleId"
+            android:text="Article name"
             android:textSize="14sp" />
 
         <Button

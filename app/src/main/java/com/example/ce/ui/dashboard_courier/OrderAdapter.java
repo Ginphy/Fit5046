@@ -88,8 +88,7 @@ public class OrderAdapter extends RecyclerView.Adapter<com.example.ce.ui.dashboa
                             }
                         });
                 view.setBackgroundColor(Color.parseColor("#FF4081"));
-                orderViewModel.updateStatus(true, model.getOrderId());
-                notifyDataSetChanged();
+
             }
         });
 

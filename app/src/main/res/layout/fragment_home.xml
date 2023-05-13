@@ -47,62 +47,49 @@
         app:layout_constraintTop_toTopOf="@+id/background_gray"
         app:layout_constraintVertical_bias="0.143" />
 
-    <ImageButton
-        android:id="@+id/BackButton"
-        android:layout_width="19dp"
-        android:layout_height="23dp"
-        android:background="#00EAE2E2"
-        app:layout_constraintBottom_toBottomOf="@+id/Logo1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.51"
-        app:srcCompat="@drawable/back_icon"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/Logo1"
         android:layout_width="46dp"
         android:layout_height="38dp"
+        android:layout_marginEnd="356dp"
         app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toEndOf="@+id/BackButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/ProdName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Citizen Express"
         android:fontFamily="@font/optima"
+        android:text="Citizen Express"
+        android:textColor="#0B0401"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/Logo1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/Logo1"
         app:layout_constraintTop_toTopOf="@+id/Logo1"
-        app:layout_constraintVertical_bias="0.47000003"
+        app:layout_constraintVertical_bias="0.473"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/Background2"
         android:layout_width="400dp"
-        android:layout_height="310dp"
+        android:layout_height="350dp"
         android:alpha="0.6"
-        android:background="#28DFD6D6"
-        android:backgroundTint="#F1E7E7"
+        android:background="@drawable/background_3"
+
         android:fontFamily="@font/optima"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.83"
-        app:srcCompat="@drawable/shape" />
+        app:layout_constraintVertical_bias="0.863" />
 
     <ImageView
         android:id="@+id/radioImg1"
