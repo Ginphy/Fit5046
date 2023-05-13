@@ -1,6 +1,9 @@
 package com.example.ce.ui.home.fragment;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +31,11 @@ import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 import com.example.ce.ui.dashboard_courier.DashboardViewModel;
 import com.example.ce.ui.dashboard_courier.OrderAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -78,7 +86,7 @@ public class AddFragment extends Fragment{
 //   private final Context context;
     private ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>  courseModelArrayList;
     private OrderViewModel orderViewModel;
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private FragmentDashboardBinding binding;
 
@@ -95,25 +103,48 @@ public class AddFragment extends Fragment{
         //    View root = binding.getRoot();
         RecyclerView recyclerView = root.findViewById(R.id.recycler_view);
         ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList = new ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>();
-        orderViewModel =
-                ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(OrderViewModel.class);
-        OrderViewModel.getAllprocessingorder().observe(getViewLifecycleOwner(), new
-                Observer<List<Order>>() {
+//        orderViewModel =
+//                ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(OrderViewModel.class);
+//        OrderViewModel.getAllprocessingorder().observe(getViewLifecycleOwner(), new
+//                Observer<List<Order>>() {
+//                    @Override
+//                    public void onChanged(@Nullable final List<Order> orders) {
+//                        for (Order temp : orders) {
+//                            orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
+//                                    temp.start_date, temp.type, temp.courier_id, temp.price, "Waiting..."));
+//                        }
+//                    }
+//                });
+
+//        orderModelArrayList.add(new DashboardViewModel(1, "asdasd", "asdasd", "asdasd",
+//                date.toString(), "asdasd", "asdasd", 6,"Waiting"));
+//
+//        orderModelArrayList.add(new DashboardViewModel(2, "黄宇航", "东南大学苏州", "文荟人才公寓",
+//                date.toString(), "Pig", "110", -250,"Waiting"));
+        db.collection("Orders")
+                .whereEqualTo("Status", false)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onChanged(@Nullable final List<Order> orders) {
-                        for (Order temp : orders) {
-                            orderModelArrayList.add(new DashboardViewModel(temp.orderid, temp.itemName, temp.start_mame, temp.terminal_mame,
-                                    temp.start_date, temp.type, temp.courier_id, temp.price, "Waiting..."));
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                orderModelArrayList.add(new DashboardViewModel(document.getLong("Orderid").intValue(),
+                                        document.getString("Itemname"),
+                                        document.getString("StartName"),
+                                        document.getString("EndName"),
+                                        document.getString("StartDate"),
+                                        document.getString("Type"),
+                                        document.getString("userid").toString(),
+                                        document.getDouble("Price"),
+                                        document.getString("Status")));
+                                Log.d(TAG, "Successful getting documents!" + document.getLong("orderid").intValue());
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
-
-        orderModelArrayList.add(new DashboardViewModel(1, "asdasd", "asdasd", "asdasd",
-                date.toString(), "asdasd", "asdasd", 6,"Waiting"));
-
-        orderModelArrayList.add(new DashboardViewModel(2, "黄宇航", "东南大学苏州", "文荟人才公寓",
-                date.toString(), "Pig", "110", -250,"Waiting"));
-
         com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);

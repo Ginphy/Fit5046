@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,14 +27,20 @@ public class UploadWorker extends Worker {
     private OrderDAO orderDAO;
     private OrderViewModel orderViewModel;
     private FirebaseAuth auth;
-    private FirebaseFirestore database;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    Calendar calendar = Calendar.getInstance();
+    int year = calendar.get(Calendar.YEAR);
+    int month = calendar.get(Calendar.MONTH);
+    int day = calendar.get(Calendar.DAY_OF_MONTH);
+    int hour = calendar.get(Calendar.HOUR_OF_DAY);
+    int minute = calendar.get(Calendar.MINUTE);
+    int second = calendar.get(Calendar.SECOND);
     public UploadWorker(
             @NonNull Context appContext,
             @NonNull WorkerParameters workerParams) {
         super(appContext, workerParams);
         OrderDatabase db = OrderDatabase.getInstance(appContext);
         orderDAO = db.orderDao();
-        database = FirebaseFirestore.getInstance();
 
     }
 
@@ -49,7 +56,7 @@ public class UploadWorker extends Worker {
             auth = FirebaseAuth.getInstance();
             List<Order> OrderList = orderDAO.upload();
             for (Order order : OrderList) {
-                DocumentReference docRef = database.collection("Orders").document(String.valueOf(order.orderid));
+                DocumentReference docRef = db.collection("Orders").document(String.valueOf(order.orderid));
                 Map<String, Object> data = new HashMap<>();
                 data.put("Orderid", order.orderid);
                 data.put("userid", order.user_id);
@@ -63,7 +70,12 @@ public class UploadWorker extends Worker {
                 data.put("Status", order.status);
                 data.put("Description", order.description);
                 docRef.set(data);
-                Log.e(TAG, "Success upload order information!");
+                Log.e(TAG, "Success upload order information" + year +'-'+
+                        month + '-'+
+                        day + '/'+
+                        hour + '-'+
+                        minute +'-'+
+                        second);
             }
             return Result.success();
         } catch (Throwable throwable) {

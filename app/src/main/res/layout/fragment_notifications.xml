@@ -48,15 +48,15 @@
         android:id="@+id/BackButton"
         android:layout_width="43dp"
         android:layout_height="40dp"
-        android:background="#9DDEE3"
+        android:background="#ECECEC"
         android:fontFamily="@font/optima"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.39999998"
         app:srcCompat="@drawable/setting_icon"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -78,39 +78,39 @@
         android:id="@+id/Background3"
         android:layout_width="380dp"
         android:layout_height="72dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:fontFamily="@font/optima"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
-        app:layout_constraintStart_toStartOf="@+id/background_gray"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.179"
+        app:layout_constraintVertical_bias="0.171"
         app:srcCompat="@drawable/shape" />
 
     <ImageView
         android:id="@+id/background4"
         android:layout_width="380dp"
         android:layout_height="72dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:fontFamily="@font/optima"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toStartOf="@+id/background_gray"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.29000002"
+        app:layout_constraintVertical_bias="0.279"
         app:srcCompat="@drawable/shape" />
 
     <TextView
         android:id="@+id/Profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
         android:fontFamily="@font/optima"
+        android:text="Profile"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/Background3"
         app:layout_constraintEnd_toEndOf="@+id/Background3"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="@+id/Background3"
         app:layout_constraintTop_toTopOf="@+id/Background3" />
 
@@ -118,63 +118,51 @@
         android:id="@+id/Nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nickname"
         android:fontFamily="@font/optima"
+        android:text="UID:"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/background4"
         app:layout_constraintEnd_toEndOf="@+id/background4"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="@+id/background4"
-        app:layout_constraintTop_toBottomOf="@+id/Background3" />
-
-    <ImageView
-        android:id="@+id/Background5"
-        android:layout_width="380dp"
-        android:layout_height="72dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:fontFamily="@font/optima"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="@+id/background_gray"
-        app:layout_constraintTop_toTopOf="@+id/background_gray"
-        app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/shape" />
+        app:layout_constraintTop_toBottomOf="@+id/Background3"
+        app:layout_constraintVertical_bias="0.6" />
 
     <ImageView
         android:id="@+id/background6"
         android:layout_width="380dp"
         android:layout_height="72dp"
-        app:layout_constraintBottom_toTopOf="@+id/background7"
         android:fontFamily="@font/optima"
+        app:layout_constraintBottom_toTopOf="@+id/background7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintHorizontal_bias="0.638"
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toBottomOf="@+id/Background5"
-        app:layout_constraintVertical_bias="0.041"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/shape" />
 
     <ImageView
-        android:id="@+id/background7"
+        android:id="@+id/Background5"
         android:layout_width="380dp"
         android:layout_height="72dp"
+        android:fontFamily="@font/optima"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/optima"
-        app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toStartOf="@+id/background_gray"
-        app:layout_constraintTop_toBottomOf="@+id/Background5"
-        app:layout_constraintVertical_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background_gray"
+        app:layout_constraintVertical_bias="0.429"
         app:srcCompat="@drawable/shape" />
 
     <ImageView
         android:id="@+id/background8"
         android:layout_width="380dp"
         android:layout_height="72dp"
+        android:fontFamily="@font/optima"
         app:layout_constraintBottom_toTopOf="@+id/background9"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/optima"
-        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toBottomOf="@+id/background7"
         app:layout_constraintVertical_bias="0.0"
@@ -184,13 +172,26 @@
         android:id="@+id/background9"
         android:layout_width="380dp"
         android:layout_height="72dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:fontFamily="@font/optima"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toStartOf="@+id/background_gray"
         app:layout_constraintTop_toBottomOf="@+id/background7"
         app:layout_constraintVertical_bias="0.433"
+        app:srcCompat="@drawable/shape" />
+
+    <ImageView
+        android:id="@+id/background7"
+        android:layout_width="380dp"
+        android:layout_height="72dp"
+        android:fontFamily="@font/optima"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.638"
+        app:layout_constraintStart_toStartOf="@+id/background_gray"
+        app:layout_constraintTop_toBottomOf="@+id/Background5"
+        app:layout_constraintVertical_bias="0.232"
         app:srcCompat="@drawable/shape" />
 
     <TextView
@@ -264,16 +265,29 @@
         app:layout_constraintStart_toStartOf="@+id/background4"
         app:layout_constraintTop_toBottomOf="@+id/background7" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="61dp"
+        android:layout_height="46dp"
+        android:src="@drawable/profile1"
+        app:layout_constraintBottom_toBottomOf="@+id/Background3"
+        app:layout_constraintEnd_toEndOf="@+id/Background3"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="@+id/Background3"
+        app:layout_constraintTop_toTopOf="@+id/Background3"
+        app:layout_constraintVertical_bias="0.461" />
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:fontFamily="@font/optima"
-        app:layout_constraintBottom_toBottomOf="@+id/background4"
+        android:text="Profile:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/Background3"
         app:layout_constraintEnd_toEndOf="@+id/background4"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toEndOf="@+id/Nickname"
-        app:layout_constraintTop_toBottomOf="@+id/Background3" />
+        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintStart_toStartOf="@+id/background4"
+        app:layout_constraintTop_toTopOf="@+id/background4"
+        app:layout_constraintVertical_bias="0.528" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

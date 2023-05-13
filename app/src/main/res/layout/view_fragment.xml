@@ -26,15 +26,17 @@
 
         <ImageView
             android:id="@+id/Background"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/background"
+            android:layout_width="423dp"
+            android:layout_height="1194dp"
+            android:src="@drawable/background_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+
 
         <ImageView
             android:id="@+id/Background3"
@@ -77,14 +79,15 @@
             android:id="@+id/Nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nickname"
+            android:text="UID:"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/background4"
             app:layout_constraintEnd_toEndOf="@+id/background4"
-            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintHorizontal_bias="0.116"
             app:layout_constraintStart_toStartOf="@+id/background4"
-            app:layout_constraintTop_toBottomOf="@+id/Background3" />
+            app:layout_constraintTop_toBottomOf="@+id/Background3"
+            app:layout_constraintVertical_bias="0.469" />
 
         <ImageView
             android:id="@+id/background6"
@@ -212,16 +215,17 @@
             app:layout_constraintStart_toStartOf="@+id/background4"
             app:layout_constraintTop_toBottomOf="@+id/background7" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/background4"
-            app:layout_constraintEnd_toEndOf="@+id/background4"
-            app:layout_constraintHorizontal_bias="0.83"
-            app:layout_constraintStart_toEndOf="@+id/Nickname"
-            app:layout_constraintTop_toBottomOf="@+id/Background3" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="62dp"
+            android:layout_height="47dp"
+            app:layout_constraintBottom_toBottomOf="@+id/Background3"
+            app:layout_constraintEnd_toEndOf="@+id/Background3"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintStart_toStartOf="@+id/Background3"
+            app:layout_constraintTop_toTopOf="@+id/Background3"
+            app:srcCompat="@drawable/profile2" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

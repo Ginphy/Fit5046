@@ -44,6 +44,7 @@
         <activity android:name="com.example.ce.ui.login.InfoActivity" />
         <activity android:name=".ui.home.ItemActivity"
                   android:windowSoftInputMode="adjustPan"/>
+
         <activity android:name="com.example.ce.ui.home.SearchStartpointActivity" />
         <activity android:name="com.example.ce.ui.home.SearchDestinationActivity" />
         <activity android:name="com.example.ce.ui.home.paySuccess" />
