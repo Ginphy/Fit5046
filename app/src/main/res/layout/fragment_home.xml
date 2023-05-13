@@ -25,7 +25,8 @@
         android:id="@+id/background_gray"
         android:layout_width="424dp"
         android:layout_height="770dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/background_2"
+        android:alpha="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.401"
@@ -50,7 +51,7 @@
         android:id="@+id/BackButton"
         android:layout_width="19dp"
         android:layout_height="23dp"
-        android:background="#E7E7E7"
+        android:background="#DAF2F8"
         app:layout_constraintBottom_toBottomOf="@+id/Logo1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
@@ -77,18 +78,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Citizen Express"
-        tools:ignore="SpeakableTextPresentCheck"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/Logo1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/Logo1"
         app:layout_constraintTop_toTopOf="@+id/Logo1"
-        app:layout_constraintVertical_bias="0.47000003" />
+        app:layout_constraintVertical_bias="0.47000003"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/Background2"
         android:layout_width="400dp"
         android:layout_height="310dp"
+        android:alpha="0.6"
+        android:background="#DFD6D6"
+        android:backgroundTint="#F1E7E7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
@@ -97,6 +102,137 @@
         app:layout_constraintVertical_bias="0.83"
         app:srcCompat="@drawable/shape" />
 
+    <ImageView
+        android:id="@+id/radioImg1"
+        android:layout_width="37dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toBottomOf="@+id/destinationAddr"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/destinationAddr"
+        app:layout_constraintVertical_bias="0.49"
+        app:srcCompat="@drawable/radio_button_img" />
+
+    <ImageView
+        android:id="@+id/radioImg"
+        android:layout_width="37dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toBottomOf="@+id/startAddr"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/startAddr"
+        app:layout_constraintVertical_bias="0.49"
+        app:srcCompat="@drawable/radio_button_img" />
+
+    <View
+
+        android:id="@+id/line"
+        android:layout_width="320dp"
+        android:layout_height="1dp"
+        android:background="#D1D1D1"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.39" />
+
+    <View
+
+        android:id="@+id/line2"
+        android:layout_width="320dp"
+        android:layout_height="1dp"
+        android:background="#D1D1D1"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.6" />
+
+
+    <EditText
+        android:id="@+id/startAddr"
+        android:layout_width="230dp"
+        android:layout_height="48dp"
+        android:alpha="0.7"
+        android:background="@drawable/shape"
+        android:backgroundTint="#8BC7E6"
+        android:hint="Please choose startpoint"
+        android:textColor="#FFFFFF"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.274" />
+
+    <EditText
+        android:id="@+id/destinationAddr"
+        android:layout_width="230dp"
+        android:layout_height="48dp"
+        android:alpha="0.7"
+        android:background="@drawable/shape"
+        android:backgroundTint="#93CBE3"
+        android:hint="Please choose destination"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.516" />
+
+    <Button
+        android:id="@+id/SearchStart"
+        android:layout_width="216dp"
+        android:layout_height="45dp"
+        android:alpha="0"
+        android:background="#8192C3"
+        android:text="SearchStart"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.275"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/SearchEnd"
+        android:layout_width="228dp"
+        android:layout_height="49dp"
+        android:alpha="0"
+        android:background="#5E75B6"
+        android:backgroundTint="#93CBE3"
+        android:text="SearchEnd"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.524"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/Submit"
+        android:layout_width="139dp"
+        android:layout_height="40dp"
+        android:background="@drawable/shape"
+        android:backgroundTint="#5E75B8"
+        android:text="Submit"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/Background2"
+        app:layout_constraintEnd_toEndOf="@+id/Background2"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="@+id/Background2"
+        app:layout_constraintTop_toTopOf="@+id/Background2"
+        app:layout_constraintVertical_bias="0.88" />
     <Button
         android:id="@+id/Send"
         android:layout_width="75dp"
@@ -127,133 +263,6 @@
         app:layout_constraintTop_toTopOf="@+id/Background2"
         app:layout_constraintVertical_bias="0.01999998" />
 
-    <ImageView
-        android:id="@+id/radioImg1"
-        android:layout_width="37dp"
-        android:layout_height="31dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.027"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.49"
-        app:srcCompat="@drawable/radio_button_img" />
-
-    <ImageView
-        android:id="@+id/radioImg"
-        android:layout_width="37dp"
-        android:layout_height="31dp"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.027"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.29000002"
-        app:srcCompat="@drawable/radio_button_img" />
-
-    <View
-
-        android:id="@+id/line"
-        android:layout_width="320dp"
-        android:layout_height="1dp"
-        android:background="#D1D1D1"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.39" />
-
-    <View
-
-        android:id="@+id/line2"
-        android:layout_width="320dp"
-        android:layout_height="1dp"
-        android:background="#D1D1D1"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.6" />
-
-
-
-    <EditText
-        android:id="@+id/startAddr"
-        android:layout_width="230dp"
-        android:layout_height="48dp"
-        android:background="@color/white"
-        android:hint="Please choose startpoint"
-        android:textColor="#000000"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.547"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.274" />
-
-    <EditText
-        android:id="@+id/destinationAddr"
-        android:layout_width="230dp"
-        android:layout_height="48dp"
-        android:background="@color/white"
-        android:hint="Please choose destination"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.516" />
-
-    <Button
-        android:id="@+id/SearchStart"
-        android:layout_width="216dp"
-        android:layout_height="45dp"
-        android:background="#5E75B7"
-        android:text="SearchStart"
-        android:textColor="#FFFFFF"
-        android:alpha="0"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.275"
-        tools:visibility="invisible" />
-
-    <Button
-        android:id="@+id/SearchEnd"
-        android:layout_width="228dp"
-        android:layout_height="49dp"
-        android:background="#5E75B6"
-        android:text="SearchEnd"
-        android:textColor="#FFFFFF"
-        android:alpha="0"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.524"
-        tools:visibility="invisible" />
-
-    <Button
-        android:id="@+id/Submit"
-        android:layout_width="139dp"
-        android:layout_height="40dp"
-        android:background="@drawable/shape"
-        android:backgroundTint="#5E75B8"
-        android:text="Submit"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/Background2"
-        app:layout_constraintEnd_toEndOf="@+id/Background2"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="@+id/Background2"
-        app:layout_constraintTop_toTopOf="@+id/Background2"
-        app:layout_constraintVertical_bias="0.88" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
