@@ -18,12 +18,8 @@ public class OrderViewModel extends AndroidViewModel {
     private OrderRepository oRepository;
     private static LiveData<List<Order>> allorders;
     private static LiveData<List<Order>> allprocessingorder;
-<<<<<<< HEAD
-    private static List<Order> allOrders;
-=======
     private FirebaseAuth auth;
 
->>>>>>> a84a777150572e35fe39ca0745defd204bd515ca
     public OrderViewModel (Application application) {
         super(application);
         oRepository = new OrderRepository(application);
@@ -38,7 +34,6 @@ public class OrderViewModel extends AndroidViewModel {
         return allorders;
     }
     public static LiveData<List<Order>> getAllprocessingorder(){return allprocessingorder;}
-    public static List<Order> getAllOrders(){return allOrders;}
     public void insert(Order order) {
         oRepository.insert(order);
     }

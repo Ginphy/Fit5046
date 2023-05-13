@@ -20,20 +20,12 @@ public class OrderRepository {
     private OrderDAO orderDao;
     private LiveData<List<Order>> allorders;
     private LiveData<List<Order>> allprocessingorder;
-<<<<<<< HEAD
     private List<Order> allOrders;
-=======
->>>>>>> a84a777150572e35fe39ca0745defd204bd515ca
     public OrderRepository(Application application) {
         OrderDatabase db = OrderDatabase.getInstance(application);
         auth = FirebaseAuth.getInstance();
         orderDao = db.orderDao();
-<<<<<<< HEAD
-        allorders = orderDao.getAll();
-//        allOrders = orderDao.getAllOrders();
-=======
         allorders = orderDao.getAll(auth.getCurrentUser().getUid());
->>>>>>> a84a777150572e35fe39ca0745defd204bd515ca
         allprocessingorder = orderDao.getProcessingOrder(false);
     }
 
