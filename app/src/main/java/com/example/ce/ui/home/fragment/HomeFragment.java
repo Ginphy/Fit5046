@@ -46,6 +46,8 @@ public class HomeFragment extends Fragment {
 
     PieChart OrderTypeChart;
 
+    Date date1,date2;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,8 +55,8 @@ public class HomeFragment extends Fragment {
         addBinding = HomeFragmentBinding.inflate(inflater, container, false);
         View view = addBinding.getRoot();
         Button btnConfirm = view.findViewById(R.id.btnconfirm);
-        DatePicker fromPicker = view.findViewById(R.id.from);
-        DatePicker toPicker = view.findViewById(R.id.to);
+        DatePicker fromPicker = view.findViewById(R.id.startdate);
+        DatePicker toPicker = view.findViewById(R.id.enddate);
         OrderTypeChart = addBinding.orderTypeChart;
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,14 +76,14 @@ public class HomeFragment extends Fragment {
                 // Do something with the date
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 timestampFrom = sdf.format(date);
-                String StringDate = timestampLongFrom + " 12:00:00";
+                String StringDate = timestampFrom + " 12:00:00";
                 SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 try {
-                    Date date2 = format.parse(StringDate);
+                    date1 = format.parse(StringDate);
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
-                timestampLongFrom =date.getTime();
+                timestampLongFrom =date1.getTime();
 
             }
         });
@@ -95,14 +97,14 @@ public class HomeFragment extends Fragment {
                 // Do something with the date
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 timestampTo = sdf.format(date);
-                String StringDate = timestampLongTo + " 12:00:00";
+                String StringDate = timestampTo + " 12:00:00";
                 SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 try {
-                    Date date2 = format.parse(StringDate);
+                    date2 = format.parse(StringDate);
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
-                timestampLongTo=date.getTime();
+                timestampLongTo=date2.getTime();
             }
         });
 
