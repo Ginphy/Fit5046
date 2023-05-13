@@ -104,12 +104,6 @@ public class ItemActivity extends AppCompatActivity {
         endNameTextView.setText(EndName);
         DatePicker datePicker = findViewById(R.id.calendar);
         CheckBox ckSave = (CheckBox)  findViewById(R.id.saveToCalendar);
-        ckSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //calendar
-            }
-        });
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser User = auth.getCurrentUser();
@@ -169,11 +163,13 @@ public class ItemActivity extends AppCompatActivity {
                                     , type, timestamp, StartLongitude, StartLatitude, EndLongitude, EndLatitude, price, editDescription.getText().toString(), false, UserID,"Processing",0);
                                     orderViewModel.insert(order);
                                     // Add Calendar Event
-                                    calendarUtils=new CalendarReminderUtils ();
-                                    String ClendarEvent = "Your " + editName.getText().toString() +" should be sent to " + EndName + " today.";
-                                    calendarUtils.addCalendarEvent(ItemActivity.this,"Citizen Express Event",ClendarEvent,timestampLong);
-                                    String msg = "This order has been add to your System Calendar.";
-                                    toastMsg(msg);
+                                    if (ckSave.isChecked()) {
+                                        calendarUtils=new CalendarReminderUtils ();
+                                        String ClendarEvent = "Your " + editName.getText().toString() +" should be sent to " + EndName + " today.";
+                                        calendarUtils.addCalendarEvent(ItemActivity.this,"Citizen Express Event",ClendarEvent,timestampLong);
+                                        String msg = "This order has been add to your System Calendar.";
+                                        toastMsg(msg);
+                                    }
                                 }
                                 else{
                                     String msg = "The item information should not be null!";

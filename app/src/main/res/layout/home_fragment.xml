@@ -11,4 +11,9 @@
         android:textSize="20sp"
         android:text="This is Home"
         android:gravity="center_horizontal" />
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/order_type_chart"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        />
 </LinearLayout>
