@@ -7,6 +7,7 @@ buildscript {
         google()  // Google's Maven repository
         jcenter() // Used for Map API
         mavenCentral()  // Maven Central repository
+        maven { url "https://jitpack.io" } // A chart unit
     }
 
     dependencies {
