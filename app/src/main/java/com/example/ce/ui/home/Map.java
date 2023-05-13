@@ -65,6 +65,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import kotlinx.coroutines.channels.Send;
 
 
 public class Map extends AppCompatActivity {
@@ -111,7 +112,7 @@ public class Map extends AppCompatActivity {
         String deadline = intent.getStringExtra("deadline"); //iteminfo
         setContentView(R.layout.fragment_home) ;
         Button SearchStart = findViewById(R.id.SearchStart);
-        Button Send = findViewById(R.id.Send);
+
         Button SearchEnd = findViewById(R.id.SearchEnd);
         // Button itembutton = findViewById(R.id.Item);
         Button Submit = findViewById(R.id.Submit);
@@ -255,35 +256,35 @@ public class Map extends AppCompatActivity {
         }
 
         Random random = new Random();
-        Send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                java.util.Map<String, Object> order = new HashMap<>();
-                order.put("uid", User.getUid());
-                order.put("RecAddress", mDestinationAddress.getText().toString());
-                order.put("SntAddress", mStartAddress.getText().toString());
-                order.put("Price", random.nextInt(202));
-                order.put("RevUser", "zjj");
-                order.put("itemid", itemid);
-                order.put("StartTime", FieldValue.serverTimestamp());
-                order.put("Deadline",deadline);
-                order.put("status", 0);
-                db.collection("Orders")
-                        .add(order)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
-            }
-        });
+//        Send.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                java.util.Map<String, Object> order = new HashMap<>();
+//                order.put("uid", User.getUid());
+//                order.put("RecAddress", mDestinationAddress.getText().toString());
+//                order.put("SntAddress", mStartAddress.getText().toString());
+//                order.put("Price", random.nextInt(202));
+//                order.put("RevUser", "zjj");
+//                order.put("itemid", itemid);
+//                order.put("StartTime", FieldValue.serverTimestamp());
+//                order.put("Deadline",deadline);
+//                order.put("status", 0);
+//                db.collection("Orders")
+//                        .add(order)
+//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                            @Override
+//                            public void onSuccess(DocumentReference documentReference) {
+//                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+//                            }
+//                        })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.w(TAG, "Error adding document", e);
+//                            }
+//                        });
+//            }
+//        });
 //        itembutton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

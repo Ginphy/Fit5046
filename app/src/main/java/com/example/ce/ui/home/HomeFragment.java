@@ -139,6 +139,16 @@ public class HomeFragment extends Fragment {
         Button SearchEnd = root.findViewById(R.id.SearchEnd);
         // Button itembutton = root.findViewById(R.id.Item);
         Button Submit = root.findViewById(R.id.Submit);
+//        Button btnBack = root.findViewById(R.id.BackButton);
+//        btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), StartActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+
         mContext = getActivity().getApplicationContext();
 
         try {
@@ -285,17 +295,10 @@ public class HomeFragment extends Fragment {
         } else {
             System.out.print("Intent Error.");
         }
-        Button Get = (Button) root.findViewById(R.id.Get);
-        Get.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //  finish();
-                Intent i = new Intent(getActivity(), ItemActivity.class);
-                startActivity(i);
-            }
-        });
+
+
         Random random = new Random();
-        Button Send = (Button) root.findViewById(R.id.Send);
+
 //        Send.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
