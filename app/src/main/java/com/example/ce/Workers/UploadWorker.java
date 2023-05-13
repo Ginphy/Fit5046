@@ -13,6 +13,8 @@ import com.example.ce.ui.Database.DAO.OrderDAO;
 import com.example.ce.ui.Database.database.OrderDatabase;
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,6 +25,7 @@ import java.util.Map;
 public class UploadWorker extends Worker {
     private OrderDAO orderDAO;
     private OrderViewModel orderViewModel;
+    private FirebaseAuth auth;
     private FirebaseFirestore database;
     public UploadWorker(
             @NonNull Context appContext,
@@ -43,9 +46,8 @@ public class UploadWorker extends Worker {
         Context applicationContext = getApplicationContext();
 
         try {
-
-
-            List<Order> OrderList = (List<Order>) orderDAO.getAll();
+            auth = FirebaseAuth.getInstance();
+            List<Order> OrderList = (List<Order>) orderDAO.getAll(auth.getCurrentUser().getUid());
             for (Order order : OrderList) {
                 DocumentReference docRef = database.collection("Orders").document(String.valueOf(order.orderid));
                 Map<String, Object> data = new HashMap<>();

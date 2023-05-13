@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#005386"
+
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -29,50 +29,58 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="446dp"
-        android:layout_height="741dp"
+        android:layout_width="497dp"
+        android:layout_height="950dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background_2"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/background_3"
+        tools:ignore="MissingConstraints"
+
+        />
 
     <EditText
         android:id="@+id/PhoneText"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_width="242dp"
+        android:layout_height="49dp"
         android:ems="10"
+        android:fontFamily="@font/optima"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.662"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.554" />
 
     <EditText
         android:id="@+id/identityText"
-        android:layout_width="wrap_content"
+        android:layout_width="236dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
         android:ems="10"
+        android:fontFamily="@font/optima"
         android:hint="Confirm your password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/PhoneText"
-        app:layout_constraintVertical_bias="0.42000002" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <TextView
         android:id="@+id/Phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:fontFamily="@font/optima"
         android:text="Password:"
-        android:textColor="#4CC5AA"
+
+        android:textColor="#FBE9E7"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/PhoneText"
         app:layout_constraintEnd_toStartOf="@id/PhoneText"
         app:layout_constraintHorizontal_bias="1.0"
@@ -83,26 +91,33 @@
         android:id="@+id/Identity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/optima"
         android:text="Confirm:"
-        android:textColor="#4CC5AA"
+        android:textColor="#FBE9E7"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/identityText"
         app:layout_constraintEnd_toStartOf="@+id/identityText"
-        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Phone" />
+        app:layout_constraintTop_toBottomOf="@+id/Phone"
+        app:layout_constraintVertical_bias="0.741" />
 
     <Button
         android:id="@+id/Log"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Sign up"
-        app:iconTint="#FFFFFF"
-        android:background="@drawable/shape"
+        android:layout_width="214dp"
+        android:layout_height="57dp"
         android:alpha="0.85"
+        android:background="@drawable/button_drawable"
+        android:fontFamily="@font/optima"
+        android:text="Sign up"
+        android:textSize="17.5sp"
+        app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.737" />
 
     <RadioGroup
 
@@ -126,7 +141,9 @@
             android:layout_width="86dp"
             android:layout_height="48dp"
             android:text="User"
+            android:textColor="#FBE9E7"
             android:textSize="12sp"
+            android:fontFamily="@font/optima"
             app:iconTint="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/Log"
             app:layout_constraintEnd_toStartOf="@+id/female"
@@ -137,8 +154,10 @@
             android:id="@+id/courier"
             android:layout_width="86dp"
             android:layout_height="48dp"
+            android:fontFamily="@font/optima"
             android:text="Courier"
-            android:textSize="10sp"
+            android:textColor="#FBE9E7"
+            android:textSize="14sp"
             app:iconTint="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/Log"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,36 +171,44 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:ems="10"
+        android:fontFamily="@font/optima"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColor="#4CC5AA"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/identityText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.295" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/optima"
         android:text="Citizen Express"
-        android:textColor="#0066A9"
-        android:textSize="16sp"
+        android:textColor="#EDEDED"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.43" />
+        app:layout_constraintVertical_bias="0.397" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="76dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.92"
+        app:layout_constraintVertical_bias="0.756"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -189,41 +216,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:fontFamily="@font/optima"
         android:text="Email:"
-        android:textColor="#4CC5AA"
+        android:textColor="#FBE9E7"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/PhoneText"
         app:layout_constraintEnd_toStartOf="@+id/NameText"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/NameText" />
+        app:layout_constraintTop_toTopOf="@+id/NameText"
+        app:layout_constraintVertical_bias="0.24" />
+
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/optima"
         android:text="SELECT TO BE"
+        android:textSize="16sp"
+        android:textColor="#FBE9E7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.65" />
-
+        app:layout_constraintVertical_bias="0.691" />
 
     <Button
         android:id="@+id/Back"
-        android:layout_width="58dp"
-        android:layout_height="35dp"
-        android:background="@drawable/shape"
-        android:backgroundTint="#62CAF2"
+        android:layout_width="86dp"
+        android:layout_height="57dp"
+        android:alpha="0.85"
+
+        android:fontFamily="@font/optima"
         android:text="Back"
-        android:textColor="#003664"
-        android:textSize="10sp"
-        android:alpha="0.8"
+        android:textSize="20sp"
+        app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.069"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

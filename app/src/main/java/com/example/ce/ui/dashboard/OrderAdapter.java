@@ -34,14 +34,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.Viewholder> 
         DashboardViewModel model = orderModelArrayList.get(position);
 
 
-        holder.OrderId.setText(model.getOrderId());
+        holder.OrderId.setText(String.valueOf(model.getOrderId()));
         holder.ArticleName.setText(model.getArticleId());
         holder.StartPoint.setText(model.getStartPoint());
         holder.EndPoint.setText(model.getEndPoint());
         holder.Date.setText(model.getDatetime());
         holder.ArticleType.setText(model.getArticleType());
         holder.CourierID.setText(model.getCourierId());
-        holder.OrderPrice.setText(""+model.getOrder_price());
+        holder.OrderPrice.setText("Price: "+model.getOrder_price());
 
 
 
