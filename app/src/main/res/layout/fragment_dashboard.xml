@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
+    <ImageView
+        android:layout_width="411dp"
+        android:layout_height="733dp"
+        android:background="@drawable/background_3"
+        android:alpha="0.6"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
