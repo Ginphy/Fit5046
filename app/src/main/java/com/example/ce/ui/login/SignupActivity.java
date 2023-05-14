@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.ce.MainActivity;
 import com.example.ce.R;
+import com.example.ce.ui.home.CourierHomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -122,17 +123,17 @@ public class SignupActivity  extends AppCompatActivity {
                         recreate();
                     }
                 }
+                finish();
                 if (task.isSuccessful()) {
                     String msg = "Registration Successful";
                     toastMsg(msg);
-                    finish();
                     if (role == "User"){
                         Intent intent = new Intent(SignupActivity.this, InfoActivity.class);
-                        intent.putExtra("role", "User");
+                        intent.putExtra("role", 1);
                         startActivity(intent);
                     }else {
                         Intent intent = new Intent(SignupActivity.this, InfoActivity.class);
-                        intent.putExtra("role","Courier");
+                        intent.putExtra("role",0);
                         startActivity(intent);
                     }
                 }
