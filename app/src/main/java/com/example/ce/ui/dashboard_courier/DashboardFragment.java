@@ -62,9 +62,6 @@ public class DashboardFragment extends Fragment{
                     }
                 });
 
-        orderModelArrayList.add(new DashboardViewModel(1, "asdasd", "asdasd", "asdasd",
-                                    date.toString(), "asdasd", "asdasd", 6, "Waiting..."));
-
         com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
