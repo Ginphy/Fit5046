@@ -31,6 +31,7 @@ import java.util.Map;
 
 public class InfoActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public String role;
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -39,8 +40,15 @@ public class InfoActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         FirebaseUser User = auth.getCurrentUser();
         Intent intent = getIntent();
-        final String[] sex = new String[1];
-        String role = intent.getStringExtra("role");
+        String[] sex = new String[1];
+        int role2 = intent.getIntExtra("role",-1);
+        if(role2 == 1 )
+        {
+            role = "User";
+        }
+        else{
+            role = "Courier";
+        }
         RadioGroup rg = (RadioGroup) findViewById(R.id.rg_sex);
         RadioButton rb_Male = (RadioButton) findViewById(R.id.male);
         RadioButton rb_Female = (RadioButton) findViewById(R.id.female);
@@ -103,11 +111,16 @@ public class InfoActivity extends AppCompatActivity {
                                 Log.w(TAG, "Error adding document", e);
                             }
                         });
-                if(role == "User"){
+          //      Log.w(TAG,role);
+//                System.out.printf(role);
+                if(role2 == 1){
+           //         Log.w(TAG,role);
                     finish();
                     Intent i = new Intent(InfoActivity.this, MainActivity.class);
                     startActivity(i);
-                }else{
+                }
+                if(role2 == 0){
+         //           Log.w(TAG,role);
                     finish();
                     Intent i = new Intent(InfoActivity.this, CourierHomeActivity.class);
                     startActivity(i);
