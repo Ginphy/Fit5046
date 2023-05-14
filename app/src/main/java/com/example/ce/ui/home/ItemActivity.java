@@ -42,6 +42,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.checkerframework.common.returnsreceiver.qual.This;
+
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,6 +53,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ItemActivity extends AppCompatActivity {
@@ -78,6 +87,9 @@ public class ItemActivity extends AppCompatActivity {
     public double price;
     public String timestamp;
     public Long timestampLong;
+    public String isWorkingDay;
+
+    RetrofitInterface retrofitService;
     @Override
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -130,6 +142,32 @@ public class ItemActivity extends AppCompatActivity {
                 timestamp = sdf.format(date);
                 String StringDate = timestamp + " 12:00:00";
                 SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+                //步骤4:创建Retrofit对象
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://apis.juhe.cn/fapig/calendar/") // 设置 网络请求 Url
+                        .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
+                        .build();
+                // 步骤5:创建 网络请求接口 的实例
+                retrofitService = retrofit.create(RetrofitInterface.class);
+                //对 发送请求 进行封装
+                Call<Reception> call = retrofitService.getCall(timestamp,"a63283c74d3bb2ad9ba9a173b46e9741");
+                call.enqueue(new Callback<Reception>() {
+                    //请求成功时回调
+                    @Override
+                    public void onResponse(Call<Reception> call, Response<Reception> response) {
+                        // 步骤7：处理返回的数据结果
+                        response.body().show();
+                        isWorkingDay = response.body().getStats();
+                    }
+
+                    //请求失败时回调
+                    @Override
+                    public void onFailure(Call<Reception> call, Throwable throwable) {
+                        System.out.println("连接失败");
+                    }
+                });
+
                 try {
                     Date date2 = format.parse(StringDate);
                 } catch (ParseException e) {
@@ -157,11 +195,19 @@ public class ItemActivity extends AppCompatActivity {
                         .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                if (isWorkingDay != "工作日") {
+                                    price = price*1.2;
+                                    priceTextView.setText(String.format("%.2f",price));
+                                    String msg = timestamp +  " is Not a working day, the price will add 20%.";
+                                    toastMsg(msg);
+                                }
                                 // Next operation
                                 if(editName.getText().toString() != null && type != null && timestamp != null){
+
                                     Order order = new Order(editName.getText().toString(), StartName, EndName
                                     , type, timestamp, StartLongitude, StartLatitude, EndLongitude, EndLatitude, price, editDescription.getText().toString(), false, UserID,"Processing",0);
                                     orderViewModel.insert(order);
+
                                     // Add Calendar Event
                                     if (ckSave.isChecked()) {
                                         calendarUtils=new CalendarReminderUtils ();
