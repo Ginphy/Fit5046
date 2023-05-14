@@ -1,18 +1,27 @@
 package com.example.ce.ui.home.fragment;
 
+import static android.content.ContentValues.TAG;
+
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import com.google.firebase.firestore.*;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.room.Query;
+
 import android.widget.DatePicker;
+import android.widget.Toast;
+
 import com.example.ce.R;
 import com.example.ce.databinding.HomeFragmentBinding;
 import com.example.ce.ui.Database.DAO.OrderDAO;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
+import com.example.ce.ui.dashboard_courier.DashboardViewModel;
 import com.example.ce.ui.home.viewmodel.SharedViewModel;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -22,6 +31,11 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,6 +63,7 @@ public class HomeFragment extends Fragment {
 
     Date date1,date2;
     int Food=10, Digital=20, Liquid=15, Wearing=15, Book=20, File=10, Others=10;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,15 +77,104 @@ public class HomeFragment extends Fragment {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Random random =  new Random();
-                Food = random.nextInt(14);
-                Digital = random.nextInt(14);
-                Liquid = random.nextInt(14);
-                Wearing = random.nextInt(14);
-                Book = random.nextInt(14);
-                File = random.nextInt(14);
-                Others = random.nextInt(14);
-                TypeChartBuild();
+//                Random random =  new Random();
+//                Food = random.nextInt(14);
+//                Digital = random.nextInt(14);
+//                Liquid = random.nextInt(14);
+//                Wearing = random.nextInt(14);
+//                Book = random.nextInt(14);
+//                File = random.nextInt(14);
+//                Others = random.nextInt(14);
+                if (timestampFrom.compareTo(timestampTo) > 0) {
+                    String msg = "Dates are not properly set.";
+                    toastMsg(msg);
+                } else {
+                    db.collection("Orders")
+                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereEqualTo("Type","Food")
+                                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful())
+                                        Food = task.getResult().size();
+                                    else
+                                        Log.d(TAG, "Error getting type counts: ", task.getException());
+                                }
+                            });
+                    db.collection("Orders")
+                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereEqualTo("Type","Digital")
+                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful())
+                                        Digital = task.getResult().size();
+                                    else
+                                        Log.d(TAG, "Error getting type counts: ", task.getException());
+                                }
+                            });
+                    db.collection("Orders")
+                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereEqualTo("Type","Liquid")
+                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful())
+                                        Liquid = task.getResult().size();
+                                    else
+                                        Log.d(TAG, "Error getting type counts: ", task.getException());
+                                }
+                            });
+                    db.collection("Orders")
+                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereEqualTo("Type","Wearing")
+                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful())
+                                        Wearing = task.getResult().size();
+                                    else
+                                        Log.d(TAG, "Error getting type counts: ", task.getException());
+                                }
+                            });
+                    db.collection("Orders")
+                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereEqualTo("Type","Book")
+                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful())
+                                        Book = task.getResult().size();
+                                    else
+                                        Log.d(TAG, "Error getting type counts: ", task.getException());
+                                }
+                            });
+                    db.collection("Orders")
+                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereEqualTo("Type","File")
+                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful())
+                                        File = task.getResult().size();
+                                    else
+                                        Log.d(TAG, "Error getting type counts: ", task.getException());
+                                }
+                            });
+                    db.collection("Orders")
+                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereEqualTo("Type","Others")
+                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful())
+                                        Others = task.getResult().size();
+                                    else
+                                        Log.d(TAG, "Error getting type counts: ", task.getException());
+                                }
+                            });
+                    TypeChartBuild();
+                }
             }
         });
 
@@ -200,5 +304,8 @@ public class HomeFragment extends Fragment {
         OrderTypeChart.setData(pieData);
         OrderTypeChart.highlightValues(null);
         OrderTypeChart.invalidate();
+    }
+    public void toastMsg(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
