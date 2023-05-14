@@ -77,20 +77,13 @@ public class HomeFragment extends Fragment {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Random random =  new Random();
-//                Food = random.nextInt(14);
-//                Digital = random.nextInt(14);
-//                Liquid = random.nextInt(14);
-//                Wearing = random.nextInt(14);
-//                Book = random.nextInt(14);
-//                File = random.nextInt(14);
-//                Others = random.nextInt(14);
+
                 if (timestampFrom.compareTo(timestampTo) > 0) {
                     String msg = "Dates are not properly set.";
                     toastMsg(msg);
                 } else {
                     db.collection("Orders")
-                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereGreaterThan("StartDate", timestampFrom)
                             .whereEqualTo("Type","Food")
                                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
@@ -102,7 +95,7 @@ public class HomeFragment extends Fragment {
                                 }
                             });
                     db.collection("Orders")
-                            .whereGreaterThan("StartDate", timestampFrom.toString())
+                            .whereGreaterThan("StartDate", timestampFrom)
                             .whereEqualTo("Type","Digital")
                             .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
