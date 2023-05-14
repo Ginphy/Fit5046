@@ -1,13 +1,11 @@
 package com.example.ce.ui.home;
 
-import static android.app.PendingIntent.getActivity;
-import static android.content.ContentValues.TAG;
+
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateUtils;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,12 +16,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ce.MainActivity;
@@ -31,28 +27,19 @@ import android.Manifest;
 import com.example.ce.R;
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
-import com.example.ce.ui.login.LoginActivity;
-import com.example.ce.ui.login.SignupActivity;
-import com.example.ce.ui.login.StartActivity;
-import com.example.ce.ui.notifications.NotificationsViewModel;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.checkerframework.common.returnsreceiver.qual.This;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -143,28 +130,27 @@ public class ItemActivity extends AppCompatActivity {
                 String StringDate = timestamp + " 12:00:00";
                 SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-                //步骤4:创建Retrofit对象
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://apis.juhe.cn/fapig/calendar/") // 设置 网络请求 Url
-                        .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
+                        .baseUrl("http://apis.juhe.cn/fapig/calendar/")
+                        .addConverterFactory(GsonConverterFactory.create())
                         .build();
-                // 步骤5:创建 网络请求接口 的实例
+
                 retrofitService = retrofit.create(RetrofitInterface.class);
-                //对 发送请求 进行封装
+
                 Call<Reception> call = retrofitService.getCall(timestamp,"904b48dbbeb6751d2f884f295c0ea551");
                 call.enqueue(new Callback<Reception>() {
-                    //请求成功时回调
+
                     @Override
                     public void onResponse(Call<Reception> call, Response<Reception> response) {
-                        // 步骤7：处理返回的数据结果
+
                         response.body().show();
                         isWorkingDay = response.body().getStats();
                     }
 
-                    //请求失败时回调
+
                     @Override
                     public void onFailure(Call<Reception> call, Throwable throwable) {
-                        System.out.println("连接失败");
+                        System.out.println("Connect Fail");
                     }
                 });
 

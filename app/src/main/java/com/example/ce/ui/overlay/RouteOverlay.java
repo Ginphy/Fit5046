@@ -20,9 +20,7 @@ import com.amap.api.maps.model.PolylineOptions;
 import com.example.ce.R;
 
 
-/**
- * 路线图层叠加
- */
+
 public class RouteOverlay {
     protected List<Marker> stationMarkers = new ArrayList<Marker>();
     protected List<Polyline> allPolyLines = new ArrayList<Polyline>();
@@ -39,10 +37,6 @@ public class RouteOverlay {
         mContext = context;
     }
 
-    /**
-     * 去掉BusRouteOverlay上所有的Marker。
-     * @since V2.1.0
-     */
     public void removeFromMap() {
         if (startMarker != null) {
             startMarker.remove();
@@ -82,35 +76,19 @@ public class RouteOverlay {
             driveBit = null;
         }
     }
-    /**
-     * 给起点Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
-     * @return 更换的Marker图片。
-     * @since V2.1.0
-     */
+
     protected BitmapDescriptor getStartBitmapDescriptor() {
         return BitmapDescriptorFactory.fromResource(R.drawable.marker_start);
     }
-    /**
-     * 给终点Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
-     * @return 更换的Marker图片。
-     * @since V2.1.0
-     */
+
     protected BitmapDescriptor getEndBitmapDescriptor() {
         return BitmapDescriptorFactory.fromResource(R.drawable.marker_end);
     }
-    /**
-     * 给公交Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
-     * @return 更换的Marker图片。
-     * @since V2.1.0
-     */
+
     protected BitmapDescriptor getBusBitmapDescriptor() {
         return BitmapDescriptorFactory.fromResource(R.drawable.logo);
     }
-    /**
-     * 给步行Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
-     * @return 更换的Marker图片。
-     * @since V2.1.0
-     */
+
     protected BitmapDescriptor getWalkBitmapDescriptor() {
         return BitmapDescriptorFactory.fromResource(R.drawable.logo);
     }
@@ -130,10 +108,7 @@ public class RouteOverlay {
         // mAMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startPoint,
         // getShowRouteZoom()));
     }
-    /**
-     * 移动镜头到当前的视角。
-     * @since V2.1.0
-     */
+
     public void zoomToSpan() {
         if (startPoint != null) {
             if (mAMap == null) {
@@ -155,11 +130,7 @@ public class RouteOverlay {
         b.include(new LatLng(endPoint.latitude, endPoint.longitude));
         return b.build();
     }
-    /**
-     * 路段节点图标控制显示接口。
-     * @param visible true为显示节点图标，false为不显示。
-     * @since V2.3.1
-     */
+
     public void setNodeIconVisibility(boolean visible) {
         try {
             nodeIconVisible = visible;
@@ -202,11 +173,7 @@ public class RouteOverlay {
         return Color.parseColor("#6db74d");
     }
 
-    /**
-     * 自定义路线颜色。
-     * return 自定义路线颜色。
-     * @since V2.2.1
-     */
+
     protected int getBusColor() {
         return Color.parseColor("#537edc");
     }
@@ -215,7 +182,5 @@ public class RouteOverlay {
         return Color.parseColor("#537edc");
     }
 
-    // protected int getShowRouteZoom() {
-    // return 15;
-    // }
+
 }

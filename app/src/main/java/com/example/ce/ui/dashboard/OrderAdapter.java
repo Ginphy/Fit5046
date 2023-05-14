@@ -46,7 +46,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.Viewholder> 
 
 
 
-        //  holder.courseIV.setImageResource(model.getCourse_image());
     }
 
     @Override

@@ -27,16 +27,7 @@ public class NotificationsViewModel extends ViewModel {
         auth = FirebaseAuth.getInstance();
         String id = auth.getCurrentUser().getUid();
         Log.d(TAG, "id: "+id);
-        // 获取users集合中ID的文档
-        // mOldData.Profile = personaldata[0];
-        //        mOldData.Name = personaldata[1];
-        //        mOldData.Nickname = "Click to set";
-        //        mOldData.Gender = personaldata[2];
-        //        mOldData.Identity = personaldata[3];
-        //        mOldData.Phone = personaldata[4];
-        //        mOldData.Email = personaldata[5];
-        //
-        //        mData.postValue(mOldData);
+
         db.collection("users")
                 .whereEqualTo("uid", id)
                 .get()

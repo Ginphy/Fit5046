@@ -3,13 +3,12 @@ package com.example.ce.ui.Database.repository;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Database;
 
 import com.example.ce.ui.Database.DAO.OrderDAO;
 import com.example.ce.ui.Database.database.OrderDatabase;
 import com.example.ce.ui.Database.entity.Order;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -78,12 +77,5 @@ public class OrderRepository {
         }, OrderDatabase.databaseWriteExecutor);
     }
 
-//    public CompletableFuture<Order> findByIDFuture(final boolean status) {
-//        return CompletableFuture.supplyAsync(new Supplier<Order>() {
-//            @Override
-//            public Order get() {
-//                return orderDao.findByID(status);
-//            }
-//        }, OrderDatabase.databaseWriteExecutor);
-//    }
+
 }

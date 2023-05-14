@@ -9,8 +9,7 @@ import java.util.Date;
 public class DashboardViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
-    private String course_name;
-    private int course_rating;
+
     private int orderId;
     private String articleId;
     private String StartPoint;

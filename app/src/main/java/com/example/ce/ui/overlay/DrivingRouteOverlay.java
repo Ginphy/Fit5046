@@ -25,9 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * 导航路线图层类。
- */
+
 public class DrivingRouteOverlay extends RouteOverlay{
 
     private DrivePathV2 drivePath;

@@ -11,23 +11,13 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.ce.databinding.AddFragmentBinding;
-import com.example.ce.ui.home.viewmodel.SharedViewModel;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.ce.R;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
+
 
 import com.example.ce.databinding.FragmentDashboardBinding;
-import com.example.ce.ui.Database.entity.Order;
+
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 import com.example.ce.ui.dashboard_courier.DashboardViewModel;
 import com.example.ce.ui.dashboard_courier.OrderAdapter;
@@ -41,7 +31,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 
 public class AddFragment extends Fragment{
     //

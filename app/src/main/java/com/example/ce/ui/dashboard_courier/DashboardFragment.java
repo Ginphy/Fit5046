@@ -1,25 +1,24 @@
 package com.example.ce.ui.dashboard_courier;
 
-import android.app.Application;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
 
 import com.example.ce.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ce.databinding.FragmentDashboardBinding;
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
-import com.example.ce.ui.dashboard_courier.DashboardViewModel;
-import com.example.ce.ui.dashboard_courier.OrderAdapter;
+
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,8 +44,7 @@ public class DashboardFragment extends Fragment{
         com.example.ce.ui.dashboard_courier.DashboardViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(com.example.ce.ui.dashboard_courier.DashboardViewModel.class);
         View root = inflater.inflate(R.layout.dashboard_courier, container, false);
-        //   binding = FragmentDashboardBinding.inflate(inflater, container, false);
-        //    View root = binding.getRoot();
+
         RecyclerView recyclerView = root.findViewById(R.id.recycler_view);
         ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel> orderModelArrayList = new ArrayList<com.example.ce.ui.dashboard_courier.DashboardViewModel>();
         orderViewModel =
@@ -67,8 +65,6 @@ public class DashboardFragment extends Fragment{
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(courseAdapter);
 
-        //    final TextView textView = binding.textDashboard;
-        //       dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

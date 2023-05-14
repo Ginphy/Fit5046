@@ -13,7 +13,7 @@ import com.amap.api.services.help.Tip;
 import com.example.ce.R;
 
 import java.util.List;
-import java.util.Map;
+
 
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.MyViewHolder> implements View.OnClickListener {
 
@@ -25,7 +25,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.MyViewHolder> impl
     @Override
     public void onClick(View v) {
         int position = rv.getChildAdapterPosition(v);
-        //程序执行到此，会去执行具体实现的onItemClick()方法
+
         if (mOnItemClickListener != null) {
             mOnItemClickListener.onItemClick(rv, v, position, list.get(position));
         }

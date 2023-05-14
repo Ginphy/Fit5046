@@ -43,17 +43,13 @@ import com.amap.api.services.route.RideRouteResultV2;
 import com.amap.api.services.route.RouteSearchV2;
 import com.amap.api.services.route.WalkRouteResultV2;
 import com.example.ce.R;
-import com.example.ce.ui.login.InfoActivity;
-import com.example.ce.ui.login.LoginActivity;
-import com.example.ce.ui.login.StartActivity;
+
 import com.example.ce.ui.overlay.DrivingRouteOverlay;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.ParseException;
@@ -65,7 +61,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import kotlinx.coroutines.channels.Send;
+
 
 
 public class Map extends AppCompatActivity {
@@ -99,10 +95,6 @@ public class Map extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // Initail BaiduMap Information
-//        SDKInitializer.setAgreePrivacy(this.getApplicationContext(),true);
-//        LocationClient.setAgreePrivacy(true);
-//        SDKInitializer.initialize(this.getApplicationContext());
 
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
@@ -153,25 +145,8 @@ public class Map extends AppCompatActivity {
                                 drivingRouteOverlay.removeFromMap();
                                 drivingRouteOverlay.addToMap();
                                 drivingRouteOverlay.zoomToSpan();
-//                    mBottomLayout.setVisibility(View.VISIBLE);
+
                                 distance = (int) drivePath.getDistance();
-//                    int dur = (int) drivePath.getDuration();
-//                    String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
-//                    mRotueTimeDes.setText(des);
-//                    mRouteDetailDes.setVisibility(View.VISIBLE);
-//                    int taxiCost = (int) mDriveRouteResult.getTaxiCost();
-//                    mRouteDetailDes.setText("打车约"+taxiCost+"元");
-//                    mBottomLayout.setOnClickListener(new OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            Intent intent = new Intent(mContext,
-//                                    DriveRouteDetailActivity.class);
-//                            intent.putExtra("drive_path", drivePath);
-//                            intent.putExtra("drive_result",
-//                                    mDriveRouteResult);
-//                            startActivity(intent);
-//                        }
-//                    });
 
                             } else if (result != null && result.getPaths() == null) {
                                 Toast.makeText(mContext, "No result!",
@@ -205,12 +180,12 @@ public class Map extends AppCompatActivity {
                 aMap = mMapView.getMap();
             }
             MyLocationStyle myLocationStyle;
-            myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-            myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
-            aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
-            aMap.getUiSettings().setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示，非必需设置。
-            aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false
-            aMap.moveCamera(CameraUpdateFactory.zoomTo(20));//地图显示级别
+            myLocationStyle = new MyLocationStyle();
+            myLocationStyle.interval(2000);
+            aMap.setMyLocationStyle(myLocationStyle);
+            aMap.getUiSettings().setMyLocationButtonEnabled(true);
+            aMap.setMyLocationEnabled(true);
+            aMap.moveCamera(CameraUpdateFactory.zoomTo(20));
         } catch (Exception e) {
             System.out.print("e=" + e);
         }
@@ -224,7 +199,7 @@ public class Map extends AppCompatActivity {
                 StartLatitude = intent.getDoubleExtra("Latitude",0);
                 StartLongitude = intent.getDoubleExtra("Longitude",0);
                 StartName = intent.getStringExtra("Name");
-                //根据获取的经纬度，将地图移动到定位位置
+
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(StartLatitude,StartLongitude)));
                 aMap.addMarker(new MarkerOptions().position(new LatLng(StartLatitude,StartLongitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_start)));
                 mStartAddress.setText(StartName);
@@ -236,7 +211,7 @@ public class Map extends AppCompatActivity {
                 EndLatitude = intent.getDoubleExtra("Latitude",0);
                 EndLongitude = intent.getDoubleExtra("Longitude",0);
                 EndName = intent.getStringExtra("Name");
-                //根据获取的经纬度，将地图移动到定位位置
+
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(EndLatitude,EndLongitude)));
                 aMap.addMarker(new MarkerOptions().position(new LatLng(EndLatitude,EndLongitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_end)));
                 mDestinationAddress.setText(EndName);
@@ -256,42 +231,6 @@ public class Map extends AppCompatActivity {
         }
 
         Random random = new Random();
-//        Send.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                java.util.Map<String, Object> order = new HashMap<>();
-//                order.put("uid", User.getUid());
-//                order.put("RecAddress", mDestinationAddress.getText().toString());
-//                order.put("SntAddress", mStartAddress.getText().toString());
-//                order.put("Price", random.nextInt(202));
-//                order.put("RevUser", "zjj");
-//                order.put("itemid", itemid);
-//                order.put("StartTime", FieldValue.serverTimestamp());
-//                order.put("Deadline",deadline);
-//                order.put("status", 0);
-//                db.collection("Orders")
-//                        .add(order)
-//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                            @Override
-//                            public void onSuccess(DocumentReference documentReference) {
-//                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Log.w(TAG, "Error adding document", e);
-//                            }
-//                        });
-//            }
-//        });
-//        itembutton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(Map.this, ItemActivity.class));
-//                finish();
-//            }
-//        });
 
         SearchStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -368,7 +307,7 @@ public class Map extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
+
         mMapView.onSaveInstanceState(outState);
     }
 

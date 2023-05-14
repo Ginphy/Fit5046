@@ -2,9 +2,9 @@ package com.example.ce.ui.home;
 
 import static android.content.ContentValues.TAG;
 
-import android.app.Dialog;
+
 import android.content.Context;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +15,11 @@ import android.webkit.WebView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
+
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -40,39 +39,28 @@ import com.amap.api.services.route.DriveRouteResultV2;
 import com.amap.api.services.route.RideRouteResultV2;
 import com.amap.api.services.route.RouteSearchV2;
 import com.amap.api.services.route.WalkRouteResultV2;
-import com.example.ce.MainActivity;
+
 import com.example.ce.R;
 import com.example.ce.databinding.FragmentHomeBinding;
-import com.example.ce.ui.home.viewmodel.RetrofitClient;
-import com.example.ce.ui.login.StartActivity;
-import com.example.ce.ui.login.LoginActivity;
+
 import com.example.ce.ui.overlay.DrivingRouteOverlay;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.IOException;
-import java.security.KeyPairGenerator;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Random;
 
-import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
 
 
 public class HomeFragment extends Fragment {
@@ -135,14 +123,7 @@ public class HomeFragment extends Fragment {
         Button SearchEnd = root.findViewById(R.id.SearchEnd);
         // Button itembutton = root.findViewById(R.id.Item);
         Button Submit = root.findViewById(R.id.Submit);
-//        Button btnBack = root.findViewById(R.id.BackButton);
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), StartActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
 
 
         mContext = getActivity().getApplicationContext();
@@ -150,9 +131,9 @@ public class HomeFragment extends Fragment {
         try {
             ServiceSettings.updatePrivacyShow(mContext, true, true);
             ServiceSettings.updatePrivacyAgree(mContext,true);
-            //定义了一个地图view
+
             mMapView = (MapView) root.findViewById(R.id.map);
-            mMapView.onCreate(savedInstanceState);// 此方法须覆写，虚拟机需要在很多情况下保存地图绘制的当前状态。
+            mMapView.onCreate(savedInstanceState);
             // Define the Address String Fragment
             mStartAddress = root.findViewById(R.id.startAddr);
             mDestinationAddress = root.findViewById(R.id.destinationAddr);
@@ -165,7 +146,7 @@ public class HomeFragment extends Fragment {
                 }
                 @Override
                 public void onDriveRouteSearched(DriveRouteResultV2 result, int errorCode) {
-                    aMap.clear();// 清理地图上的所有覆盖物
+                    aMap.clear();
                     if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
                         if (result != null && result.getPaths() != null) {
                             if (result.getPaths().size() > 0) {
@@ -178,30 +159,11 @@ public class HomeFragment extends Fragment {
                                         mContext, aMap, drivePath,
                                         result.getStartPos(),
                                         result.getTargetPos(), null);
-                                drivingRouteOverlay.setNodeIconVisibility(false);//设置节点marker是否显示
-                                drivingRouteOverlay.setIsColorfulline(true);//是否用颜色展示交通拥堵情况，默认true
+                                drivingRouteOverlay.setNodeIconVisibility(false);
+                                drivingRouteOverlay.setIsColorfulline(true);
                                 drivingRouteOverlay.removeFromMap();
                                 drivingRouteOverlay.addToMap();
                                 drivingRouteOverlay.zoomToSpan();
-//                    mBottomLayout.setVisibility(View.VISIBLE);
-                                distance = (int) drivePath.getDistance();
-//                    int dur = (int) drivePath.getDuration();
-//                    String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
-//                    mRotueTimeDes.setText(des);
-//                    mRouteDetailDes.setVisibility(View.VISIBLE);
-//                    int taxiCost = (int) mDriveRouteResult.getTaxiCost();
-//                    mRouteDetailDes.setText("打车约"+taxiCost+"元");
-//                    mBottomLayout.setOnClickListener(new OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            Intent intent = new Intent(mContext,
-//                                    DriveRouteDetailActivity.class);
-//                            intent.putExtra("drive_path", drivePath);
-//                            intent.putExtra("drive_result",
-//                                    mDriveRouteResult);
-//                            startActivity(intent);
-//                        }
-//                    });
 
                             } else if (result != null && result.getPaths() == null) {
                                 Toast.makeText(mContext, "No result!",
@@ -230,22 +192,22 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-            //初始化地图控制器对象
+
             if (aMap == null) {
                 aMap = mMapView.getMap();
             }
             MyLocationStyle myLocationStyle;
-            myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-            myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
-            aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
-            aMap.getUiSettings().setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示，非必需设置。
-            aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false
-            aMap.moveCamera(CameraUpdateFactory.zoomTo(20));//地图显示级别
+            myLocationStyle = new MyLocationStyle();
+            myLocationStyle.interval(2000);
+            aMap.setMyLocationStyle(myLocationStyle);
+            aMap.getUiSettings().setMyLocationButtonEnabled(true);
+            aMap.setMyLocationEnabled(true);
+            aMap.moveCamera(CameraUpdateFactory.zoomTo(20));
         } catch (Exception e) {
             System.out.print("e=" + e);
         }
 
-        // After SearchPosition, Here will get the feedback postion info
+
 
         if (intent != null) {
             // Unbox bundle
@@ -254,7 +216,7 @@ public class HomeFragment extends Fragment {
                 StartLatitude = intent.getDoubleExtra("Latitude",0);
                 StartLongitude = intent.getDoubleExtra("Longitude",0);
                 StartName = intent.getStringExtra("Name");
-                //根据获取的经纬度，将地图移动到定位位置
+
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(StartLatitude,StartLongitude)));
                 aMap.addMarker(new MarkerOptions().position(new LatLng(StartLatitude,StartLongitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_start)));
                 mStartAddress.setText(StartName);
@@ -266,7 +228,7 @@ public class HomeFragment extends Fragment {
                 EndLatitude = intent.getDoubleExtra("Latitude",0);
                 EndLongitude = intent.getDoubleExtra("Longitude",0);
                 EndName = intent.getStringExtra("Name");
-                //根据获取的经纬度，将地图移动到定位位置
+
                 aMap.moveCamera(CameraUpdateFactory.changeLatLng(new LatLng(EndLatitude,EndLongitude)));
                 aMap.addMarker(new MarkerOptions().position(new LatLng(EndLatitude,EndLongitude)).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_end)));
                 mDestinationAddress.setText(EndName);
@@ -282,7 +244,7 @@ public class HomeFragment extends Fragment {
                     RouteSearchV2.FromAndTo fromAndTo = new RouteSearchV2.FromAndTo(mStartPoint, mEndPoint);
                     RouteSearchV2.DriveRouteQuery query = new RouteSearchV2.DriveRouteQuery(fromAndTo, RouteSearchV2.DrivingStrategy.DEFAULT, null,
                             null, "");
-                    //不加此行代码，一些数据不会返回
+
                     query.setShowFields(RouteSearchV2.ShowFields.POLINE | RouteSearchV2.ShowFields.CITIES |
                             RouteSearchV2.ShowFields.COST | RouteSearchV2.ShowFields.NAVI | RouteSearchV2.ShowFields.TMCS);
                     mRouteSearch.calculateDriveRouteAsyn(query);
@@ -295,35 +257,7 @@ public class HomeFragment extends Fragment {
 
         Random random = new Random();
 
-//        Send.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                java.util.Map<String, Object> order = new HashMap<>();
-//                order.put("uid", User.getUid());
-//                order.put("RecAddress", mDestinationAddress.getText().toString());
-//                order.put("SntAddress", mStartAddress.getText().toString());
-//                order.put("Price", random.nextInt(202));
-//                order.put("RevUser", "zjj");
-//                order.put("itemid", itemid);
-//                order.put("StartTime", FieldValue.serverTimestamp());
-//                order.put("Deadline",deadline);
-//                order.put("status", 0);
-//                db.collection("Orders")
-//                        .add(order)
-//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                            @Override
-//                            public void onSuccess(DocumentReference documentReference) {
-//                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Log.w(TAG, "Error adding document", e);
-//                            }
-//                        });
-//            }
-//        });
+
 
         SearchStart.setOnClickListener(new View.OnClickListener() {
             @Override

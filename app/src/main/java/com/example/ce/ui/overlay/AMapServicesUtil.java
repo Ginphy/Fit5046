@@ -1,8 +1,5 @@
 package com.example.ce.ui.overlay;
 
-/**
- * 地图服务工具类
- */
 
 import android.graphics.Bitmap;
 

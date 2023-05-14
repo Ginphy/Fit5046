@@ -1,6 +1,6 @@
 package com.example.ce.ui.dashboard;
 
-import android.app.Application;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,20 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
+
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.ce.Workers.UploadWorker;
+
 import com.example.ce.databinding.FragmentDashboardBinding;
 import com.example.ce.ui.Database.entity.Order;
 import com.example.ce.ui.Database.viewmodel.OrderViewModel;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.Constraints;
-import androidx.work.NetworkType;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,8 +45,7 @@ public class DashboardFragment extends Fragment{
         DashboardViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-     //   binding = FragmentDashboardBinding.inflate(inflater, container, false);
-    //    View root = binding.getRoot();
+
         RecyclerView recyclerView = root.findViewById(R.id.recycler_view);
         ArrayList<DashboardViewModel> orderModelArrayList = new ArrayList<DashboardViewModel>();
         orderViewModel =
@@ -71,8 +67,7 @@ public class DashboardFragment extends Fragment{
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(courseAdapter);
 
-    //    final TextView textView = binding.textDashboard;
- //       dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 

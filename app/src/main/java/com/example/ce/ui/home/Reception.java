@@ -11,7 +11,7 @@ public class Reception {
     }
     private int error_code;
 
-    //定义 输出返回数据 的方法
+
     public void show() {
         System.out.println(reason);
         System.out.println(result.date);

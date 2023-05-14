@@ -44,15 +44,15 @@ public class SearchDestinationActivity extends AppCompatActivity implements Inpu
         rvAdapter.setOnItemClickListener(this);
         recyclerView.setAdapter(rvAdapter);
 
-        //构造 Inputtips 对象，并设置监听
+
         inputTips = new Inputtips(this, (InputtipsQuery) null);
-        //指定setInputtipsListener得到onGetInputtips结果的回调
+
         inputTips.setInputtipsListener(this);
 
 
     }
 
-    //通过适配器把数据展示到recyclerView中去
+
     @Override
     public void onGetInputtips(List<Tip> list, int i) {
         rvAdapter.setData(list);
@@ -65,11 +65,11 @@ public class SearchDestinationActivity extends AppCompatActivity implements Inpu
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        // 构造InputtipsQuery 对象，通过 InputtipsQuery(第一个参数为输入的数据，第二个参数城市) 设置搜索条件，null为全国范围。
+
         InputtipsQuery inputquery = new InputtipsQuery(String.valueOf(s), null);
-        inputquery.setCityLimit(true);//限制在当前城市
+        inputquery.setCityLimit(true);
         inputTips.setQuery(inputquery);
-        //异步提示请求
+
         inputTips.requestInputtipsAsyn();
     }
 
@@ -78,9 +78,9 @@ public class SearchDestinationActivity extends AppCompatActivity implements Inpu
 
     }
     public void onItemClick(RecyclerView parent, View view, int position, Tip data) {
-        //得到点击的坐标
+
         LatLonPoint point = data.getPoint();
-        //得到经纬度
+
         Poi poi = new Poi(data.getName(), new LatLng(point.getLatitude(), point.getLongitude()), data.getPoiID());
         // Set Intent Class with Position data
         Intent intent = new Intent(SearchDestinationActivity.this, MainActivity.class);
@@ -92,9 +92,6 @@ public class SearchDestinationActivity extends AppCompatActivity implements Inpu
         bundle.putDouble("Longitude",point.getLongitude());
         intent.putExtras(bundle);
         startActivity(intent);
-//        //导航参数对象（起点，途径，终点，导航方式）DRIVER是导航方式（驾驶，步行...当前为驾驶）ROUTE会计算路程选择
-//        AmapNaviParams params = new AmapNaviParams(null, null, poi, AmapNaviType.DRIVER, AmapPageType.ROUTE);
-//        //传递上下文和导航参数
-//        AmapNaviPage.getInstance().showRouteActivity(getApplicationContext(), params, null);
+
     }
 }
