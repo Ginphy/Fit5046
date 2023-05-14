@@ -43,6 +43,7 @@ import com.amap.api.services.route.WalkRouteResultV2;
 import com.example.ce.MainActivity;
 import com.example.ce.R;
 import com.example.ce.databinding.FragmentHomeBinding;
+import com.example.ce.ui.home.viewmodel.RetrofitClient;
 import com.example.ce.ui.login.StartActivity;
 import com.example.ce.ui.login.LoginActivity;
 import com.example.ce.ui.overlay.DrivingRouteOverlay;
@@ -55,6 +56,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.IOException;
 import java.security.KeyPairGenerator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -64,6 +66,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class HomeFragment extends Fragment {
@@ -95,20 +104,6 @@ public class HomeFragment extends Fragment {
     public static int distance;
     public static double price;
 
-//    private static Retrofit retrofit = null;
-
-//    public static  Retrofit getClient(){ //creating object
-//
-//        if (retrofit == null){
-//
-//            retrofit = new Retrofit.Builder() //Retrofit.Builder class uses the Builder API to allow defining the URL end point for the HTTP operations and finally build a new Retrofit instance.
-//                    //http://api.openweathermap.org/data/2.5/weather?q=London&APPID=76a35a17f3e1bce771a09f3555b614a8
-//                    .baseUrl("https://api.openweathermap.org/data/2.5/")
-//                    .addConverterFactory(GsonConverterFactory.create())
-//                    .build();
-//        }
-//        return retrofit;
-//    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -117,6 +112,7 @@ public class HomeFragment extends Fragment {
         //Initialize a ViewModel
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
 
 
 
@@ -351,6 +347,7 @@ public class HomeFragment extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
                 else {
+
                     // Get price
                     if (distance <= 3000) {
                         price = 10;
