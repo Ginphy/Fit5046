@@ -151,7 +151,7 @@ public class ItemActivity extends AppCompatActivity {
                 // 步骤5:创建 网络请求接口 的实例
                 retrofitService = retrofit.create(RetrofitInterface.class);
                 //对 发送请求 进行封装
-                Call<Reception> call = retrofitService.getCall(timestamp,"a63283c74d3bb2ad9ba9a173b46e9741");
+                Call<Reception> call = retrofitService.getCall(timestamp,"904b48dbbeb6751d2f884f295c0ea551");
                 call.enqueue(new Callback<Reception>() {
                     //请求成功时回调
                     @Override

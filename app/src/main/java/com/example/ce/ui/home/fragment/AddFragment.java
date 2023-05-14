@@ -83,16 +83,17 @@ public class AddFragment extends Fragment{
                                         document.getDouble("Price"),
                                         document.getBoolean("Status").toString()));
                                 Log.d(TAG, "Successful getting documents!" + document.getData());
+                                com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
+                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+                                recyclerView.setLayoutManager(linearLayoutManager);
+                                recyclerView.setAdapter(courseAdapter);
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
-        com.example.ce.ui.dashboard_courier.OrderAdapter courseAdapter = new OrderAdapter(getActivity(), orderModelArrayList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(courseAdapter);
+
         return root;
     }
 

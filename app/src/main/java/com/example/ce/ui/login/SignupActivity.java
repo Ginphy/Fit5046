@@ -21,6 +21,9 @@ import android.widget.RadioGroup;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class SignupActivity  extends AppCompatActivity {
     private FirebaseAuth auth;
@@ -87,6 +90,9 @@ public class SignupActivity  extends AppCompatActivity {
                 } else if (password_txt.length() < 6) {
                     String msg = "Password is too short, at least 6 digits.";
                     toastMsg(msg);
+                } else if (isDigits(password_txt)) {
+                    String msg = "Password should not contain numbers only.";
+                    toastMsg(msg);
                 } else if (!email_txt.contains("@")){
                     String msg = "Not a proper format of an E-mail.";
                     toastMsg(msg);
@@ -137,5 +143,12 @@ public class SignupActivity  extends AppCompatActivity {
 
     public void toastMsg(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public static boolean isDigits(String data) {
+        String regex = "[0-9]+";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(data);
+        return matcher.matches();
     }
 }
