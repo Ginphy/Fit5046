@@ -9,10 +9,6 @@ import retrofit2.http.Query;
 
 
 public interface RetrofitInterface {
-
-
-
-
     @GET("day")
     Call<Reception> getCall(@Query("date") String myDate,@Query("key") String myKey);
 }

@@ -18,10 +18,10 @@ public class CalendarReminderUtils {
     private static String CALENDER_EVENT_URL = "content://com.android.calendar/events";
     private static String CALENDER_REMINDER_URL = "content://com.android.calendar/reminders";
 
-    private static String CALENDARS_NAME = "boohee";
-    private static String CALENDARS_ACCOUNT_NAME = "xxxxx";
-    private static String CALENDARS_ACCOUNT_TYPE = "xxxxx";
-    private static String CALENDARS_DISPLAY_NAME = "xxxx";
+    private static String CALENDARS_NAME = "Citizen Express Calendar";
+    private static String CALENDARS_ACCOUNT_NAME = "MyAccount";
+    private static String CALENDARS_ACCOUNT_TYPE = "User";
+    private static String CALENDARS_DISPLAY_NAME = "MyCEAccount";
 
     private static int checkAndAddCalendarAccount(Context context) {
         int oldId = checkCalendarAccount(context);
